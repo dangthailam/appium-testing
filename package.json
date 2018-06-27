@@ -4,12 +4,14 @@
   "description": "",
   "main": "identification.js",
   "scripts": {
-    "test": "mocha identification.js"
+    "test": "mocha identification --recursive"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "mochawesome": "^3.0.2"
+  },
   "dependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",

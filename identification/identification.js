@@ -1,6 +1,7 @@
-require('./setup');
+require('../setup');
 
 const wd = require("wd");
+// const addContext = require('mochawesome/addContext');
 
 const opts = {
     port: 4723
@@ -21,7 +22,7 @@ describe("Identification user", function() {
 
     before(function() {
         driver = wd.promiseChainRemote(opts);
-        require("./logging").configure(driver);
+        require("../logging").configure(driver);
         return driver
             .init(desired);
     });
@@ -44,7 +45,7 @@ describe("Identification user", function() {
             .sleep(1000)
             .elementById("fr.vestiairecollective:id/edit_login_username")
             .should.eventually.exist
-            .sendKeys("lebichngoc090589@gmai")
+            .sendKeys("lebichngoc090589@gmail.com")
             .elementById("fr.vestiairecollective:id/edit_login_password")
             .should.eventually.exist
             .sendKeys("09051989")
@@ -53,15 +54,15 @@ describe("Identification user", function() {
             .click()
             .sleep(4000)
             .elementById("fr.vestiairecollective:id/img_home")
-            .should.eventually.not.exist
+            .should.eventually.exist
             .elementById("fr.vestiairecollective:id/badge_icon_button")
-            .should.eventually.not.exist
+            .should.eventually.exist
             .elementById("fr.vestiairecollective:id/animated_search")    
-            .should.eventually.not.exist
+            .should.eventually.exist
             .elementById("fr.vestiairecollective:id/homeList") 
-            .should.eventually.not.exist
+            .should.eventually.exist
             .elementById("fr.vestiairecollective:id/navigation") 
-            .should.eventually.not.exist
+            .should.eventually.exist
             .nodeify(done);
             
     });
