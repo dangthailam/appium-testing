@@ -6,14 +6,8 @@ const wd = require("wd");
 const opts = {
     port: 4723
 };
-const desired = {
-    "platformName": "Android",
-    "platformVersion": "8.0",
-    "deviceName": "Android Emulator",
-    "app": "C:/appium/appium-testing/app-prod-debug.apk",
-    "automationName": "UiAutomator2",
-    "appWaitActivity": "*.LoginActivity"
-};
+
+const desired = require('../desired').android;
 
 describe("Identification user", function() {
     this.timeout(300000);
