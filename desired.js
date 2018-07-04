@@ -11,5 +11,6 @@ exports.ios = {
     "platformName": "iOS",
     "platformVersion": "11.4",
     "deviceName": "iPhone Simulator",
-    "app": "/Users/geraldine.souvanlasy/Downloads/Vestiaire Collective.app"
+    "app": "/Users/geraldine.souvanlasy/Downloads/Vestiaire Collective.app",
+    "noReset": true
 };

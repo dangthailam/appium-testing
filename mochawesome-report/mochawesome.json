@@ -1,0 +1,261 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 3,
+    "passes": 2,
+    "pending": 0,
+    "failures": 1,
+    "start": "2018-07-03T19:46:31.919Z",
+    "end": "2018-07-03T19:48:33.037Z",
+    "duration": 121118,
+    "testsRegistered": 3,
+    "passPercent": 66.7,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "passPercentClass": "warning",
+    "pendingPercentClass": "danger"
+  },
+  "suites": {
+    "uuid": "7e0fdea0-4bec-4a44-b4c7-754f13640174",
+    "title": "",
+    "fullFile": "",
+    "file": "",
+    "beforeHooks": [],
+    "afterHooks": [],
+    "tests": [],
+    "suites": [
+      {
+        "uuid": "d72791e8-ad16-44c3-8113-62bb94d26edb",
+        "title": "Achat d'article",
+        "fullFile": "/Users/geraldine.souvanlasy/vs-code/appium-testing/ios/achat.js",
+        "file": "/ios/achat.js",
+        "beforeHooks": [
+          {
+            "title": "\"before all\" hook",
+            "fullTitle": "Achat d'article \"before all\" hook",
+            "timedOut": false,
+            "duration": 6,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "driver = wd.promiseChainRemote(opts);\nrequire(\"../logging\").configure(driver);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "71035d37-9da3-44b2-b2f2-9eecac7df81c",
+            "isHook": true,
+            "skipped": false
+          },
+          {
+            "title": "\"before each\" hook",
+            "fullTitle": "Achat d'article \"before each\" hook",
+            "timedOut": false,
+            "duration": 7822,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "return driver.init(desired);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "7a2cb5a3-faa7-4084-b240-2e8f0b1f0eca",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [
+          {
+            "title": "\"after all\" hook",
+            "fullTitle": "Achat d'article \"after all\" hook",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "if (!allPassed) {\n    console.log(\"all tests passed\");\n}",
+            "err": {},
+            "isRoot": false,
+            "uuid": "ff8e0ea9-f43f-41e0-8286-2a2eb8a0b7f4",
+            "isHook": true,
+            "skipped": false
+          },
+          {
+            "title": "\"after each\" hook",
+            "fullTitle": "Achat d'article \"after each\" hook",
+            "timedOut": false,
+            "duration": 368,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "allPassed = allPassed && this.currentTest.state === 'passed';\nreturn driver.quit();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "79ac0cdd-3106-4f32-8b17-70873abb1e63",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "tests": [
+          {
+            "title": "Acheter premier article",
+            "fullTitle": "Achat d'article Acheter premier article",
+            "timedOut": false,
+            "duration": 34884,
+            "state": "failed",
+            "pass": false,
+            "fail": true,
+            "pending": false,
+            "code": "_shared.login.shouldLogin(driver)\n    //\n    .sleep(2000)\n    .nodeify(done);",
+            "err": {
+              "message": "Error: [element.sendKeys(\"lebichngoc090589@gmail.com\")] Error response status: 13, UnknownError - An unknown server-side error occurred while processing the command. Selenium error: An unknown server-side error occurred while processing the command. Original error: An unknown server-side error occurred while processing the command.",
+              "estack": "Error: [element.sendKeys(\"lebichngoc090589@gmail.com\")] Error response status: 13, UnknownError - An unknown server-side error occurred while processing the command. Selenium error: An unknown server-side error occurred while processing the command. Original error: An unknown server-side error occurred while processing the command.\n    at exports.newError (node_modules/wd/lib/utils.js:148:13)\n    at /Users/geraldine.souvanlasy/vs-code/appium-testing/node_modules/wd/lib/callbacks.js:37:19\n    at /Users/geraldine.souvanlasy/vs-code/appium-testing/node_modules/wd/lib/webdriver.js:185:5\n    at Request._callback (node_modules/wd/lib/http-utils.js:89:7)\n    at Request.self.callback (node_modules/request/request.js:186:22)\n    at Request.<anonymous> (node_modules/request/request.js:1163:10)\n    at IncomingMessage.<anonymous> (node_modules/request/request.js:1085:12)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
+            },
+            "isRoot": false,
+            "uuid": "61292df8-95d8-4652-aad5-d936929493c9",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [],
+        "failures": [
+          "61292df8-95d8-4652-aad5-d936929493c9"
+        ],
+        "pending": [],
+        "skipped": [],
+        "duration": 34884,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 300000
+      },
+      {
+        "uuid": "273eefb4-50b2-4f87-b987-1e1fec268f78",
+        "title": "Identification user",
+        "fullFile": "/Users/geraldine.souvanlasy/vs-code/appium-testing/ios/identification-ios.js",
+        "file": "/ios/identification-ios.js",
+        "beforeHooks": [
+          {
+            "title": "\"before all\" hook",
+            "fullTitle": "Identification user \"before all\" hook",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "driver = wd.promiseChainRemote(opts);\nrequire(\"../logging\").configure(driver);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "8963c8fb-e14d-4b03-aaa0-bd55bef8db29",
+            "isHook": true,
+            "skipped": false
+          },
+          {
+            "title": "\"before each\" hook",
+            "fullTitle": "Identification user \"before each\" hook",
+            "timedOut": false,
+            "duration": 5822,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "return driver.init(desired);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "75d00609-a3aa-418a-9f52-0e6c44e9e971",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "afterHooks": [
+          {
+            "title": "\"after all\" hook",
+            "fullTitle": "Identification user \"after all\" hook",
+            "timedOut": false,
+            "duration": 0,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "if (!allPassed) {\n    console.log(\"all tests passed\");\n}",
+            "err": {},
+            "isRoot": false,
+            "uuid": "72bdd106-9abb-4632-9d21-868d31a914dc",
+            "isHook": true,
+            "skipped": false
+          },
+          {
+            "title": "\"after each\" hook",
+            "fullTitle": "Identification user \"after each\" hook",
+            "timedOut": false,
+            "duration": 321,
+            "pass": false,
+            "fail": false,
+            "pending": false,
+            "code": "allPassed = allPassed && this.currentTest.state === 'passed';\nreturn driver.quit();",
+            "err": {},
+            "isRoot": false,
+            "uuid": "27f4b8b1-4010-4cfb-a1da-4d0e4181d8f4",
+            "isHook": true,
+            "skipped": false
+          }
+        ],
+        "tests": [
+          {
+            "title": "Login with email and password",
+            "fullTitle": "Identification user Login with email and password",
+            "timedOut": false,
+            "duration": 32031,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "_shared.login.shouldLogin(driver)\n    .nodeify(done);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "4feb7889-779b-4f57-be90-d3c3cf5a57ae",
+            "isHook": false,
+            "skipped": false
+          },
+          {
+            "title": "Login with bad email",
+            "fullTitle": "Identification user Login with bad email",
+            "timedOut": false,
+            "duration": 32966,
+            "state": "passed",
+            "speed": "slow",
+            "pass": true,
+            "fail": false,
+            "pending": false,
+            "code": "_shared.login.verifyLoginState(driver)\n    .sleep(500)\n    .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')\n    .click()\n    .sendKeys('lebichngoc090589@gm')\n    .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')\n    .click()\n    .sendKeys('09051989')\n    .elementByXPath('//XCUIElementTypeButton[@name=\"LOG IN\"]')\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .elementByAccessibilityId('bar_notif_error')\n    .should.eventually.exist\n    .nodeify(done);",
+            "err": {},
+            "isRoot": false,
+            "uuid": "c1cc02a2-df25-492b-b8f0-26c57d11e91e",
+            "isHook": false,
+            "skipped": false
+          }
+        ],
+        "suites": [],
+        "passes": [
+          "4feb7889-779b-4f57-be90-d3c3cf5a57ae",
+          "c1cc02a2-df25-492b-b8f0-26c57d11e91e"
+        ],
+        "failures": [],
+        "pending": [],
+        "skipped": [],
+        "duration": 64997,
+        "root": false,
+        "rootEmpty": false,
+        "_timeout": 300000
+      }
+    ],
+    "passes": [],
+    "failures": [],
+    "pending": [],
+    "skipped": [],
+    "duration": 0,
+    "root": true,
+    "rootEmpty": true,
+    "_timeout": 2000
+  },
+  "copyrightYear": 2018
+}
