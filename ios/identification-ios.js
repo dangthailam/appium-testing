@@ -2,7 +2,7 @@ require('../setup');
 
 const wd = require("wd"),
     actions = require('../actions'),
-    _shared = require('../shared/login');
+    _shared = require('../shared/login-ios');
 
 wd.addPromiseChainMethod('swipe', actions.swipe);
 
@@ -37,26 +37,46 @@ describe("Identification user", function () {
         return driver.quit();
     });
 
-    it("Login with email and password", function (done) {
-        _shared.login.shouldLogin(driver)
+    it ("Login with an empty email/pw", function(done) {
+        _shared.login.verifyLoginState(driver)
+            .sleep(2000)
+            .elementByAccessibilityId("LOG IN")
+            .should.eventually.exist
+            .click()
+            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField")
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
+            .click()
+            .sendKeys('ngoc.le+4@vestiairecollective.com')
+            .elementByAccessibilityId("LOG IN")
+            .should.eventually.exist
+            .click()
+            .sleep(2000)
+            .elementByAccessibilityId('bar_notif_error')
+            .should.eventually.exist
             .nodeify(done);
     });
 
     it("Login with bad email", function(done) {
         _shared.login.verifyLoginState(driver)
-            .sleep(500)
+            .sleep(2000)
             .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
             .click()
-            .sendKeys('lebichngoc090589@gm')
+            .sendKeys('ngoc.le+4@vestiaire.com')
             .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
             .click()
             .sendKeys('09051989')
             .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
             .should.eventually.exist
             .click()
-            .sleep(500)
+            .sleep(2000)
             .elementByAccessibilityId('bar_notif_error')
             .should.eventually.exist
+            .nodeify(done);
+    });
+
+    it("Login with email and password", function (done) {
+        _shared.login.shouldLogin(driver)
             .nodeify(done);
     });
 });

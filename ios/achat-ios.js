@@ -2,7 +2,7 @@ require('../setup');
 
 const wd = require("wd"),
     actions = require('../actions'),
-    _shared = require('../shared/login');
+    _shared = require('../shared/login-ios');
 
 wd.addPromiseChainMethod('swipe', actions.swipe);
 

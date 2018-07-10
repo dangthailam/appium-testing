@@ -1,3 +1,19 @@
+function shouldLogin(driver) {
+    return verifyLoginState(driver)
+        .sleep(2000)
+        .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
+        .sendKeys('ngoc.le+4@vestiairecollective.com')
+        .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
+        .sendKeys('002299')
+        .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
+        .should.eventually.exist
+        .click()
+        .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
+        .click()
+        .elementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]')
+        .should.eventually.exist;
+}
+
 function verifyLoginState(driver) {
     return driver.sleep(1000)
         .elementByXPath('//XCUIElementTypeButton[@name="Me"]')
@@ -26,21 +42,6 @@ function verifyLoginState(driver) {
         .click();
 }
 
-function shouldLogin(driver) {
-    return verifyLoginState(driver)
-        .sleep(500)
-        .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
-        .sendKeys('lebichngoc090589@gmail.com')
-        .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
-        .sendKeys('09051989')
-        .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
-        .should.eventually.exist
-        .click()
-        .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
-        .click()
-        .elementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]')
-        .should.eventually.exist;
-}
 
 exports.login = {
     verifyLoginState,
