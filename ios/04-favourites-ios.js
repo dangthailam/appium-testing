@@ -1,0 +1,74 @@
+require('../setup');
+
+const wd = require("wd"),
+    actions = require('../actions'),
+    _shared = require('../shared/login-ios');
+
+wd.addPromiseChainMethod('swipe', actions.swipe);
+
+const opts = {
+    port: 4723
+};
+
+const desired = require('../desired').ios;
+
+describe("My favourites", function () {
+    this.timeout(300000);
+    let driver;
+    let allPassed = false;
+
+    before(function () {
+        driver = wd.promiseChainRemote(opts);
+        require("../logging").configure(driver);
+    });
+
+    after(function () {
+        if (!allPassed) {
+            console.log("all tests passed");
+        }
+    });
+
+    beforeEach(function () {
+        return driver.init(desired);
+    });
+
+    afterEach(function () {
+        allPassed = allPassed && this.currentTest.state === 'passed';
+        return driver.quit();
+    });
+
+    it("Ajouter ou enlever un produit dans ma wish list", function (done) {
+        _shared.login.shouldLogin(driver)
+            .elementByAccessibilityId("Home")
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]",500)
+            .click()
+            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
+            .should.eventually.exist
+            .hasElementByAccessibilityId("This item has been added to your favourites")
+            .then(function (exist) {
+                if (exist) {
+                    return driver.elementByAccessibilityId("This item has been added to your favourites");
+                }
+
+                return driver.elementByAccessibilityId("This item has been removed from your favourites");
+            })
+            .should.eventually.exist
+            .elementByAccessibilityId("Me")
+            .should.eventually.exist
+            .click()
+            .elementByAccessibilityId("My favourites")
+            .should.eventually.exist
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther",180000)
+            .then(function (exist) {
+                if (exist) {
+                    return driver.elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
+                    .should.eventually.exist
+                }
+                return driver.elementByAccessibilityId("My favourites");
+            })
+            .nodeify(done);
+
+    });
+});
