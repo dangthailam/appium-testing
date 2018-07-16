@@ -1,7 +1,8 @@
 function shouldLogin(driver) {
     return verifyLoginState(driver)
-        .sleep(2000)
-        .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
+        .waitForElementByAccessibilityId('btn-login', 2000)
+        .click()
+        .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 500)
         .sendKeys('ngoc.le+4@vestiairecollective.com')
         .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
         .sendKeys('002299')
@@ -15,8 +16,8 @@ function shouldLogin(driver) {
 }
 
 function verifyLoginState(driver) {
-    return driver.sleep(1000)
-        .elementByXPath('//XCUIElementTypeButton[@name="Me"]')
+    return driver
+        .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
         .should.eventually.exist
         .click()
         .swipe({
@@ -31,15 +32,11 @@ function verifyLoginState(driver) {
             if (exist)
                 return driver.elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
                     .click()
-                    .sleep(500)
-                    .elementByXPath('//XCUIElementTypeButton[@name="Me"]')
-                    .click()
-                    .sleep(500)
-                    .elementByAccessibilityId('btn-login');
+                    .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 500)
+                    .click().sleep(500);
             else
-                return driver.elementByAccessibilityId('btn-login');
-        })
-        .click();
+                return driver.sleep(500);
+        });
 }
 
 

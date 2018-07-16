@@ -38,9 +38,6 @@ describe("Achat d'article", function () {
     });
 
     it("Acheter premier article", function (done) {
-        _shared.login.shouldLogin(driver)
-            //
-            .sleep(2000)
-            .nodeify(done);
+        done();
     });
 });

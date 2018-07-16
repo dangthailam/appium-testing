@@ -28,19 +28,18 @@ describe("Identification user", function () {
         }
     });
 
-    beforeEach(function() {
+    beforeEach(function () {
         return driver.init(desired);
     });
 
-    afterEach(function() {
+    afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it ("Login with an empty email/pw", function(done) {
+    it("Login with an empty email/pw", function (done) {
         _shared.login.verifyLoginState(driver)
-            .sleep(2000)
-            .elementByAccessibilityId("LOG IN")
+            .elementByAccessibilityId("btn-login")
             .should.eventually.exist
             .click()
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField")
@@ -51,26 +50,25 @@ describe("Identification user", function () {
             .elementByAccessibilityId("LOG IN")
             .should.eventually.exist
             .click()
-            .sleep(2000)
-            .elementByAccessibilityId('bar_notif_error')
+            .waitForElementByAccessibilityId('bar_notif_error', 2000)
             .should.eventually.exist
             .nodeify(done);
     });
 
-    it("Login with bad email", function(done) {
+    it("Login with bad email", function (done) {
         _shared.login.verifyLoginState(driver)
-            .sleep(2000)
-            .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
+            .elementByAccessibilityId("btn-login")
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 2000)
             .click()
             .sendKeys('ngoc.le+4@vestiaire.com')
             .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
             .click()
-            .sendKeys('09051989')
+            .sendKeys('002299')
             .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
             .should.eventually.exist
             .click()
-            .sleep(2000)
-            .elementByAccessibilityId('bar_notif_error')
+            .waitForElementByAccessibilityId('bar_notif_error', 2000)
             .should.eventually.exist
             .nodeify(done);
     });
