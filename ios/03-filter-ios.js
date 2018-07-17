@@ -57,6 +57,7 @@ describe("Filtre", function () {
                 endY: 200,
                 duration: 800
             })
+            /// Check cai swipe de keo xuong
             .elementByAccessibilityId("SEE ALL NEW ITEMS")
             .should.eventually.exist
             .click()

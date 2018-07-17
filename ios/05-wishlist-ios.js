@@ -42,7 +42,7 @@ describe("Wishlist", function () {
             .elementByAccessibilityId("Home")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther",500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther", 500)
             .swipe({
                 startX: 100,
                 startY: 600,
@@ -50,29 +50,23 @@ describe("Wishlist", function () {
                 endY: 200,
                 duration: 800
             })
-            .elementByAccessibilityId("Wishlist")
+            .hasElementByAccessibilityId("Wishlist")
             .then(function (exist) {
                 if (exist) {
                     return driver.elementByAccessibilityId("Wishlist")
-                    .should.eventually.exist
-                    .click()
-                    .waitForElementByAccessibilityId("bar_notif_confirm", 500)
-                    .should.eventually.exist
-                    .hasElementByAccessibilityId("This item has been added your Wish List")
-                    .elementByAccessibilityId("This item has been added your Wish List");
+                        .should.eventually.exist
+                        .click()
+                        .waitForElementByAccessibilityId("bar_notif_confirm", 500)
+                        .should.eventually.exist
+                        .elementByAccessibilityId("This item has been added your Wish List")
+                        .should.eventually.exist;
                 }
                 return driver.elementByAccessibilityId("Saved in your wishlist")
-                    .elementByAccessibilityId("This item has been removed from your Wish List");
+                    .should.eventually.exist
+                    .click()
+                    .waitForElementByAccessibilityId("This item has been removed from your Wish List", 500)
+                    .should.eventually.exist;
             })
-            .should.eventually.exist
-            .elementByAccessibilityId("Me")
-            .should.eventually.exist
-            .click()
-            .elementByAccessibilityId("My wishlist")
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther",1800000)
-            .should.eventually.exist
             .nodeify(done);
     });
 });

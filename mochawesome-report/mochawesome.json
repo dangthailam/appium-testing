@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 1,
-    "start": "2018-07-16T13:23:49.195Z",
-    "end": "2018-07-16T13:24:41.717Z",
-    "duration": 52522,
+    "start": "2018-07-17T15:00:04.870Z",
+    "end": "2018-07-17T15:00:55.477Z",
+    "duration": 50607,
     "testsRegistered": 1,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "309beb31-e657-4a30-87ff-1848a80d4d6b",
+    "uuid": "21fd3705-203d-49e1-bd45-e112266e0a81",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,38 +28,38 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "e9be393f-3596-490c-a27e-1a8851e9cbc9",
-        "title": "Filtre",
-        "fullFile": "/Users/ngoc.le/appium-testing/ios/03-filter-ios.js",
-        "file": "/ios/03-filter-ios.js",
+        "uuid": "55b82f65-fac0-41c2-87b2-327c08b77b83",
+        "title": "Wishlist",
+        "fullFile": "/Users/ngoc.le/appium-testing/ios/05-wishlist-ios.js",
+        "file": "/ios/05-wishlist-ios.js",
         "beforeHooks": [
           {
             "title": "\"before all\" hook",
-            "fullTitle": "Filtre \"before all\" hook",
+            "fullTitle": "Wishlist \"before all\" hook",
             "timedOut": false,
-            "duration": 3,
+            "duration": 4,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "driver = wd.promiseChainRemote(opts);\nrequire(\"../logging\").configure(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "46862e9b-9906-429c-8636-3f15b63eec58",
+            "uuid": "d48065f8-61f9-48bb-ab87-77ba46a96125",
             "isHook": true,
             "skipped": false
           },
           {
             "title": "\"before each\" hook",
-            "fullTitle": "Filtre \"before each\" hook",
+            "fullTitle": "Wishlist \"before each\" hook",
             "timedOut": false,
-            "duration": 4521,
+            "duration": 5594,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "return driver.init(desired);",
             "err": {},
             "isRoot": false,
-            "uuid": "574fb83d-b728-4f70-be92-0b8d58cf1509",
+            "uuid": "c8fcc5b5-acd9-4b77-a778-03efb441b276",
             "isHook": true,
             "skipped": false
           }
@@ -67,52 +67,52 @@
         "afterHooks": [
           {
             "title": "\"after all\" hook",
-            "fullTitle": "Filtre \"after all\" hook",
+            "fullTitle": "Wishlist \"after all\" hook",
             "timedOut": false,
-            "duration": 1,
+            "duration": 0,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "if (!allPassed) {\n    console.log(\"all tests passed\");\n}",
             "err": {},
             "isRoot": false,
-            "uuid": "5b6f1a44-c2db-4a3f-9e9f-18f6f1609f37",
+            "uuid": "48b7aa2f-2e64-40e6-b199-96a5361a4ab7",
             "isHook": true,
             "skipped": false
           },
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Filtre \"after each\" hook",
+            "fullTitle": "Wishlist \"after each\" hook",
             "timedOut": false,
-            "duration": 415,
+            "duration": 494,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "allPassed = allPassed && this.currentTest.state === 'passed';\nreturn driver.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "5239ef19-ca63-46b2-896e-276b85b4c199",
+            "uuid": "48a5d39e-a335-443c-8d3c-69c94983706a",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "Filtre",
-            "fullTitle": "Filtre Filtre",
+            "title": "Ajouter ou enlever un produit dans my wish list",
+            "fullTitle": "Wishlist Ajouter ou enlever un produit dans my wish list",
             "timedOut": false,
-            "duration": 47554,
+            "duration": 44487,
             "state": "failed",
             "pass": false,
             "fail": true,
             "pending": false,
-            "code": "_shared.login.shouldLogin(driver)\n    .waitForElementByAccessibilityId(\"Home\",500)\n    .should.eventually.exist\n    .click()\n    .swipe({\n        startX: 100,\n        startY: 600,\n        endX: 200,\n        endY: 200,\n        duration: 800\n    })\n    .swipe({\n        startX: 100,\n        startY: 600,\n        endX: 200,\n        endY: 200,\n        duration: 800\n    })\n    .hasElementByAccessibilityId(\"SEE ALL NEW ITEMS\")\n    .click()\n    .elementByAccessibilityId(\"New items\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Back\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"btn-cart\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"FILTER & SORT\")\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Close\")\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Home\")\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField\",500)\n    .click()\n    .elementByAccessibilityId(\"Close\")\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField\")\n    .click()\n    .elementByAccessibilityId(\"Dior\")\n    .should.eventually.exist\n    .elementByXPath(\"(//XCUIElementTypeButton[@name=\\\"cross historic\\\"])[1]\")\n    .should.eventually.exist\n    .click()\n    .sendKeys(\"Dior\")\n    .waitForElementByAccessibilityId(\"dior\",500)\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeNavigationBar[@name=\\\"Dior 26499 items\\\"]\")\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeTabBar\")\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Back\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"FILTER & SORT\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Woman categories\",500)\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Bags\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"arrow_up_categories\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\",500)\n    .should.eventually.exist\n    .click()\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"CONFIRM\",1000)\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeSwitch[@name=\\\"Ready to ship  Items shipped within 48 hours (304)\\\"]\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"SEE (308 RESULTS)\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeNavigationBar[@name=\\\"Dior 308 items\\\"]\",500)\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"ALERT\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"FILTER (2)\")\n    .should.eventually.exist\n    .nodeify(done);",
+            "code": "_shared.login.shouldLogin(driver)\n    .elementByAccessibilityId(\"Home\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther\", 500)\n    .swipe({\n        startX: 100,\n        startY: 600,\n        endX: 200,\n        endY: 200,\n        duration: 800\n    })\n    .hasElementByAccessibilityId(\"Wishlist\")\n    .then(function (exist) {\n        if (exist) {\n            return driver.elementByAccessibilityId(\"Wishlist\")\n                .should.eventually.exist\n                .click()\n                .waitForElementByAccessibilityId(\"bar_notif_confirm\", 500)\n                .should.eventually.exist\n                .hasElementByAccessibilityId(\"This item has been added your Wish List\")\n                .elementByAccessibilityId(\"This item has been added your Wish List\");\n        }\n        return driver.elementByAccessibilityId(\"Saved in your wishlist\")\n            .elementByAccessibilityId(\"This item has been removed from your Wish List\");\n    })\n    .should.eventually.exist\n    .nodeify(done);",
             "err": {
-              "message": "Error: [click()] Error response status: 1",
-              "estack": "Error: [click()] Error response status: 1\n    at exports.newError (node_modules/wd/lib/utils.js:148:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/callbacks.js:37:19\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/webdriver.js:185:5\n    at Request._callback (node_modules/wd/lib/http-utils.js:89:7)\n    at Request.self.callback (node_modules/request/request.js:186:22)\n    at Request.<anonymous> (node_modules/request/request.js:1163:10)\n    at IncomingMessage.<anonymous> (node_modules/request/request.js:1085:12)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
+              "message": "Error: [elementByAccessibilityId(\"Saved in your wishlist\")] Error response status: 7, , NoSuchElement - An element could not be located on the page using the given search parameters. Selenium error: An element could not be located on the page using the given search parameters.",
+              "estack": "Error: [elementByAccessibilityId(\"Saved in your wishlist\")] Error response status: 7, , NoSuchElement - An element could not be located on the page using the given search parameters. Selenium error: An element could not be located on the page using the given search parameters.\n    at exports.newError (node_modules/wd/lib/utils.js:148:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/callbacks.js:95:19\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/webdriver.js:185:5\n    at Request._callback (node_modules/wd/lib/http-utils.js:89:7)\n    at Request.self.callback (node_modules/request/request.js:186:22)\n    at Request.<anonymous> (node_modules/request/request.js:1163:10)\n    at IncomingMessage.<anonymous> (node_modules/request/request.js:1085:12)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
             },
             "isRoot": false,
-            "uuid": "3aff5957-712d-4933-9f15-fa9c2cb3c459",
+            "uuid": "a0d6a9dc-689c-45a1-af71-4eda47852fbc",
             "isHook": false,
             "skipped": false
           }
@@ -120,11 +120,11 @@
         "suites": [],
         "passes": [],
         "failures": [
-          "3aff5957-712d-4933-9f15-fa9c2cb3c459"
+          "a0d6a9dc-689c-45a1-af71-4eda47852fbc"
         ],
         "pending": [],
         "skipped": [],
-        "duration": 47554,
+        "duration": 44487,
         "root": false,
         "rootEmpty": false,
         "_timeout": 300000

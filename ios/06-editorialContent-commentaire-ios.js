@@ -41,6 +41,8 @@ describe("Contenus édito / Commentaire", function () {
         _shared.login.shouldLogin(driver)
         .elementByAccessibilityId("Home")
         .should.eventually.exist
+        .click()
+        .sleep(500)
         .swipe({
             startX: 100,
             startY: 600,
