@@ -26,7 +26,7 @@ function verifyLoginState(driver) {
             endX: 100,
             endY: 100,
             duration: 800
-        })
+        }) // swipe khong chay duoc
         .hasElementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
         .then(function (exist) {
             if (exist)

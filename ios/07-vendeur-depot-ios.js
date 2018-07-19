@@ -64,7 +64,7 @@ describe("Vendeur - Dépôt produit", function () {
             .elementByXPath("(//XCUIElementTypeStaticText[@name=\"Handbags\"])[2]")
             .should.eventually.exist
             .click()
-            
+            // Search marque thi ko tim duoc element
             .nodeify(done);
     });
 });

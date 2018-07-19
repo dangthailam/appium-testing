@@ -43,12 +43,15 @@ describe("Wishlist", function () {
             .should.eventually.exist
             .click()
             .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther", 500)
+            .should.eventually.exist
+            .click()
+            .sleep(500)
             .swipe({
                 startX: 100,
                 startY: 600,
                 endX: 200,
                 endY: 200,
-                duration: 800
+                duration: 1000
             })
             .hasElementByAccessibilityId("Wishlist")
             .then(function (exist) {
@@ -61,11 +64,12 @@ describe("Wishlist", function () {
                         .elementByAccessibilityId("This item has been added your Wish List")
                         .should.eventually.exist;
                 }
-                return driver.elementByAccessibilityId("Saved in your wishlist")
-                    .should.eventually.exist
-                    .click()
-                    .waitForElementByAccessibilityId("This item has been removed from your Wish List", 500)
-                    .should.eventually.exist;
+                else
+                    return driver.elementByAccessibilityId("Saved in your wishlist")
+                        .should.eventually.exist
+                        .click()
+                        .waitForElementByAccessibilityId("This item has been removed from your Wish List", 500)
+                        .should.eventually.exist;
             })
             .nodeify(done);
     });

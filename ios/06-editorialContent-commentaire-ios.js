@@ -44,12 +44,12 @@ describe("Contenus édito / Commentaire", function () {
         .click()
         .sleep(500)
         .swipe({
-            startX: 100,
+            startX: 400,
             startY: 600,
             endX: 200,
             endY: 200,
             duration: 800
-        })
+        })  // KO swipe
         .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]")
         .should.eventually.exist
         .click()
@@ -60,12 +60,13 @@ describe("Contenus édito / Commentaire", function () {
         .elementByAccessibilityId("Back")
         .should.eventually.exist
         .click()
+        .sleep(500)
         .swipe({
-            startX: 100,
+            startX: 400,
             startY: 600,
             endX: 200,
             endY: 200,
-            duration: 800
+            duration: 1000
         })
         .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]")
         .should.eventually.exist
@@ -77,12 +78,13 @@ describe("Contenus édito / Commentaire", function () {
         .elementByAccessibilityId("Back")
         .should.eventually.exist
         .click()
+        .sleep(500)
         .swipe({
-            startX: 100,
+            startX: 400,
             startY: 600,
             endX: 200,
             endY: 200,
-            duration: 800
+            duration: 1000
         })
         .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]")
         .should.eventually.exist
@@ -92,12 +94,13 @@ describe("Contenus édito / Commentaire", function () {
         .elementByAccessibilityId("Back")
         .should.eventually.exist
         .click()
+        .sleep(500)
         .swipe({
-            startX: 100,
+            startX: 400,
             startY: 600,
             endX: 200,
             endY: 200,
-            duration: 800
+            duration: 1000
         })
         .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]")
         .should.eventually.exist
@@ -109,12 +112,13 @@ describe("Contenus édito / Commentaire", function () {
         .elementByAccessibilityId("Home")
         .should.eventually.exist
         .click()
+        .sleep(500)
         .swipe({
-            startX: 100,
+            startX: 400,
             startY: 600,
             endX: 200,
             endY: 200,
-            duration: 800
+            duration: 1000
         })
         .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeOther[3]/XCUIElementTypeButton")
         .should.eventually.exist
@@ -129,11 +133,11 @@ describe("Contenus édito / Commentaire", function () {
         .sendKeys("5731296")
         .sleep(500)
         .swipe({
-            startX: 100,
+            startX: 400,
             startY: 600,
             endX: 200,
             endY: 200,
-            duration: 800
+            duration: 1000
         })
         .elementByAccessibilityId("WRITE A COMMENT")
         .should.eventually.exist

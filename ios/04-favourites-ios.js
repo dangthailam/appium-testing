@@ -51,8 +51,8 @@ describe("My favourites", function () {
                 if (exist) {
                     return driver.elementByAccessibilityId("This item has been added to your favourites");
                 }
-
-                return driver.elementByAccessibilityId("This item has been removed from your favourites");
+                else
+                    return driver.elementByAccessibilityId("This item has been removed from your favourites");
             })
             .should.eventually.exist
             // Khong check duoc trong profile vi thoi gian doi serveur qua lau
