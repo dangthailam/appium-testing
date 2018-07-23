@@ -1,3 +1,5 @@
+var swipeCounter = 0;
+
 function shouldLogin(driver) {
     return verifyLoginState(driver)
         .waitForElementByAccessibilityId('btn-login', 2000)
@@ -31,7 +33,7 @@ function verifyLoginState(driver) {
             duration: 800
         })
         .hasElementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
-        .then(function (exist) {
+        .then(function(exist) {
             if (exist)
                 return driver.elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
                     .click()
@@ -42,12 +44,13 @@ function verifyLoginState(driver) {
         });
 }
 
-var swipeCounter = 0;
-
-function swipeBottomUpAndCheckIfElementExist(driver, accessbilityId) {
+function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
     if (swipeCounter > 20) {
         throw "Element not found";
     }
+
+    let hasElementMethod = 'hasElementBy' + queryType;
+    let getElementMethod = 'elementBy' + queryType;
 
     swipeCounter++;
 
@@ -57,22 +60,22 @@ function swipeBottomUpAndCheckIfElementExist(driver, accessbilityId) {
         endX: 100,
         endY: 100,
         duration: 800
-    }).then(function () {
-        return driver.hasElementByAccessibilityId(accessbilityId)
-            .then(function (exist) {
+    }).then(function() {
+        return driver[hasElementMethod](query)
+            .then(function(exist) {
                 if (exist) {
-                    return driver.elementByAccessibilityId(accessbilityId)
-                        .then(function (element) {
-                            return element.getLocation().then(function (loc) {
+                    return driver[getElementMethod](query)
+                        .then(function(element) {
+                            return element.getLocation().then(function(loc) {
                                 if (loc.y > 0 && loc.y < 500) {
                                     return element;
                                 } else {
-                                    return swipeBottomUpAndCheckIfElementExist(driver, accessbilityId);
+                                    return swipeBottomUpAndCheckIfElementExist(driver, query, queryType);
                                 }
                             });
                         });
                 } else {
-                    return swipeBottomUpAndCheckIfElementExist(driver, accessbilityId);
+                    return swipeBottomUpAndCheckIfElementExist(driver, query, queryType);
                 }
             });
     });
