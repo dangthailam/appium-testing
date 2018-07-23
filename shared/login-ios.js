@@ -12,7 +12,10 @@ function shouldLogin(driver) {
         .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
         .click()
         .elementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]')
-        .should.eventually.exist;
+        .should.eventually.exist
+        .elementByAccessibilityId("Home")
+        .should.eventually.exist
+        .click();
 }
 
 function verifyLoginState(driver) {
@@ -26,7 +29,7 @@ function verifyLoginState(driver) {
             endX: 100,
             endY: 100,
             duration: 800
-        }) // swipe khong chay duoc
+        })
         .hasElementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
         .then(function (exist) {
             if (exist)
@@ -39,8 +42,44 @@ function verifyLoginState(driver) {
         });
 }
 
+var swipeCounter = 0;
 
-exports.login = {
+function swipeBottomUpAndCheckIfElementExist(driver, accessbilityId) {
+    if (swipeCounter > 20) {
+        throw "Element not found";
+    }
+
+    swipeCounter++;
+
+    return driver.swipe({
+        startX: 100,
+        startY: 400,
+        endX: 100,
+        endY: 100,
+        duration: 800
+    }).then(function () {
+        return driver.hasElementByAccessibilityId(accessbilityId)
+            .then(function (exist) {
+                if (exist) {
+                    return driver.elementByAccessibilityId(accessbilityId)
+                        .then(function (element) {
+                            return element.getLocation().then(function (loc) {
+                                if (loc.y > 0 && loc.y < 500) {
+                                    return element;
+                                } else {
+                                    return swipeBottomUpAndCheckIfElementExist(driver, accessbilityId);
+                                }
+                            });
+                        });
+                } else {
+                    return swipeBottomUpAndCheckIfElementExist(driver, accessbilityId);
+                }
+            });
+    });
+}
+
+exports.methods = {
     verifyLoginState,
-    shouldLogin
+    shouldLogin,
+    swipeBottomUpAndCheckIfElementExist
 };

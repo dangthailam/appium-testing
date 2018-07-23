@@ -38,10 +38,7 @@ describe("Vendeur - Dépôt produit", function () {
     });
 
     it("Dépôt un article OK", function (done) {
-        _shared.login.shouldLogin(driver)
-            .elementByAccessibilityId("Home")
-            .should.eventually.exist
-            .click()
+        _shared.methods.shouldLogin(driver)
             .elementByAccessibilityId("Sell")
             .click()
             .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Sell\"]",500)

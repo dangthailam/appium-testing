@@ -38,11 +38,9 @@ describe("My favourites", function () {
     });
 
     it("Ajouter ou enlever un produit dans ma wish list", function (done) {
-        _shared.login.shouldLogin(driver)
-            .elementByAccessibilityId("Home")
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]", 500)
+        //_shared.methods.shouldLogin(driver)
+        driver.sleep(500)
+            .elementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]")
             .click()
             .waitForElementByAccessibilityId("bar_notif_confirm", 500)
             .should.eventually.exist
@@ -55,7 +53,7 @@ describe("My favourites", function () {
                     return driver.elementByAccessibilityId("This item has been removed from your favourites");
             })
             .should.eventually.exist
-            // Khong check duoc trong profile vi thoi gian doi serveur qua lau
+            // Ne pouvoir pas vérifier dans la page Profile > My wishlist car le temps d'attendre est trop long
             .nodeify(done);
 
     });

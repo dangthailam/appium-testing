@@ -38,7 +38,7 @@ describe("Vendeur - Gérer son produit", function () {
     });
 
     it("Ajouter une nouvelle photo", function (done) {
-        _shared.login.shouldLogin(driver)
+        _shared.methods.shouldLogin(driver)
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
@@ -96,7 +96,7 @@ describe("Vendeur - Gérer son produit", function () {
             .nodeify(done);
     });
     it("Baisse de prix", function (done) {
-        _shared.login.shouldLogin(driver)
+        _shared.methods.shouldLogin(driver)
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
@@ -128,7 +128,7 @@ describe("Vendeur - Gérer son produit", function () {
             .nodeify(done);
     });
     it("Baisse de prix", function (done) {
-        _shared.login.shouldLogin(driver)
+        _shared.methods.shouldLogin(driver)
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()

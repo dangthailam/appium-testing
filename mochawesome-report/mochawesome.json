@@ -1,16 +1,16 @@
 {
   "stats": {
     "suites": 1,
-    "tests": 3,
+    "tests": 2,
     "passes": 0,
-    "pending": 0,
-    "failures": 3,
-    "start": "2018-07-18T13:10:32.088Z",
-    "end": "2018-07-18T13:13:01.337Z",
-    "duration": 149249,
-    "testsRegistered": 3,
+    "pending": 1,
+    "failures": 1,
+    "start": "2018-07-22T18:37:45.303Z",
+    "end": "2018-07-22T18:38:09.876Z",
+    "duration": 24573,
+    "testsRegistered": 2,
     "passPercent": 0,
-    "pendingPercent": 0,
+    "pendingPercent": 50,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "7e081f67-1369-4dc9-97c7-cf1586cf5aa6",
+    "uuid": "3d6dda8a-7790-441f-bd40-082dbfb40e08",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,38 +28,38 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "405167cd-4c86-4f91-bf0f-972ad020c0fe",
-        "title": "Vendeur - Gérer son produit",
-        "fullFile": "/Users/ngoc.le/appium-testing/ios/08-vendeur-manage prod-ios.js",
-        "file": "/ios/08-vendeur-manage prod-ios.js",
+        "uuid": "2f0a392e-382e-4dad-bc56-ba0b55b16e91",
+        "title": "Contenus édito / Commentaire",
+        "fullFile": "/Users/ngoc.le/appium-testing/ios/06-editorialContent-commentaire-ios.js",
+        "file": "/ios/06-editorialContent-commentaire-ios.js",
         "beforeHooks": [
           {
             "title": "\"before all\" hook",
-            "fullTitle": "Vendeur - Gérer son produit \"before all\" hook",
+            "fullTitle": "Contenus édito / Commentaire \"before all\" hook",
             "timedOut": false,
-            "duration": 6,
+            "duration": 3,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "driver = wd.promiseChainRemote(opts);\nrequire(\"../logging\").configure(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "2a45c7c2-da8a-42a7-833d-5501dcc18204",
+            "uuid": "d99519c4-3d58-400c-936c-8fa91f7da7fe",
             "isHook": true,
             "skipped": false
           },
           {
             "title": "\"before each\" hook",
-            "fullTitle": "Vendeur - Gérer son produit \"before each\" hook",
+            "fullTitle": "Contenus édito / Commentaire \"before each\" hook",
             "timedOut": false,
-            "duration": 3978,
+            "duration": 5276,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "return driver.init(desired);",
             "err": {},
             "isRoot": false,
-            "uuid": "9944ab36-fc07-48b7-b8bb-5640d577f7fe",
+            "uuid": "babaf18e-b6e4-43a9-b26b-944e0d1d048e",
             "isHook": true,
             "skipped": false
           }
@@ -67,7 +67,7 @@
         "afterHooks": [
           {
             "title": "\"after all\" hook",
-            "fullTitle": "Vendeur - Gérer son produit \"after all\" hook",
+            "fullTitle": "Contenus édito / Commentaire \"after all\" hook",
             "timedOut": false,
             "duration": 0,
             "pass": false,
@@ -76,81 +76,58 @@
             "code": "if (!allPassed) {\n    console.log(\"all tests passed\");\n}",
             "err": {},
             "isRoot": false,
-            "uuid": "229428fb-27a3-4fd5-bab2-08d56f27ba76",
+            "uuid": "3e5419a4-c512-4caa-8f03-9490e9ec8938",
             "isHook": true,
             "skipped": false
           },
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Vendeur - Gérer son produit \"after each\" hook",
+            "fullTitle": "Contenus édito / Commentaire \"after each\" hook",
             "timedOut": false,
-            "duration": 339,
+            "duration": 346,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "allPassed = allPassed && this.currentTest.state === 'passed';\nreturn driver.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "70a1f7b7-b19b-48ae-a75c-f4a644d175ed",
+            "uuid": "b3fdfab3-9b9b-412e-964f-3b1abdee7994",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "Ajouter une nouvelle photo",
-            "fullTitle": "Vendeur - Gérer son produit Ajouter une nouvelle photo",
+            "title": "Vérifier que l'on peut écrire les commentaires",
+            "fullTitle": "Contenus édito / Commentaire Vérifier que l'on peut écrire les commentaires",
             "timedOut": false,
-            "duration": 42687,
+            "duration": 18918,
             "state": "failed",
             "pass": false,
             "fail": true,
             "pending": false,
-            "code": "_shared.login.shouldLogin(driver)\n    .elementByAccessibilityId(\"My items\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"My items for sale (5)\", 500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]\", 500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"like product\",500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"share product\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"btn-cart\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"My items for sale\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"(//XCUIElementTypeImage[@name=\\\"arrow-noire-down\\\"])[1]\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Add picture\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"My items for sale\",500)\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Add a new photo\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"add photo sales\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Camera\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Cancel\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"add photo sales\",500)\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Library\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Camera Roll\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Photo, Landscape, August 08, 2012, 11:55 PM\", 500)\n    .click()\n    .waitForElementByAccessibilityId(\"CONFIRM\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"bar_notif_confirm\",500)\n    .should.eventually.exist\n    .nodeify(done);",
+            "code": "//_shared.methods.shouldLogin(driver)\ndriver.sleep(200)\n    .waitForElementByXPath('//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 3000)\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, \"WRITE A COMMENT\");\n    })\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeOther[@name=\\\"Chat\\\"]\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Add a comment...\")\n    .sendKeys(\"test\")\n    .elementByAccessibilityId(\"Send\")\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Close\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"WRITE A COMMENT\", 500)\n    .should.eventually.exist\n    .nodeify(done);",
             "err": {
-              "message": "Error: [waitForElementByAccessibilityId(\"Camera Roll\",500)] Element condition wasn't satisfied!",
-              "estack": "Error: [waitForElementByAccessibilityId(\"Camera Roll\",500)] Element condition wasn't satisfied!\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:981:12\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:886:11\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:968:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:3679:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:486:20\n    at replenish (node_modules/async/dist/async.js:879:29)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:888:13\n    at eachOfLimit (node_modules/async/dist/async.js:915:26)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:920:20\n    at _parallel (node_modules/async/dist/async.js:3670:9)\n    at Object.series (node_modules/async/dist/async.js:4496:7)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:966:15\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/promise-webdriver.js:52:11\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
+              "message": "Error: [waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\",500)] Element condition wasn't satisfied!",
+              "estack": "Error: [waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\",500)] Element condition wasn't satisfied!\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:981:12\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:886:11\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:968:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:3679:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:486:20\n    at replenish (node_modules/async/dist/async.js:879:29)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:888:13\n    at eachOfLimit (node_modules/async/dist/async.js:915:26)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:920:20\n    at _parallel (node_modules/async/dist/async.js:3670:9)\n    at Object.series (node_modules/async/dist/async.js:4496:7)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:966:15\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/promise-webdriver.js:52:11\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
             },
             "isRoot": false,
-            "uuid": "e29b96cd-fd44-437f-b16c-3144d7373a92",
+            "uuid": "0775c090-02c8-4bf2-9c80-35624e1ed409",
             "isHook": false,
             "skipped": false
           },
           {
-            "title": "Baisse de prix",
-            "fullTitle": "Vendeur - Gérer son produit Baisse de prix",
+            "title": "Vérifier que l'on peut cliquer sur les contenus édito",
+            "fullTitle": "Contenus édito / Commentaire Vérifier que l'on peut cliquer sur les contenus édito",
             "timedOut": false,
-            "duration": 45467,
-            "state": "failed",
+            "duration": 0,
             "pass": false,
-            "fail": true,
-            "pending": false,
-            "code": "_shared.login.shouldLogin(driver)\n    .elementByAccessibilityId(\"My items\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"My items for sale (5)\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\",500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Price reduction\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeOther[@name=\\\"Price reduction\\\"]\",500)\n    .elementByAccessibilityId(\"Price reduction\")\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]\")\n    .should.eventually.exist\n    .sendKeys(1000000)\n    // Check button id \"CONFIRM\" can not click\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]\")\n    .should.eventually.exist\n    .sendKeys(2)\n    .elementByXPath(\"The new price of your item will appear on your item page: 250 € 300 €\") // Tim cach viet function de co mot cai gia that lon de test lien tuc\n    .should.eventually.exist\n    .elementByAccessibilityId(\"CONFIRM\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"bar_notif_confirm\",500)\n    .should.eventually.exist\n    .nodeify(done);",
-            "err": {
-              "message": "Error: [waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\",500)] Element condition wasn't satisfied!",
-              "estack": "Error: [waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\",500)] Element condition wasn't satisfied!\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:981:12\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:886:11\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:968:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:3679:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:486:20\n    at replenish (node_modules/async/dist/async.js:879:29)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:888:13\n    at eachOfLimit (node_modules/async/dist/async.js:915:26)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:920:20\n    at _parallel (node_modules/async/dist/async.js:3670:9)\n    at Object.series (node_modules/async/dist/async.js:4496:7)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:966:15\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/promise-webdriver.js:52:11\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
-            },
+            "fail": false,
+            "pending": true,
+            "code": "",
+            "err": {},
             "isRoot": false,
-            "uuid": "e84645c1-94e5-4b74-9163-e51d6745d08e",
-            "isHook": false,
-            "skipped": false
-          },
-          {
-            "title": "Baisse de prix",
-            "fullTitle": "Vendeur - Gérer son produit Baisse de prix",
-            "timedOut": false,
-            "duration": 47382,
-            "state": "failed",
-            "pass": false,
-            "fail": true,
-            "pending": false,
-            "code": "_shared.login.shouldLogin(driver)\n    .elementByAccessibilityId(\"My items\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"My items for sale (5)\",500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\",500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Remove from sale\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"I no longer wish to sell it\",500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"REMOVE THIS ITEM FROM SALE\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"I sold the item elsewhere\")\n    .should.eventually.exist\n    .click()\n    // Check bouton id \"REMOVE THIS ITEM FROM SALE\" active\n    .nodeify(done);",
-            "err": {
-              "message": "Error: [waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\",500)] Element condition wasn't satisfied!",
-              "estack": "Error: [waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage\",500)] Element condition wasn't satisfied!\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:981:12\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:886:11\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:968:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:3679:13\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:486:20\n    at replenish (node_modules/async/dist/async.js:879:29)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:888:13\n    at eachOfLimit (node_modules/async/dist/async.js:915:26)\n    at /Users/ngoc.le/appium-testing/node_modules/async/dist/async.js:920:20\n    at _parallel (node_modules/async/dist/async.js:3670:9)\n    at Object.series (node_modules/async/dist/async.js:4496:7)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/commands.js:966:15\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/promise-webdriver.js:52:11\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
-            },
-            "isRoot": false,
-            "uuid": "3e629dbd-272e-479e-8926-6cd29588a718",
+            "uuid": "fda0abc6-38c9-45f4-b441-eb168becfaa8",
             "isHook": false,
             "skipped": false
           }
@@ -158,13 +135,13 @@
         "suites": [],
         "passes": [],
         "failures": [
-          "e29b96cd-fd44-437f-b16c-3144d7373a92",
-          "e84645c1-94e5-4b74-9163-e51d6745d08e",
-          "3e629dbd-272e-479e-8926-6cd29588a718"
+          "0775c090-02c8-4bf2-9c80-35624e1ed409"
         ],
-        "pending": [],
+        "pending": [
+          "fda0abc6-38c9-45f4-b441-eb168becfaa8"
+        ],
         "skipped": [],
-        "duration": 135536,
+        "duration": null,
         "root": false,
         "rootEmpty": false,
         "_timeout": 300000

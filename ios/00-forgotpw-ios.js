@@ -37,7 +37,7 @@ describe("Identification user", function () {
         return driver.quit();
     });
     it("Forgot password with incorrect email ", function (done) {
-        _shared.login.verifyLoginState(driver)
+        _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .click()
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]')
@@ -55,7 +55,7 @@ describe("Identification user", function () {
     });
 
     it("Forgot password with correct email ", function (done) {
-        _shared.login.verifyLoginState(driver)
+        _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .click()
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]')

@@ -38,10 +38,7 @@ describe("MMAO - une contre offre", function () {
     });
 
     it("Envoyer et refuser/accepter un contre offre", function (done) {
-        _shared.login.shouldLogin(driver)
-            .elementByAccessibilityId("Home")
-            .should.eventually.exist
-            .click()
+        _shared.methods.shouldLogin(driver)
             .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField",500)
             .sendKeys(5734324)
             .elementByAccessibilityId("like product")
@@ -63,18 +60,19 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("cross")
             .should.eventually.exist
             .click()
-            .elementByXPath("//XCUIElementTypeNavigationBar[@name=\"Negotiating area\"]")
+            .waitForElementByXPath("//XCUIElementTypeNavigationBar[@name=\"Negotiating area\"]",500)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage")
             .should.eventually.exist
             .elementByAccessibilityId("mmao-offer-textfield")
-            .sendKeys("1")
+            .should.eventually.exist
+            .sendKeys(".....") // Tim cach dien mot so =20% gia)
             .waitForElementByAccessibilityId("bar_notif_error",500)
             .should.eventually.exist
-            .sendKeys(".....") // Tim cach dien mot so < 70% gia)
-            .waitForElementByAccessibilityId("bar_notif_error",500)
+            .elementByAccessibilityId("mmao-offer-textfield")
             .should.eventually.exist
-            .elementByAccessibilityId("Your offer has been sent. The seller has 2 days to respond.")
+            .sendKeys(".....") // Offre > 70% gia
+            .waitForElementByAccessibilityId("Your offer has been sent. The seller has 2 days to respond.",500)
             .should.eventually.exist
             .elementByAccessibilityId("Offer sent")
             .should.eventually.exist
@@ -144,8 +142,8 @@ describe("MMAO - une contre offre", function () {
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeTextField")
             .should.eventually.exist
-            .sendKeys() // So lon hon so tien proposer 20e
-            .elementByAccessibilityId("CONFIRM")
+            .sendKeys() // Offre Gia - 20e
+            .waitForElementByAccessibilityId("CONFIRM",500)
             .click()
             .waitForElementByAccessibilityId("bar_notif_confirm",500)
             .should.eventually.exist

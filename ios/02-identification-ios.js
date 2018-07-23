@@ -38,7 +38,7 @@ describe("Identification user", function () {
     });
 
     it("Login with an empty email/pw", function (done) {
-        _shared.login.verifyLoginState(driver)
+        _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .should.eventually.exist
             .click()
@@ -56,7 +56,7 @@ describe("Identification user", function () {
     });
 
     it("Login with bad email", function (done) {
-        _shared.login.verifyLoginState(driver)
+        _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .click()
             .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 2000)
@@ -74,7 +74,7 @@ describe("Identification user", function () {
     });
 
     it("Login with email and password", function (done) {
-        _shared.login.shouldLogin(driver)
+        _shared.methods.shouldLogin(driver)
             .nodeify(done);
     });
 });

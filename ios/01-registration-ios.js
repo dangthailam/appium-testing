@@ -37,7 +37,7 @@ describe("Registration", function () {
         return driver.quit();
     });
     it("Signup with incorrect email", function (done) {
-        _shared.login.verifyLoginState(driver) // login and register page
+        _shared.methods.verifyLoginState(driver) // login and register page
             .waitForElementByAccessibilityId('btn-register', 2000)
             .should.eventually.exist
             .click()
@@ -65,7 +65,7 @@ describe("Registration", function () {
     });
 
     it("Signup with email existe", function (done) {
-        _shared.login.verifyLoginState(driver)
+        _shared.methods.verifyLoginState(driver)
             .waitForElementByAccessibilityId('btn-register', 2000)
             .should.eventually.exist
             .click()
@@ -93,7 +93,7 @@ describe("Registration", function () {
     });
 
     it("Signup with correct email", function (done) {
-        _shared.login.verifyLoginState(driver)
+        _shared.methods.verifyLoginState(driver)
             .waitForElementByAccessibilityId('btn-register', 2000)
             .should.eventually.exist
             .click()
