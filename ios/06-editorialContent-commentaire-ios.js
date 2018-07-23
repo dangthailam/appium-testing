@@ -12,40 +12,40 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Contenus édito / Commentaire", function () {
+describe("Contenus édito / Commentaire", function() {
     this.timeout(300000);
     let driver;
     let allPassed = false;
 
-    before(function () {
+    before(function() {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function () {
+    after(function() {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function () {
+    beforeEach(function() {
         return driver.init(desired);
     });
 
-    afterEach(function () {
+    afterEach(function() {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Vérifier que l'on peut écrire les commentaires", function (done) {
+    it("Vérifier que l'on peut écrire les commentaires", function(done) {
         //_shared.methods.shouldLogin(driver)
         driver.sleep(200)
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 3000)
             .should.eventually.exist
             .click()
             .sleep(500)
-            .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "WRITE A COMMENT");
+            .then(function() {
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "WRITE A COMMENT", "AccessibilityId");
             })
             .should.eventually.exist
             .click()
@@ -65,7 +65,7 @@ describe("Contenus édito / Commentaire", function () {
             .nodeify(done);
     });
 
-    it.skip("Vérifier que l'on peut cliquer sur les contenus édito", function (done) {
+    it.skip("Vérifier que l'on peut cliquer sur les contenus édito", function(done) {
         _shared.login.shouldLogin(driver)
             .elementByAccessibilityId("Home")
             .should.eventually.exist
@@ -77,7 +77,7 @@ describe("Contenus édito / Commentaire", function () {
                 endX: 200,
                 endY: 200,
                 duration: 800
-            })  // KO swipe
+            }) // KO swipe
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]")
             .should.eventually.exist
             .click()

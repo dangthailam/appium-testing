@@ -12,36 +12,36 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Filtre", function () {
+describe("Filtre", function() {
     this.timeout(300000);
     let driver;
     let allPassed = false;
 
-    before(function () {
+    before(function() {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function () {
+    after(function() {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function () {
+    beforeEach(function() {
         return driver.init(desired);
     });
 
-    afterEach(function () {
+    afterEach(function() {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Filtre", function (done) {
+    it("Filtre", function(done) {
         // _shared.login.shouldLogin(driver)
         driver.sleep(200)
-            .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "SEE ALL NEW ITEMS test");
+            .then(function() {
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "SEE ALL NEW ITEMS test", "AccessibilityId");
             })
             .click()
             .waitForElementByAccessibilityId("New items", 1000)
@@ -83,7 +83,7 @@ describe("Filtre", function () {
             // .elementByAccessibilityId("FILTER & SORT")
             // .should.eventually.exist
             // .click()
-            .waitForElementByAccessibilityId("Woman categories",500)
+            .waitForElementByAccessibilityId("Woman categories", 500)
             .should.eventually.exist
             .click()
             .elementByAccessibilityId("Bags")
@@ -91,15 +91,15 @@ describe("Filtre", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Handbags',500)
+            .waitForElementByAccessibilityId('Handbags', 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("CONFIRM",1000)
+            .waitForElementByAccessibilityId("CONFIRM", 1000)
             .click()
-            .waitForElementByXPath("//XCUIElementTypeSwitch[starts-with(@name, 'Ready to ship  Items shipped within 48 hours')]",500)
+            .waitForElementByXPath("//XCUIElementTypeSwitch[starts-with(@name, 'Ready to ship  Items shipped within 48 hours')]", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[starts-with(@name, "SEE")]',500)
+            .waitForElementByXPath('//XCUIElementTypeButton[starts-with(@name, "SEE")]', 500)
             .should.eventually.exist
             .click()
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
