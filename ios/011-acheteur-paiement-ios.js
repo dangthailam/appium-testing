@@ -92,9 +92,52 @@ describe("Paiement", function () {
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField")
             .should.eventually.exist
-
-
-            
+            //code invalide
+            .sendKeys("00000000")
+            .elementByAccessibilityId("APPLY")
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_error', 500)
+            .should.eventually.exist
+            //code expiré
+            .elementByAccessibilityId("Clear text")
+            .click()
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField",500)
+            .should.eventually.exist
+            .sendKeys("ELIT")
+            .elementByAccessibilityId("APPLY")
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_error', 500)
+            .should.eventually.exist
+            //code article non compris
+            .elementByAccessibilityId("Clear text")
+            .click()
+            .waitForelementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField",500)
+            .should.eventually.exist
+            .sendKeys("09121989")
+            .elementByAccessibilityId("APPLY")
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_error', 500)
+            .should.eventually.exist
+            //code montant minimum non atteint
+            .elementByAccessibilityId("Clear text")
+            .click()
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField",500)
+            .should.eventually.exist
+            .sendKeys("19891989")
+            .elementByAccessibilityId("APPLY")
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_error', 500)
+            .should.eventually.exist
+            // code valide
+            .elementByAccessibilityId("Clear text")
+            .click()
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField",500)
+            .should.eventually.exist
+            .sendKeys("09051989")
+            .elementByAccessibilityId("APPLY")
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_confirm', 500)
+            .should.eventually.exist
             .nodeify(done);
     });
 });

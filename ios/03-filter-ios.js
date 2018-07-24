@@ -36,12 +36,35 @@ describe("Filtre", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
+    it("Recherche", function (done) {
+        // _shared.login.shouldLogin(driver)
+        driver.sleep(500)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 3000)
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 500)
+            .should.eventually.exist
+            .sendKeys('Dior')
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="dior so real "]', 500)
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[starts-with(@name, "Dior")]', 500)
+            .should.eventually.exist
+            .elementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeTabBar")
+            .should.eventually.exist
+            .elementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
+            .should.eventually.exist
+            .elementByAccessibilityId("Back")
+            .should.eventually.exist
+            .elementByAccessibilityId("FILTER & SORT")
+            .should.eventually.exist
+            .nodeify(done);
+    });
 
     it("Filtre", function (done) {
         // _shared.login.shouldLogin(driver)
         driver.sleep(200)
             .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "SEE ALL NEW ITEMS test");
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "SEE ALL NEW ITEMS", "AccessibilityId");
             })
             .click()
             .waitForElementByAccessibilityId("New items", 1000)
@@ -53,37 +76,7 @@ describe("Filtre", function () {
             .elementByAccessibilityId("FILTER & SORT")
             .should.eventually.exist
             .click()
-            // .elementByAccessibilityId("Close")
-            // .should.eventually.exist
-            // .click()
-            // .elementByAccessibilityId("Home")
-            // .click()
-            // .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField",500)
-            // .click()
-            // .elementByAccessibilityId("Close")
-            // .should.eventually.exist
-            // .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField")
-            // .click()
-            // .elementByAccessibilityId("Dior")
-            // .should.eventually.exist
-            // .elementByXPath("(//XCUIElementTypeButton[@name=\"cross historic\"])[1]")
-            // .should.eventually.exist
-            // .click()
-            // .sendKeys("Dior")
-            // .waitForElementByAccessibilityId("dior",500)
-            // .should.eventually.exist
-            // .elementByXPath("//XCUIElementTypeNavigationBar[@name=\"Dior 26499 items\"]")
-            // .should.eventually.exist
-            // .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeTabBar")
-            // .should.eventually.exist
-            // .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
-            // .should.eventually.exist
-            // .elementByAccessibilityId("Back")
-            // .should.eventually.exist
-            // .elementByAccessibilityId("FILTER & SORT")
-            // .should.eventually.exist
-            // .click()
-            .waitForElementByAccessibilityId("Woman categories",500)
+            .waitForElementByAccessibilityId("Woman categories", 500)
             .should.eventually.exist
             .click()
             .elementByAccessibilityId("Bags")
@@ -91,18 +84,18 @@ describe("Filtre", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Handbags',500)
+            .waitForElementByAccessibilityId('Handbags', 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("CONFIRM",1000)
+            .waitForElementByAccessibilityId("CONFIRM", 1000)
             .click()
-            .waitForElementByXPath("//XCUIElementTypeSwitch[starts-with(@name, 'Ready to ship  Items shipped within 48 hours')]",500)
+            .waitForElementByXPath("//XCUIElementTypeSwitch[starts-with(@name, 'Ready to ship  Items shipped within 48 hours')]", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[starts-with(@name, "SEE")]',500)
+            .waitForElementByXPath('//XCUIElementTypeButton[starts-with(@name, "SEE")]', 500)
             .should.eventually.exist
             .click()
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther", 500)
             .should.eventually.exist
             .elementByAccessibilityId("ALERT")
             .should.eventually.exist
@@ -110,4 +103,5 @@ describe("Filtre", function () {
             .should.eventually.exist
             .nodeify(done);
     });
+
 });

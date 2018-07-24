@@ -5,9 +5,9 @@
     "passes": 0,
     "pending": 0,
     "failures": 2,
-    "start": "2018-07-23T13:29:31.538Z",
-    "end": "2018-07-23T13:30:33.981Z",
-    "duration": 62443,
+    "start": "2018-07-23T15:01:53.898Z",
+    "end": "2018-07-23T15:02:05.333Z",
+    "duration": 11435,
     "testsRegistered": 2,
     "passPercent": 0,
     "pendingPercent": 0,
@@ -19,7 +19,7 @@
     "pendingPercentClass": "danger"
   },
   "suites": {
-    "uuid": "ff3b2e39-7d50-4032-a340-71b57ca0ff44",
+    "uuid": "95820647-7d8b-4d41-9b77-5c30a98ce590",
     "title": "",
     "fullFile": "",
     "file": "",
@@ -28,14 +28,14 @@
     "tests": [],
     "suites": [
       {
-        "uuid": "5921d370-2e27-4cdd-9e94-ed63f4eb848c",
-        "title": "Contenus édito / Commentaire",
-        "fullFile": "/Users/ngoc.le/appium-testing/ios/06-editorialContent-commentaire-ios.js",
-        "file": "/ios/06-editorialContent-commentaire-ios.js",
+        "uuid": "0c261172-03fb-4229-963d-222e8d41a503",
+        "title": "Panier",
+        "fullFile": "/Users/ngoc.le/appium-testing/ios/010-acheteur-panier-ios.js",
+        "file": "/ios/010-acheteur-panier-ios.js",
         "beforeHooks": [
           {
             "title": "\"before all\" hook",
-            "fullTitle": "Contenus édito / Commentaire \"before all\" hook",
+            "fullTitle": "Panier \"before all\" hook",
             "timedOut": false,
             "duration": 4,
             "pass": false,
@@ -44,22 +44,22 @@
             "code": "driver = wd.promiseChainRemote(opts);\nrequire(\"../logging\").configure(driver);",
             "err": {},
             "isRoot": false,
-            "uuid": "ba724e90-5d43-417e-82b5-87b53e25bc13",
+            "uuid": "c79440bf-d7f1-4736-83f0-15c70103d9d9",
             "isHook": true,
             "skipped": false
           },
           {
             "title": "\"before each\" hook",
-            "fullTitle": "Contenus édito / Commentaire \"before each\" hook",
+            "fullTitle": "Panier \"before each\" hook",
             "timedOut": false,
-            "duration": 5361,
+            "duration": 4072,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "return driver.init(desired);",
             "err": {},
             "isRoot": false,
-            "uuid": "1d523bee-bf4b-4b46-97a1-0a1d64bd8406",
+            "uuid": "40fd7212-c5b1-44b3-bbc9-b627ea16c074",
             "isHook": true,
             "skipped": false
           }
@@ -67,7 +67,7 @@
         "afterHooks": [
           {
             "title": "\"after all\" hook",
-            "fullTitle": "Contenus édito / Commentaire \"after all\" hook",
+            "fullTitle": "Panier \"after all\" hook",
             "timedOut": false,
             "duration": 0,
             "pass": false,
@@ -76,62 +76,62 @@
             "code": "if (!allPassed) {\n    console.log(\"all tests passed\");\n}",
             "err": {},
             "isRoot": false,
-            "uuid": "a58fa346-cf38-417e-81bc-6509e11aa4c9",
+            "uuid": "8a1abb98-5cf3-4788-ad03-b1bae626e437",
             "isHook": true,
             "skipped": false
           },
           {
             "title": "\"after each\" hook",
-            "fullTitle": "Contenus édito / Commentaire \"after each\" hook",
+            "fullTitle": "Panier \"after each\" hook",
             "timedOut": false,
-            "duration": 409,
+            "duration": 391,
             "pass": false,
             "fail": false,
             "pending": false,
             "code": "allPassed = allPassed && this.currentTest.state === 'passed';\nreturn driver.quit();",
             "err": {},
             "isRoot": false,
-            "uuid": "69d33aad-14b5-43b4-a98f-0f90a2f3bf71",
+            "uuid": "f1ca4c80-4400-4d66-bf79-2cdc38731f6b",
             "isHook": true,
             "skipped": false
           }
         ],
         "tests": [
           {
-            "title": "Vérifier que l'on peut cliquer sur les contenus édito",
-            "fullTitle": "Contenus édito / Commentaire Vérifier que l'on peut cliquer sur les contenus édito",
+            "title": "Supprimer un produit dans le panier",
+            "fullTitle": "Panier Supprimer un produit dans le panier",
             "timedOut": false,
-            "duration": 43593,
+            "duration": 40,
             "state": "failed",
             "pass": false,
             "fail": true,
             "pending": false,
-            "code": "_shared.methods.shouldLogin(driver)\n// driver.sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, \"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]\")\n    })\n    .should.eventually.exist\n    .click()\n    // Ne pouvoir pas vérifier le contenu car ça change tout le temps > element change\n    .elementByAccessibilityId(\"Back\")\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, \"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]\")\n    })\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Back\")\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver,\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]\")\n    })\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Back\")\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver,\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]\")\n    })\n    .should.eventually.exist\n    .click()\n    .elementByAccessibilityId(\"Back\")\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver,\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeOther[3]/XCUIElementTypeButton\")\n    })\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Back\",500)\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeOther[3]/XCUIElementTypeButton\")\n    .should.eventually.exist\n    .nodeify(done);\n    // .elementByAccessibilityId(\"WRITE A COMMENT\")\n    // .should.eventually.exist\n    // .click()\n    // .waitForElementByXPath(\"//XCUIElementTypeOther[@name=\\\"Chat\\\"]\", 500)\n    // .should.eventually.exist\n    // .elementByAccessibilityId(\"Add a comment...\")\n    // .sendKeys(\"test\")\n    // .elementByAccessibilityId(\"Send\")\n    // .click()\n    // .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\", 500)\n    // .should.eventually.exist\n    // .elementByAccessibilityId(\"Close\")\n    // .should.eventually.exist\n    // .click()\n    // .waitForElementByAccessibilityId(\"WRITE A COMMENT\", 500)\n    // .should.eventually.exist\n    // .nodeify(done);",
+            "code": "driver.sleep(500)\n    .waitForElementByXPath(\"//XCUIElementTypeButton[@name=\\\"btn-cart\\\"]\", 500)\n    .should.elementByAccessibilityId.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeNavigationBar[@name=\\\"Basket 2 item\\\"]\", 500)\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]\")\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"2 items\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Total including taxes:\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"COMPLETE MY ORDER\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Edit\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"Delete A BATHING APE, Cloth ballet flats, 500 €\", 500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"(//XCUIElementTypeButton[@name=\\\"Delete\\\"])[1]\", 500)\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeNavigationBar[starts-with(@name,\\\"Basket\\\")]\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"1 item\")\n    .should.eventually.exist\n    .nodeify(done);",
             "err": {
-              "message": "TypeError: driver[hasElementMethod] is not a function",
-              "estack": "TypeError: driver[hasElementMethod] is not a function\n    at /Users/ngoc.le/appium-testing/shared/login-ios.js:64:40\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
+              "message": "Error: Invalid Chai property: elementByAccessibilityId",
+              "estack": "Error: Invalid Chai property: elementByAccessibilityId\n    at Object.proxyGetter [as get] (node_modules/chai/lib/chai/utils/proxify.js:66:17)\n    at Context.<anonymous> (ios/010-acheteur-panier-ios.js:42:20)\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
             },
             "isRoot": false,
-            "uuid": "38ff96cf-fed7-47d5-a966-fe8609a73d8b",
+            "uuid": "621dbfc8-79f6-41ce-836c-075671d8d314",
             "isHook": false,
             "skipped": false
           },
           {
-            "title": "Vérifier que l'on peut écrire les commentaires",
-            "fullTitle": "Contenus édito / Commentaire Vérifier que l'on peut écrire les commentaires",
+            "title": "Ajouter un produit dans le panier",
+            "fullTitle": "Panier Ajouter un produit dans le panier",
             "timedOut": false,
-            "duration": 5993,
+            "duration": 877,
             "state": "failed",
             "pass": false,
             "fail": true,
             "pending": false,
-            "code": "//_shared.methods.shouldLogin(driver)\ndriver.sleep(200)\n    .waitForElementByXPath('//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 3000)\n    .should.eventually.exist\n    .click()\n    .sleep(500)\n    .then(function () {\n        return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, \"WRITE A COMMENT\");\n    })\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeOther[@name=\\\"Chat\\\"]\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Add a comment...\")\n    .sendKeys(\"test\")\n    .elementByAccessibilityId(\"Send\")\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Close\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"WRITE A COMMENT\", 500)\n    .should.eventually.exist\n    .nodeify(done);",
+            "code": "driver.sleep(500)\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField\")\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField\", 500)\n    .should.eventually.exist\n    .sendKeys(6009688)\n    .waitForElementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Vestiaire_Collective.VCProductDetailWrapperView\")\n    .should.eventually.exist\n    .swipe({\n        startX: 400,\n        startY: 600,\n        endX: 200,\n        endY: 200,\n        duration: 1000\n    })\n    .elementByAccessibilityId(\"ADD TO BAG\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByAccessibilityId(\"bar_notif_confirm\", 500)\n    .should.eventually.exist\n    .elementByAccessibilityId(\"VIEW YOUR BASKET\")\n    .should.eventually.exist\n    .click()\n    .waitForElementByXPath(\"//XCUIElementTypeNavigationBar[@name=\\\"Basket 2 item\\\"]\", 500)\n    .should.eventually.exist\n    .elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"2 item\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"Total including taxes:\")\n    .should.eventually.exist\n    .elementByAccessibilityId(\"COMPLETE MY ORDER\")\n    .should.eventually.exist\n    .nodeify(done);",
             "err": {
-              "message": "TypeError: driver[hasElementMethod] is not a function",
-              "estack": "TypeError: driver[hasElementMethod] is not a function\n    at /Users/ngoc.le/appium-testing/shared/login-ios.js:64:40\n    at _fulfilled (node_modules/wd/node_modules/q/q.js:834:54)\n    at self.promiseDispatch.done (node_modules/wd/node_modules/q/q.js:863:30)\n    at Promise.promise.promiseDispatch (node_modules/wd/node_modules/q/q.js:796:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/node_modules/q/q.js:604:44\n    at runSingle (node_modules/wd/node_modules/q/q.js:137:13)\n    at flush (node_modules/wd/node_modules/q/q.js:125:13)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
+              "message": "Error: [elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField\")] Error response status: 7, , NoSuchElement - An element could not be located on the page using the given search parameters. Selenium error: An element could not be located on the page using the given search parameters.",
+              "estack": "Error: [elementByXPath(\"//XCUIElementTypeApplication[@name=\\\"Vestiaire\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField\")] Error response status: 7, , NoSuchElement - An element could not be located on the page using the given search parameters. Selenium error: An element could not be located on the page using the given search parameters.\n    at exports.newError (node_modules/wd/lib/utils.js:148:13)\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/callbacks.js:95:19\n    at /Users/ngoc.le/appium-testing/node_modules/wd/lib/webdriver.js:185:5\n    at Request._callback (node_modules/wd/lib/http-utils.js:89:7)\n    at Request.self.callback (node_modules/request/request.js:186:22)\n    at Request.<anonymous> (node_modules/request/request.js:1163:10)\n    at IncomingMessage.<anonymous> (node_modules/request/request.js:1085:12)\n    at endReadableNT (_stream_readable.js:1064:12)\n    at _combinedTickCallback (internal/process/next_tick.js:138:11)\n    at process._tickCallback (internal/process/next_tick.js:180:9)"
             },
             "isRoot": false,
-            "uuid": "f0ffbcbb-99c4-45bb-bd17-e69f5c840fd0",
+            "uuid": "e56deee6-5928-4478-9eab-9643cc8d67b7",
             "isHook": false,
             "skipped": false
           }
@@ -139,12 +139,12 @@
         "suites": [],
         "passes": [],
         "failures": [
-          "38ff96cf-fed7-47d5-a966-fe8609a73d8b",
-          "f0ffbcbb-99c4-45bb-bd17-e69f5c840fd0"
+          "621dbfc8-79f6-41ce-836c-075671d8d314",
+          "e56deee6-5928-4478-9eab-9643cc8d67b7"
         ],
         "pending": [],
         "skipped": [],
-        "duration": 49586,
+        "duration": 917,
         "root": false,
         "rootEmpty": false,
         "_timeout": 300000

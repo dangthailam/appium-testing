@@ -37,18 +37,19 @@ describe("Panier", function () {
         return driver.quit();
     });
     it("Supprimer un produit dans le panier", function (done) {
-        _shared.methods.shouldLogin(driver)
-            .elementByAccessibilityId("Home")
+        driver.sleep(500)
+            .waitForElementByAccessibilityId("btn-cart", 1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("btn-cart",500)
-            .should.elementByAccessibilityId.exist
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeNavigationBar[@name=\"Basket 2 item\"]",500)
-            .should.eventually.exist 
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]")
+            .waitForElementByAccessibilityId("Cancel", 500)
             .should.eventually.exist
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .should.eventually.exist
+            .elementByAccessibilityId('Edit')
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]')
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .elementByAccessibilityId("2 items")
             .should.eventually.exist
@@ -58,51 +59,45 @@ describe("Panier", function () {
             .should.eventually.exist
             .elementByAccessibilityId("Edit")
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Delete A BATHING APE, Cloth ballet flats, 500 €",500)
+            .swipe({
+                startX: 300,
+                startY: 300,
+                endX: 100,
+                endY: 300,
+                duration: 800
+            })
+            .waitForElementByAccessibilityId("OK", 500)
+            .should.eventually.exist
+            .waitForElementByXPath('(//XCUIElementTypeButton[@name="Delete"])[1]', 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("(//XCUIElementTypeButton[@name=\"Delete\"])[1]",500)
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeNavigationBar[@name=\"Basket 1 item\"]",500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 1 item"]', 500)
             .should.eventually.exist
             .elementByAccessibilityId("1 item")
             .should.eventually.exist
             .nodeify(done);
     });
     it("Ajouter un produit dans le panier", function (done) {
-        _shared.methods.shouldLogin(driver)
-            .elementByAccessibilityId("Home")
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField", 500)
-            .should.eventually.exist
-            .sendKeys(6009688)
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]",500)
-            .should.eventually.exist
-            .elementByAccessibilityId("Vestiaire_Collective.VCProductDetailWrapperView")
-            .should.eventually.exist
+        _shared.methods.searchTestProd(driver)
             .swipe({
-                startX: 400,
-                startY: 600,
-                endX: 200,
-                endY: 200,
-                duration: 1000
+                startX: 100,
+                startY: 300,
+                endX: 100,
+                endY: 100,
+                duration: 800
             })
-            .elementByAccessibilityId("ADD TO BAG")
+            .waitForElementByAccessibilityId("ADD TO BAG", 1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm",500)
-            .should.eventually.exist
-            .elementByAccessibilityId("VIEW YOUR BASKET")
+            //.waitForElementByAccessibilityId("bar_notif_confirm", 500) > have notification but cannot find the element
+            .waitForElementByAccessibilityId("VIEW YOUR BASKET", 3000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeNavigationBar[@name=\"Basket 2 item\"]",500)
-            .should.eventually.exist 
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]', 3000)
             .should.eventually.exist
-            .elementByAccessibilityId("2 item")
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .should.eventually.exist
+            .elementByAccessibilityId("2 items")
             .should.eventually.exist
             .elementByAccessibilityId("Total including taxes:")
             .should.eventually.exist

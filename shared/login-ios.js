@@ -33,7 +33,7 @@ function verifyLoginState(driver) {
             duration: 800
         })
         .hasElementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
-        .then(function(exist) {
+        .then(function (exist) {
             if (exist)
                 return driver.elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
                     .click()
@@ -45,7 +45,7 @@ function verifyLoginState(driver) {
 }
 
 function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
-    if (swipeCounter > 20) {
+    if (swipeCounter > 50) {
         throw "Element not found";
     }
 
@@ -56,17 +56,18 @@ function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
 
     return driver.swipe({
         startX: 100,
-        startY: 400,
+        startY: 500,
         endX: 100,
         endY: 100,
         duration: 800
-    }).then(function() {
+    }).then(function () {
         return driver[hasElementMethod](query)
-            .then(function(exist) {
+            .then(function (exist) {
+                console.log(exist);
                 if (exist) {
                     return driver[getElementMethod](query)
-                        .then(function(element) {
-                            return element.getLocation().then(function(loc) {
+                        .then(function (element) {
+                            return element.getLocation().then(function (loc) {
                                 if (loc.y > 0 && loc.y < 500) {
                                     return element;
                                 } else {
@@ -80,9 +81,22 @@ function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
             });
     });
 }
+function searchTestProd(driver) {
+   return driver.sleep(500)
+        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 1000)
+        .click()
+        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 500)
+        .should.eventually.exist
+        .sendKeys('6009688' + '\n')
+        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 500)
+        .should.eventually.exist
+        .elementByAccessibilityId("Vestiaire_Collective.VCProductDetailWrapperView")
+        .should.eventually.exist;
+}
 
 exports.methods = {
     verifyLoginState,
     shouldLogin,
-    swipeBottomUpAndCheckIfElementExist
+    swipeBottomUpAndCheckIfElementExist,
+    searchTestProd
 };
