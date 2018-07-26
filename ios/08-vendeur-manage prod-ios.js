@@ -127,7 +127,7 @@ describe("Vendeur - Gérer son produit", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("Baisse de prix", function (done) {
+    it("Retirer un prod en vente", function (done) {
         _shared.methods.shouldLogin(driver)
             .elementByAccessibilityId("My items")
             .should.eventually.exist

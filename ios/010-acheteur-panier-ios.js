@@ -89,7 +89,7 @@ describe("Panier", function () {
             .waitForElementByAccessibilityId("ADD TO BAG", 1000)
             .should.eventually.exist
             .click()
-            //.waitForElementByAccessibilityId("bar_notif_confirm", 500) > have notification but cannot find the element
+            //.waitForElementByAccessibilityId("bar_notif_confirm", 500) > have notification but cannot find the element with appium
             .waitForElementByAccessibilityId("VIEW YOUR BASKET", 3000)
             .should.eventually.exist
             .click()
