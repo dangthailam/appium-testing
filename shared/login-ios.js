@@ -1,13 +1,13 @@
 var swipeCounter = 0;
 
-function shouldLogin(driver) {
+function shouldLogin(driver, login, password) {
     return verifyLoginState(driver)
         .waitForElementByAccessibilityId('btn-login', 2000)
         .click()
         .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 500)
-        .sendKeys('ngoc.le+4@vestiairecollective.com')
+        .sendKeys(login)
         .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
-        .sendKeys('002299')
+        .sendKeys(password)
         .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
         .should.eventually.exist
         .click()
@@ -33,7 +33,7 @@ function verifyLoginState(driver) {
             duration: 800
         })
         .hasElementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
-        .then(function (exist) {
+        .then(function(exist) {
             if (exist)
                 return driver.elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
                     .click()
@@ -60,14 +60,14 @@ function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
         endX: 100,
         endY: 100,
         duration: 800
-    }).then(function () {
+    }).then(function() {
         return driver[hasElementMethod](query)
-            .then(function (exist) {
+            .then(function(exist) {
                 console.log(exist);
                 if (exist) {
                     return driver[getElementMethod](query)
-                        .then(function (element) {
-                            return element.getLocation().then(function (loc) {
+                        .then(function(element) {
+                            return element.getLocation().then(function(loc) {
                                 if (loc.y > 0 && loc.y < 500) {
                                     return element;
                                 } else {
@@ -81,8 +81,9 @@ function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
             });
     });
 }
+
 function searchTestProd(driver) {
-   return driver.sleep(500)
+    return driver.sleep(500)
         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 1000)
         .click()
         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 500)

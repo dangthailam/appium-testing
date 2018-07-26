@@ -12,33 +12,33 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Vendeur - Gérer son produit", function () {
+describe("Vendeur - Gérer son produit", function() {
     this.timeout(300000);
     let driver;
     let allPassed = false;
 
-    before(function () {
+    before(function() {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function () {
+    after(function() {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function () {
+    beforeEach(function() {
         return driver.init(desired);
     });
 
-    afterEach(function () {
+    afterEach(function() {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Ajouter une nouvelle photo", function (done) {
-        _shared.methods.shouldLogin(driver)
+    it("Ajouter une nouvelle photo", function(done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
@@ -48,7 +48,7 @@ describe("Vendeur - Gérer son produit", function () {
             .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("like product",500)
+            .waitForElementByAccessibilityId("like product", 500)
             .should.eventually.exist
             .elementByAccessibilityId("share product")
             .should.eventually.exist
@@ -57,13 +57,13 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("My items for sale")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("(//XCUIElementTypeImage[@name=\"arrow-noire-down\"])[1]",500)
+            .waitForElementByXPath("(//XCUIElementTypeImage[@name=\"arrow-noire-down\"])[1]", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Add picture",500)
+            .waitForElementByAccessibilityId("Add picture", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale",500)
+            .waitForElementByAccessibilityId("My items for sale", 500)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage")
             .should.eventually.exist
@@ -77,38 +77,38 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("Cancel")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("add photo sales",500)
+            .waitForElementByAccessibilityId("add photo sales", 500)
             .should.eventually.exist
             .click()
             .elementByAccessibilityId("Library")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Camera Roll",500) // Khong truy cap duoc vao camera roll dt
+            .waitForElementByAccessibilityId("Camera Roll", 500) // Khong truy cap duoc vao camera roll dt
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("Photo, Landscape, August 08, 2012, 11:55 PM", 500)
             .click()
-            .waitForElementByAccessibilityId("CONFIRM",500)
+            .waitForElementByAccessibilityId("CONFIRM", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm",500)
+            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
             .should.eventually.exist
             .nodeify(done);
     });
-    it("Baisse de prix", function (done) {
-        _shared.methods.shouldLogin(driver)
+    it("Baisse de prix", function(done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale (5)",500)
+            .waitForElementByAccessibilityId("My items for sale (5)", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage",500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage", 500)
             .should.eventually.exist
             .elementByAccessibilityId("Price reduction")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Price reduction\"]",500)
+            .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Price reduction\"]", 500)
             .elementByAccessibilityId("Price reduction")
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]")
@@ -123,24 +123,24 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("CONFIRM")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm",500)
+            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
             .should.eventually.exist
             .nodeify(done);
     });
-    it("Retirer un prod en vente", function (done) {
-        _shared.methods.shouldLogin(driver)
+    it("Retirer un prod en vente", function(done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale (5)",500)
+            .waitForElementByAccessibilityId("My items for sale (5)", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage",500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage", 500)
             .should.eventually.exist
             .elementByAccessibilityId("Remove from sale")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("I no longer wish to sell it",500)
+            .waitForElementByAccessibilityId("I no longer wish to sell it", 500)
             .should.eventually.exist
             .elementByAccessibilityId("REMOVE THIS ITEM FROM SALE")
             .should.eventually.exist

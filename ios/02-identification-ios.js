@@ -12,32 +12,32 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Identification user", function () {
+describe("Identification user", function() {
     this.timeout(300000);
     let driver;
     let allPassed = true;
 
-    before(function () {
+    before(function() {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function () {
+    after(function() {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function () {
+    beforeEach(function() {
         return driver.init(desired);
     });
 
-    afterEach(function () {
+    afterEach(function() {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Login with an empty email/pw", function (done) {
+    it("Login with an empty email/pw", function(done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .should.eventually.exist
@@ -55,7 +55,7 @@ describe("Identification user", function () {
             .nodeify(done);
     });
 
-    it("Login with bad email", function (done) {
+    it("Login with bad email", function(done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .click()
@@ -73,8 +73,8 @@ describe("Identification user", function () {
             .nodeify(done);
     });
 
-    it("Login with email and password", function (done) {
-        _shared.methods.shouldLogin(driver)
+    it("Login with email and password", function(done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .nodeify(done);
     });
 });

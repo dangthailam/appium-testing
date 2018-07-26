@@ -12,34 +12,34 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("MMAO - une contre offre", function () {
+describe("MMAO - une contre offre", function() {
     this.timeout(300000);
     let driver;
     let allPassed = false;
 
-    before(function () {
+    before(function() {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function () {
+    after(function() {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function () {
+    beforeEach(function() {
         return driver.init(desired);
     });
 
-    afterEach(function () {
+    afterEach(function() {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Envoyer et refuser/accepter un contre offre", function (done) {
-        _shared.methods.shouldLogin(driver)
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField",500)
+    it("Envoyer et refuser/accepter un contre offre", function(done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField", 500)
             .sendKeys(5734324)
             .elementByAccessibilityId("like product")
             .should.eventually.exist
@@ -55,65 +55,68 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("MAKE AN OFFER")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Negotiations",500)
+            .waitForElementByAccessibilityId("Negotiations", 500)
             .should.eventually.exist
             .elementByAccessibilityId("cross")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeNavigationBar[@name=\"Negotiating area\"]",500)
+            .waitForElementByXPath("//XCUIElementTypeNavigationBar[@name=\"Negotiating area\"]", 500)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage")
             .should.eventually.exist
             .elementByAccessibilityId("mmao-offer-textfield")
             .should.eventually.exist
             .sendKeys(".....") // Tim cach dien mot so =20% gia)
-            .waitForElementByAccessibilityId("bar_notif_error",500)
+            .waitForElementByAccessibilityId("bar_notif_error", 500)
             .should.eventually.exist
             .elementByAccessibilityId("mmao-offer-textfield")
             .should.eventually.exist
             .sendKeys(".....") // Offre > 70% gia
-            .waitForElementByAccessibilityId("Your offer has been sent. The seller has 2 days to respond.",500)
+            .waitForElementByAccessibilityId("Your offer has been sent. The seller has 2 days to respond.", 500)
             .should.eventually.exist
             .elementByAccessibilityId("Offer sent")
             .should.eventually.exist
             // Check gia offre cua nguoi mua > So dien "...."
-            .elementByXPath('//XCUIElementTypeButton[@name="Me"]')
+            // .elementByXPath('//XCUIElementTypeButton[@name="Me"]')
+            // .should.eventually.exist
+            // .click()
+            // .swipe({
+            //     startX: 100,
+            //     startY: 600,
+            //     endX: 100,
+            //     endY: 100,
+            //     duration: 800
+            // })
+            // .elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 500)
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByAccessibilityId('btn-login', 1000)
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 500)
+            // .sendKeys('ngoc.le+3@vestiairecollective.com')
+            // .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
+            // .sendKeys('09051989')
+            // .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
+            // .should.eventually.exist
+            // .click()
+            .then(function() {
+                return _shared.methods.shouldLogin(driver, 'ngoc.le+3@vestiairecollective.com', '09051989');
+            })
+            .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 500)
             .should.eventually.exist
             .click()
-            .swipe({
-                startX: 100,
-                startY: 600,
-                endX: 100,
-                endY: 100,
-                duration: 800
-            }) 
-            .elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]',500)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('btn-login', 1000)
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 500)
-            .sendKeys('ngoc.le+3@vestiairecollective.com')
-            .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
-            .sendKeys('09051989')
-            .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]",500)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Vous avez reçu une offre de prix sur votre article.",500)
+            .waitForElementByAccessibilityId("Vous avez reçu une offre de prix sur votre article.", 500)
             .should.eventually.exist
             .elementByAccessibilityId('//XCUIElementTypeButton[@name="Me"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Price offers sent",500)
+            .waitForElementByAccessibilityId("Price offers sent", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeImage[1]",500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeImage[1]", 500)
             .should.eventually.exist
             .elementByAccessibilityId("icon-mmao-timer")
             .should.eventually.exist
@@ -121,7 +124,7 @@ describe("MMAO - une contre offre", function () {
             .should.eventually.exist
             .click()
             .hasElementByAccessibilityId("cross")
-            .then(function (exist) {
+            .then(function(exist) {
                 if (exist)
                     return driver.elementByAccessibilityId("cross")
                         .click()
@@ -138,19 +141,19 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("MAKE A COUNTER OFFER")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Your offer:",500)
+            .waitForElementByAccessibilityId("Your offer:", 500)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeOther[2]/XCUIElementTypeTextField")
             .should.eventually.exist
             .sendKeys() // Offre Gia - 20e
-            .waitForElementByAccessibilityId("CONFIRM",500)
+            .waitForElementByAccessibilityId("CONFIRM", 500)
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm",500)
+            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
             .should.eventually.exist
             .elementByAccessibilityId("Offers received")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell",500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell", 500)
             .should.eventually.exist
             .elementByAccessibilityId("Offer sent")
             .should.eventually.exist
@@ -163,11 +166,11 @@ describe("MMAO - une contre offre", function () {
                 endX: 100,
                 endY: 100,
                 duration: 800
-            }) 
+            })
             .elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]',500)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 500)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('btn-login', 1000)
@@ -179,7 +182,7 @@ describe("MMAO - une contre offre", function () {
             .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]",500)
+            .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 500)
             .should.eventually.exist
             .click()
             .elementByXPath("(//XCUIElementTypeStaticText[@name=\"You have received an offer for your item\"])[1]")
@@ -190,7 +193,7 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("Price offers sent")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeImage[1]",500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeImage[1]", 500)
             .should.eventually.exist
             .elementByAccessibilityId("icon-mmao-timer")
             .should.eventually.exist
@@ -203,12 +206,12 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("ACCEPT")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm",500)
+            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
             .should.eventually.exist
             .elementByAccessibilityId("Buy now")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel",500)
+            .waitForElementByAccessibilityId("Cancel", 500)
             .should.eventually.exist
             .click()
             .elementByXPath('//XCUIElementTypeButton[@name="Me"]')
@@ -220,11 +223,11 @@ describe("MMAO - une contre offre", function () {
                 endX: 100,
                 endY: 100,
                 duration: 800
-            }) 
+            })
             .elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]',500)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 500)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('btn-login', 1000)
@@ -236,10 +239,10 @@ describe("MMAO - une contre offre", function () {
             .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]",500)
+            .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Congratulations ! Your offer has been accepted.",500)
+            .waitForElementByAccessibilityId("Congratulations ! Your offer has been accepted.", 500)
             .should.eventually.exist
             .elementByAccessibilityId('//XCUIElementTypeButton[@name="Me"]')
             .should.eventually.exist
@@ -247,7 +250,7 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("Price offers sent")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeStaticText[@name=\"You have no current negotiations.\"]",500)
+            .waitForElementByXPath("//XCUIElementTypeStaticText[@name=\"You have no current negotiations.\"]", 500)
             .should.eventually.exist
             .nodeify(done);
     });

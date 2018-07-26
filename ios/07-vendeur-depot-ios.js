@@ -12,17 +12,17 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Vendeur - Dépôt produit", function () {
+describe("Vendeur - Dépôt produit", function() {
     this.timeout(300000);
     let driver;
     let allPassed = false;
 
-    before(function () {
+    before(function() {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function () {
+    after(function() {
         if (!allPassed) {
             console.log("all tests passed");
         }
@@ -37,19 +37,19 @@ describe("Vendeur - Dépôt produit", function () {
         return driver.quit();
     });
 
-    it("Dépôt un article OK", function (done) {
-        _shared.methods.shouldLogin(driver)
+    it("Dépôt un article OK", function(done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .elementByAccessibilityId("Sell")
             .click()
-            .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Sell\"]",500)
+            .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Sell\"]", 500)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Women",500)
+            .waitForElementByAccessibilityId("Women", 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("(//XCUIElementTypeStaticText[@name=\"Bags\"])[2]",500)
+            .waitForElementByXPath("(//XCUIElementTypeStaticText[@name=\"Bags\"])[2]", 500)
             .should.eventually.exist
             .click()
             .elementByXPath("(//XCUIElementTypeStaticText[@name=\"Clutch bags\"])[2]")
