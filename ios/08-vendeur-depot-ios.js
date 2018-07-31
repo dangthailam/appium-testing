@@ -38,8 +38,9 @@ describe("Vendeur - Dépôt produit", function() {
     });
 
     it("Dépôt un article OK", function(done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-            .elementByAccessibilityId("Sell")
+        driver
+            .waitForElementByAccessibilityId("Sell",1000)
+            .should.eventually.exist
             .click()
             .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Sell\"]", 500)
             .should.eventually.exist

@@ -62,7 +62,8 @@ describe("Filtre", function () {
 
     it("Filtre", function (done) {
         // _shared.login.shouldLogin(driver)
-        driver.sleep(200)
+        driver
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "SEE ALL NEW ITEMS", "AccessibilityId");
             })

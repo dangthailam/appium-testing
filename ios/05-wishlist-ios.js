@@ -38,7 +38,6 @@ describe("Wishlist", function () {
     });
 
     it("Ajouter ou enlever un produit dans my wish list", function (done) {
-        // _shared.methods.shouldLogin(driver)
         driver.sleep(500)
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
             .should.eventually.exist

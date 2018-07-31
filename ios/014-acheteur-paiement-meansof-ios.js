@@ -12,7 +12,7 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Panier", function () {
+describe("Paiement", function () {
     this.timeout(300000);
     let driver;
     let allPassed = false;
@@ -36,9 +36,10 @@ describe("Panier", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Supprimer un produit dans le panier", function (done) {
-        driver.sleep(500)
-            .waitForElementByAccessibilityId("btn-cart", 1000)
+    it("Paiment / Moyen de payement", function (done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
+        // driver.sleep(500)
+            .waitForElementByAccessibilityId("btn-cart", 2000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("Cancel", 500)
@@ -53,55 +54,33 @@ describe("Panier", function () {
             .should.eventually.exist
             .elementByAccessibilityId("2 items")
             .should.eventually.exist
-            .elementByAccessibilityId("Total including taxes:")
-            .should.eventually.exist
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
-            .elementByAccessibilityId("Edit")
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
             .should.eventually.exist
-            .swipe({
-                startX: 300,
-                startY: 300,
-                endX: 100,
-                endY: 300,
-                duration: 800
-            })
-            .waitForElementByAccessibilityId("OK", 500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="MEANS OF PAYMENT"]', 2000)
             .should.eventually.exist
-            .waitForElementByXPath('(//XCUIElementTypeButton[@name="Delete"])[1]', 500)
+            .elementByAccessibilityId('Credit card')
+            .should.eventually.exist
+            .elementByAccessibilityId('selected')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 1 item"]', 500)
+            .elementByAccessibilityId('PayPal')
             .should.eventually.exist
-            .elementByAccessibilityId("1 item")
+            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]')
             .should.eventually.exist
-            .nodeify(done);
-    });
-    it("Ajouter un produit dans le panier", function (done) {
-        _shared.methods.searchTestProd(driver)
-            .swipe({
-                startX: 100,
-                startY: 300,
-                endX: 100,
-                endY: 100,
-                duration: 800
-            })
-            .waitForElementByAccessibilityId("ADD TO BAG", 1000)
+            .elementByAccessibilityId('Cofinoga Card')
             .should.eventually.exist
-            .click()
-            //.waitForElementByAccessibilityId("bar_notif_confirm", 500) > have notification but cannot find the element with appium
-            .waitForElementByAccessibilityId("VIEW YOUR BASKET", 3000)
+            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[2]')
             .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]', 3000)
+            .elementByAccessibilityId('3X Payment')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[3]')
             .should.eventually.exist
-            .elementByAccessibilityId("2 items")
+            .elementByAccessibilityId('4X Payment')
             .should.eventually.exist
-            .elementByAccessibilityId("Total including taxes:")
-            .should.eventually.exist
-            .elementByAccessibilityId("COMPLETE MY ORDER")
+            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[4]')
             .should.eventually.exist
             .nodeify(done);
     });

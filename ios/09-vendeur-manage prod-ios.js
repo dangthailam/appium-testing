@@ -12,34 +12,37 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Vendeur - Gérer son produit", function() {
+describe("Vendeur - Gérer son produit", function () {
     this.timeout(300000);
     let driver;
     let allPassed = false;
 
-    before(function() {
+    before(function () {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function() {
+    after(function () {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function() {
+    beforeEach(function () {
         return driver.init(desired);
     });
 
-    afterEach(function() {
+    afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Ajouter une nouvelle photo", function(done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-            .elementByAccessibilityId("My items")
+    it.skip("Ajouter une nouvelle photo", function (done) {
+        driver
+            .waitForElementByAccessibilityId('Me', 4000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId("My items", 1000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("My items for sale (5)", 500)
@@ -95,40 +98,42 @@ describe("Vendeur - Gérer son produit", function() {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("Baisse de prix", function(done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
+    it("Baisse de prix", function (done) {
+        var productPrice = 50;
+        driver
+            .waitForElementByAccessibilityId('Me', 4000)
+            .click()
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale (5)", 500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage", 500)
-            .should.eventually.exist
-            .elementByAccessibilityId("Price reduction")
+            .waitForElementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]', 500)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeOther[@name=\"Price reduction\"]", 500)
-            .elementByAccessibilityId("Price reduction")
+            .waitForElementByAccessibilityId("Price reduction", 500)
             .should.eventually.exist
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]")
+            .click()
+            .elementByXPath('//XCUIElementTypeStaticText[contains(@name, "On the site:")]')
+
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]')
             .should.eventually.exist
-            .sendKeys(1000000)
+            .sendKeys(0)
+            .elementByXPath('//XCUIElementTypeButton[@name="OK"]')
+            .click()
             // Check button id "CONFIRM" can not click
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]")
-            .should.eventually.exist
-            .sendKeys(2)
-            .elementByXPath("The new price of your item will appear on your item page: 250 € 300 €") // Tim cach viet function de co mot cai gia that lon de test lien tuc
-            .should.eventually.exist
-            .elementByAccessibilityId("CONFIRM")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
-            .should.eventually.exist
+            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .isEnabled()
+            .should.eventually.be.false
+            .sleep(1500)
             .nodeify(done);
     });
-    it("Retirer un prod en vente", function(done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
+    it.skip("Retirer un prod en vente", function (done) {
+        driver
+            .waitForElementByAccessibilityId('Me', 4000)
+            .should.eventually.exist
+            .click()
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
@@ -148,6 +153,10 @@ describe("Vendeur - Gérer son produit", function() {
             .should.eventually.exist
             .click()
             // Check bouton id "REMOVE THIS ITEM FROM SALE" active
+            .waitForElementByAccessibilityId('REMOVE THIS ITEM FROM SALE', 2000)
+            .isEnabled()
+            .should.eventually.be.false
+            .sleep(1500)
             .nodeify(done);
     });
 });

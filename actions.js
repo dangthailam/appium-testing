@@ -10,7 +10,9 @@ exports.swipe = function (opts) {
         .wait(opts.duration)
         .moveTo({ x: opts.endX, y: opts.endY })
         .release()
-        .press({ x: opts.startX, y: opts.startY });
+        .press({ x: opts.endX, y: opts.endY })
+        .wait(2000)
+        .release();
     return this.performTouchAction(action);
 };
 

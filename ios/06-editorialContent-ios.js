@@ -37,7 +37,7 @@ describe("Contenus édito / Commentaire", function () {
         return driver.quit();
     });
     it.skip("Vérifier que l'on peut cliquer sur les contenus édito", function (done) { // Attendre les id des contenus édito
-        // _shared.methods.shouldLogin(driver)
+        // _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             driver.sleep(500)
             .then(function () {
                 ////XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]
@@ -102,29 +102,5 @@ describe("Contenus édito / Commentaire", function () {
             // .should.eventually.exist
             .nodeify(done);
 
-    });
-
-
-    it("Vérifier que l'on peut écrire les commentaires", function (done) {
-        _shared.methods.searchTestProd(driver)
-            .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "WRITE A COMMENT", "AccessibilityId");
-            })
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Chat"]', 500)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTextView')
-            .should.eventually.exist
-            .sendKeys("test")
-            .elementByAccessibilityId("Send")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Close",1000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("WRITE A COMMENT", 1000)
-            .should.eventually.exist
-            .nodeify(done);
     });
 });

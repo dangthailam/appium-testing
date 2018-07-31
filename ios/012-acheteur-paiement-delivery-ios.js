@@ -36,14 +36,14 @@ describe("Paiement", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Paiment / Delivery adress", function (done) {
+    it("Paiment / Delivery adresse", function (done) {
         driver.sleep(500)
-            .waitForElementByAccessibilityId("btn-cart", 1000)
+            .waitForElementByAccessibilityId("btn-cart", 2000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("Cancel", 500)
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]',2000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -60,19 +60,19 @@ describe("Paiement", function () {
             .click()
             .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 1000)
             .should.eventually.exist
-            .elementByAccessibilityId("Option 1: home delivery 8,90 €")
+            .waitForElementByAccessibilityId('Option 1: home delivery 8,90 €',2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Delivery addresses"]',500)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Delivery addresses"]',3000)
             .should.eventually.exist
             .elementByAccessibilityId("Set up a new address")
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Enter address"]', 500)
             .should.eventually.exist
-            .elementByAccessibilityId("Delivery addresses") // button back
+            .elementByAccessibilityId('Delivery addresses')
             .should.eventually.exist
-            .elementByAccessibilityId("Address name *")
+            .elementByAccessibilityId('Address name *')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField')
             .should.eventually.exist
@@ -181,7 +181,7 @@ describe("Paiement", function () {
             .hasElementByAccessibilityId('bar_notif_confirm')
             .then(function (exist) {
                 if (exist) {
-                    return driver.elementByAccessibilityId('bar_notif_confirm')
+                    return driver.elementByAccessibilityId('bar_notif_confirm') // Test profond partie set up new adresse
                     .sleep();
                 }
                 else
@@ -193,105 +193,51 @@ describe("Paiement", function () {
             })
             .waitForElementByXPath('(//XCUIElementTypeButton[@name="Edit"])[2]', 1000)
             .should.eventually.exist
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Enter address"]',1000)
+            .should.eventually.exist
+            .elementByAccessibilityId('Delivery addresses')
+            .should.eventually.exist
+            .sleep(500)
             .elementByAccessibilityId('Phone *')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[11]/XCUIElementTypeTextField')
-            .sendKeys('0123456') // Dat function de sdt thay doi
+            .should.eventually.exist
+            .clear()
+            .sleep(500)
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[11]/XCUIElementTypeTextField')
+            .should.eventually.exist
+            .sendKeys('0'+ Date.now()) 
+            .sleep(1000)
+            .swipe({
+                startX: 100,
+                startY: 300,
+                endX: 100,
+                endY: 100,
+                duration: 800
+            })
             .elementByAccessibilityId("SAVE ADDRESS")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('bar_notif_confirm', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId("Option 2: collection point delivery 8,90 € - Ensured by Colissimo")
+            .sleep(1000)
+            .waitForElementByAccessibilityId('bar_notif_confirm', 3000)
+            .should.eventually.exist 
+            .sleep(2000)
+            .waitForElementByAccessibilityId('Option 2: collection point delivery 8,90 € - Ensured by Colissimo',1000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Choose a collection point', 500)
             .should.eventually.exist
             .click()
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]',2000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]',2000)
+            .should.eventually.exist
             .waitForElementByAccessibilityId('Payment', 500)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 1000) 
-            .should.eventually.exist
-            .nodeify(done);
-    });
-
-    it.skip("Paiement / Code promotion", function (done) {
-        driver.sleep(500)
-            .waitForElementByAccessibilityId("btn-cart", 1000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Cancel", 500)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
-            .should.eventually.exist
-            .elementByAccessibilityId('Edit')
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]')
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
-            .should.eventually.exist
-            .elementByAccessibilityId("2 items")
-            .should.eventually.exist
-            .elementByAccessibilityId("COMPLETE MY ORDER")
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 1000)
-            .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="DISCOUNT"]', 500)
-            .should.eventually.exist
-            .elementByAccessibilityId("DELETE")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("APPLY")
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField')
-            .should.eventually.exist
-            //code invalide
-            .sendKeys("00000000")
-            .elementByAccessibilityId("APPLY")
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 500)
-            .should.eventually.exist
-            //code expiré
-            .elementByAccessibilityId("Clear text")
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField', 500)
-            .should.eventually.exist
-            .sendKeys("ELIT")
-            .elementByAccessibilityId("APPLY")
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 500)
-            .should.eventually.exist
-            //code article non compris
-            .elementByAccessibilityId("Clear text")
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField", 500)
-            .should.eventually.exist
-            .sendKeys("09121989")
-            .elementByAccessibilityId("APPLY")
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 500)
-            .should.eventually.exist
-            //code montant minimum non atteint
-            .elementByAccessibilityId("Clear text")
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField", 500)
-            .should.eventually.exist
-            .sendKeys("19891989")
-            .elementByAccessibilityId("APPLY")
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 500)
-            .should.eventually.exist
-            // code valide
-            .elementByAccessibilityId("Clear text")
-            .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField", 500)
-            .should.eventually.exist
-            .sendKeys("09051989")
-            .elementByAccessibilityId("APPLY")
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_confirm', 500)
             .should.eventually.exist
             .nodeify(done);
     });

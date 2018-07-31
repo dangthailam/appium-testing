@@ -73,7 +73,6 @@ describe("Identification user", function () {
                 if(!exist){
                     return driver.elementByAccessibilityId("bar_notif_error");
                 }
-
                 return driver.elementByAccessibilityId('bar_notif_confirm');
             })
             .should.eventually.exist
