@@ -37,7 +37,7 @@ describe("Panier", function () {
         return driver.quit();
     });
     it("Supprimer un produit dans le panier", function (done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '09051989')
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
         // driver.sleep(500)
             .waitForElementByAccessibilityId("btn-cart", 1000)
             .should.eventually.exist
@@ -91,7 +91,7 @@ describe("Panier", function () {
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("bar_notif_confirm", 3000)
-            .should.eventually.exist //have notification but cannot find the element with appium
+            .should.eventually.exist 
             .waitForElementByAccessibilityId("VIEW YOUR BASKET", 3000)
             .should.eventually.exist
             .click()

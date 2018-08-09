@@ -12,7 +12,7 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Registration", function () {
+describe("Inscription", function () {
     this.timeout(300000);
     let driver;
     let allPassed = true;
@@ -36,93 +36,113 @@ describe("Registration", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Signup with incorrect email", function (done) {
+    it("Inscrire avec l'email incorrect", function (done) {
         _shared.methods.verifyLoginState(driver) // login and register page
             .waitForElementByAccessibilityId('btn-register', 2000)
             .should.eventually.exist
             .click()
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+            .waitForElementByAccessibilityId('Male', 2000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField')
             .should.eventually.exist
             .sendKeys("joeff@gmail")
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField")
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]/XCUIElementTypeSecureTextField')
             .should.eventually.exist
             .sendKeys("1234")
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField")
+            .elementByAccessibilityId('Next:')
+            .click()
+            .waitForElementByAccessibilityId('eye show',2000)
             .should.eventually.exist
-            .sendKeys("LEEEEE")
-            .elementByAccessibilityId("Female")
+            .elementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId("check OFF")
+            .waitForElementByAccessibilityId('SIGN UP', 2000)
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId("SIGN UP")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 500)
-            .should.eventually.exist
+            .sleep(3000)
+            .hasElementByAccessibilityId('Me')
+            .should.eventually.be.false
             .nodeify(done);
     });
 
-    it("Signup with email existe", function (done) {
-        _shared.methods.verifyLoginState(driver)
+    it("Inscrire avec l'email déjà existé", function (done) {
+        _shared.methods.verifyLoginState(driver) // login and register page
             .waitForElementByAccessibilityId('btn-register', 2000)
             .should.eventually.exist
             .click()
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+            .waitForElementByAccessibilityId('Male', 2000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField')
             .should.eventually.exist
             .sendKeys("ngoc.le+4@vestiairecollective.com")
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField")
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]/XCUIElementTypeSecureTextField')
             .should.eventually.exist
             .sendKeys("002299")
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField")
+            .elementByAccessibilityId('Next:')
+            .click()
+            .waitForElementByAccessibilityId('eye show',2000)
             .should.eventually.exist
-            .sendKeys("LEEEEE")
-            .elementByAccessibilityId("Female")
+            .elementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId("check OFF")
+            .waitForElementByAccessibilityId('SIGN UP', 2000)
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId("SIGN UP")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 3000)
-            .should.eventually.exist
+            .sleep(3000)
+            .hasElementByAccessibilityId('Me')
+            .should.eventually.be.false
             .nodeify(done);
     });
 
-    it("Signup with correct email", function (done) {
-        _shared.methods.verifyLoginState(driver)
+    it("Inscrire avec l'email correct", function (done) {
+        _shared.methods.verifyLoginState(driver) // login and register page
             .waitForElementByAccessibilityId('btn-register', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField", 1000)
+            .waitForElementByAccessibilityId('Already a member? Log in',2000)
             .should.eventually.exist
-            .sendKeys('ngoc.le+' + Date.now() + '@vestiairecollective.com')
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField")
+            .elementByAccessibilityId('arrow-right')
             .should.eventually.exist
-            .sendKeys("09051989")
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField")
+            .click()
+            .waitForElementByAccessibilityId('LOG IN',2000)
+            .should.eventually.exist
+            .elementByAccessibilityId('Back')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('btn-register', 2000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Male', 2000)
+            .should.eventually.exist
+            .click()
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
             .should.eventually.exist
             .sendKeys("LEEEEE")
-            .elementByAccessibilityId("Female")
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField')
+            .should.eventually.exist
+            .sendKeys('ngoc.le+' + Date.now() + '@vestiairecollective.com')
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]/XCUIElementTypeSecureTextField')
+            .should.eventually.exist
+            .sendKeys("09051989")
+            .elementByAccessibilityId('Next:')
+            .click()
+            .waitForElementByAccessibilityId('eye show',2000)
+            .should.eventually.exist
+            .waitForElementByAccessibilityId('Receive the vestiaire collective newsletter',2000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeStaticText[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId("SIGN UP")
+            .waitForElementByAccessibilityId('SIGN UP', 2000)
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId('bar_notif_error')
-            .should.eventually.exist
-            .elementByAccessibilityId("check OFF")
-            .should.eventually.exist
-            .click()
-            .elementByAccessibilityId("SIGN UP")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("cross white", 5000)
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 500)
+            .waitForElementByAccessibilityId('Me', 3000)
             .should.eventually.exist
             .nodeify(done);
     });

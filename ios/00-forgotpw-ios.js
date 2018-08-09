@@ -12,7 +12,7 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Identification user", function () {
+describe("MDP oublié", function () {
     this.timeout(300000);
     let driver;
     let allPassed = true;
@@ -36,44 +36,49 @@ describe("Identification user", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Forgot password with incorrect email ", function (done) {
+    it("MDP oublié avec l'email incorrect", function (done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
-            .click()
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]')
-            .click()
-            .waitForElementByAccessibilityId("Enter your email and we will send your password", 2000)
             .should.eventually.exist
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]")
+            .click()
+            .elementByAccessibilityId('Forgotten password?')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Enter your email and we will send your password', 2000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
+            .should.eventually.exist
             .sendKeys("ngoc.le+10000@tttttttttt.com")
             .elementByAccessibilityId("SEND")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 500)
+            .waitForElementByAccessibilityId('bar_notif_error',5000)
             .should.eventually.exist
             .nodeify(done);
     });
 
-    it("Forgot password with correct email ", function (done) {
+    it("MDP oublié avec l'email correct", function (done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
-            .click()
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]')
-            .click()
-            .waitForElementByAccessibilityId("Enter your email and we will send your password", 2000)
             .should.eventually.exist
-            .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]")
+            .click()
+            .elementByAccessibilityId('Forgotten password?')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Enter your email and we will send your password', 2000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
+            .should.eventually.exist
             .sendKeys("ngoc.le+11@vestiairecollective.com")
             .elementByAccessibilityId("SEND")
             .should.eventually.exist
             .click()
-            .sleep(500)
             .hasElementByAccessibilityId("bar_notif_confirm")
             .then(function(exist) {
                 if(!exist){
-                    return driver.elementByAccessibilityId("bar_notif_error");
+                    return driver.waitForElementByAccessibilityId("bar_notif_error",5000);
                 }
-                return driver.elementByAccessibilityId('bar_notif_confirm');
+                return driver.waitForElementByAccessibilityId('bar_notif_confirm',5000);
             })
             .should.eventually.exist
             .nodeify(done);

@@ -230,10 +230,8 @@ describe("MMAO - une contre offre", function () {
             .waitForElementByAccessibilityId("bar_notif_confirm", 2000)
             .should.eventually.exist
             .elementByAccessibilityId("Buy now")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Cancel", 2000)
-            .should.eventually.exist
+            .isEnabled()
+            .should.eventually.be.true
             .nodeify(done);
     });
     it("Envoyer et refuser/accepter un contre offre part4: Confirmation", function (done) {

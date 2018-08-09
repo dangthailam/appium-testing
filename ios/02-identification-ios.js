@@ -12,32 +12,32 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Identification user", function() {
+describe("Connection", function () {
     this.timeout(300000);
     let driver;
     let allPassed = true;
 
-    before(function() {
+    before(function () {
         driver = wd.promiseChainRemote(opts);
         require("../logging").configure(driver);
     });
 
-    after(function() {
+    after(function () {
         if (!allPassed) {
             console.log("all tests passed");
         }
     });
 
-    beforeEach(function() {
+    beforeEach(function () {
         return driver.init(desired);
     });
 
-    afterEach(function() {
+    afterEach(function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
 
-    it("Login with an empty email/pw", function(done) {
+    it("Connecter avec l'email et mdp vide", function (done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .should.eventually.exist
@@ -50,30 +50,58 @@ describe("Identification user", function() {
             .elementByAccessibilityId("LOG IN")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 2000)
-            .should.eventually.exist
+            .sleep(3000)
+            .hasElementByAccessibilityId('Me')
+            .should.eventually.be.false
             .nodeify(done);
     });
 
-    it("Login with bad email", function(done) {
+    it("Connecter avec l'email incorrect", function (done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
+            .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 2000)
+            .should.eventually.exist
             .click()
             .sendKeys('ngoc.le+4@vestiaire.com')
             .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
+            .should.eventually.exist
             .click()
             .sendKeys('002299')
-            .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
+            .elementByAccessibilityId("LOG IN")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('bar_notif_error', 2000)
-            .should.eventually.exist
+            .sleep(3000)
+            .hasElementByAccessibilityId('Me')
+            .should.eventually.be.false
             .nodeify(done);
     });
 
-    it("Login with email and password", function(done) {
+    it("Connecter avec mdp incorrect", function (done) {
+        _shared.methods.verifyLoginState(driver)
+            .elementByAccessibilityId("btn-login")
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 2000)
+            .should.eventually.exist
+            .click()
+            .sendKeys('ngoc.le+4@vestiairecollective.com')
+            .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
+            .should.eventually.exist
+            .click()
+            .sendKeys('002233')
+            .elementByAccessibilityId("LOG IN")
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_error', 3000)
+            .should.eventually.exist
+            .hasElementByAccessibilityId('Me')
+            .should.eventually.be.false
+            .nodeify(done);
+    });
+
+    it("Connecter avec email et mdp correct", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .nodeify(done);
     });

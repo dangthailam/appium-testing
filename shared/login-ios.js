@@ -67,7 +67,7 @@ function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
                             .then(function (element) {
                                 return element.getLocation().then(function (loc) {
                                     console.log('location *********************', loc);
-                                    if (loc.y > 0 && loc.y < 500) {
+                                    if (loc.y > 0 && loc.y < 600) {
                                         return element;
                                     } else {
                                         return swipeBottomUpAndCheckIfElementExist(driver, query, queryType);
