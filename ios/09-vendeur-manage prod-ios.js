@@ -1,6 +1,7 @@
 require('../setup');
 
 const wd = require("wd"),
+    Q = require('q'),
     actions = require('../actions'),
     _shared = require('../shared/login-ios');
 
@@ -45,13 +46,13 @@ describe("Vendeur - Gérer son produit", function () {
             .waitForElementByAccessibilityId("My items", 1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale (5)", 500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]", 500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("like product", 500)
+            .waitForElementByAccessibilityId("like product", 2000)
             .should.eventually.exist
             .elementByAccessibilityId("share product")
             .should.eventually.exist
@@ -60,13 +61,13 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("My items for sale")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("(//XCUIElementTypeImage[@name=\"arrow-noire-down\"])[1]", 500)
+            .waitForElementByXPath("(//XCUIElementTypeImage[@name=\"arrow-noire-down\"])[1]", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Add picture", 500)
+            .waitForElementByAccessibilityId("Add picture", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale", 500)
+            .waitForElementByAccessibilityId("My items for sale", 2000)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage")
             .should.eventually.exist
@@ -75,58 +76,76 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("add photo sales")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Camera", 500)
+            .waitForElementByAccessibilityId("Camera", 2000)
+            .should.eventually.exist
+            .elementByAccessibilityId("Library")
             .should.eventually.exist
             .elementByAccessibilityId("Cancel")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("add photo sales", 500)
+            .waitForElementByAccessibilityId("CONFIRM", 3000)
             .should.eventually.exist
-            .click()
-            .elementByAccessibilityId("Library")
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Camera Roll", 500) // Khong truy cap duoc vao camera roll dt
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("Photo, Landscape, August 08, 2012, 11:55 PM", 500)
-            .click()
-            .waitForElementByAccessibilityId("CONFIRM", 500)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
+            .elementByAccessibilityId("add photo sales")
             .should.eventually.exist
             .nodeify(done);
     });
     it("Baisse de prix", function (done) {
-        var productPrice = 50;
         driver
             .waitForElementByAccessibilityId('Me', 4000)
             .click()
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]', 500)
+            .waitForElementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Price reduction", 500)
+            .waitForElementByAccessibilityId("Price reduction", 2000)
             .should.eventually.exist
             .click()
             .elementByXPath('//XCUIElementTypeStaticText[contains(@name, "On the site:")]')
-
+            .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]')
             .should.eventually.exist
-            .sendKeys(0)
+            .sendKeys(19)
             .elementByXPath('//XCUIElementTypeButton[@name="OK"]')
             .click()
             // Check button id "CONFIRM" can not click
             .waitForElementByAccessibilityId('CONFIRM', 2000)
             .isEnabled()
             .should.eventually.be.false
-            .sleep(1500)
+            .elementByXPath("///XCUIElementTypeStaticText[contains(@name, 'On the site:')]")
+            .then(function (e) {
+                return e.getValue().then(function (val) {
+                    var productPrice = parseInt(val.substring(val.indexOf('On the site:') + 'On the site:'.length + 1, val.indexOf('For you:') - 2));
+                    return driver.elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]')
+                        .clear()
+                        .sendKeys(productPrice)
+                        .elementByXPath('//XCUIElementTypeButton[@name="OK"]')
+                        .click();
+                });
+            })
+            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_error',5000)
+            .should.eventually.exist
+            .elementByXPath("///XCUIElementTypeStaticText[contains(@name, 'On the site:')]")
+            .then(function (e) {
+                return e.getValue().then(function (val) {
+                    var productPrice = parseInt(val.substring(val.indexOf('On the site:') + 'On the site:'.length + 1, val.indexOf('For you:') - 2));
+                    return driver.elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeTextField[2]')
+                        .clear()
+                        .sendKeys(productPrice - 1)
+                        .elementByXPath('//XCUIElementTypeButton[@name="OK"]')
+                        .click();
+                });
+            })
+            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .click()
+            .waitForElementByAccessibilityId('bar_notif_confirm', 2000)
+            .should.eventually.exist
             .nodeify(done);
     });
     it.skip("Retirer un prod en vente", function (done) {
@@ -137,25 +156,28 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale (5)", 500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage", 500)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]', 5000)
             .should.eventually.exist
-            .elementByAccessibilityId("Remove from sale")
+            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("I no longer wish to sell it", 500)
+            .waitForElementByAccessibilityId("Remove from sale", 2000)
             .should.eventually.exist
-            .elementByAccessibilityId("REMOVE THIS ITEM FROM SALE")
+            .click()
+            .waitForElementByAccessibilityId("I no longer wish to sell it", 2000)
             .should.eventually.exist
             .elementByAccessibilityId("I sold the item elsewhere")
+            .should.eventually.exist
+            .elementByAccessibilityId("Other reason")
             .should.eventually.exist
             .click()
             // Check bouton id "REMOVE THIS ITEM FROM SALE" active
             .waitForElementByAccessibilityId('REMOVE THIS ITEM FROM SALE', 2000)
             .isEnabled()
-            .should.eventually.be.false
+            .should.eventually.be.true
             .sleep(1500)
             .nodeify(done);
     });

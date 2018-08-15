@@ -38,7 +38,7 @@ describe("Panier", function () {
     });
     it("Supprimer un produit dans le panier", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-        // driver.sleep(500)
+        //driver.sleep(500)
             .waitForElementByAccessibilityId("btn-cart", 1000)
             .should.eventually.exist
             .click()
@@ -62,12 +62,12 @@ describe("Panier", function () {
             .should.eventually.exist
             .swipe({
                 startX: 300,
-                startY: 300,
+                startY: 200,
                 endX: 100,
-                endY: 300,
+                endY: 200,
                 duration: 800
             })
-            .waitForElementByAccessibilityId("OK", 500)
+            .waitForElementByAccessibilityId("OK", 5000)
             .should.eventually.exist
             .waitForElementByXPath('(//XCUIElementTypeButton[@name="Delete"])[1]', 500)
             .should.eventually.exist
@@ -87,7 +87,7 @@ describe("Panier", function () {
                 endY: 100,
                 duration: 800
             })
-            .waitForElementByAccessibilityId("ADD TO BAG", 1000)
+            .waitForElementByAccessibilityId("ADD TO BAG", 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("bar_notif_confirm", 3000)

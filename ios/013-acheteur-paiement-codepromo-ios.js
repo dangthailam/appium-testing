@@ -37,8 +37,7 @@ describe("Paiement", function () {
         return driver.quit();
     });
     it("Paiement / Code promotion", function (done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-        // driver.sleep(500)
+        driver.sleep(500)
             .waitForElementByAccessibilityId("btn-cart", 2000)
             .should.eventually.exist
             .click()
@@ -146,7 +145,7 @@ describe("Paiement", function () {
             .elementByAccessibilityId("APPLY")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('bar_notif_confirm', 3000)
+            .waitForElementByAccessibilityId('bar_notif_confirm', 5000)
             .should.eventually.exist
             .nodeify(done);
     });

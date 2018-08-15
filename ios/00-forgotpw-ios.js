@@ -73,12 +73,13 @@ describe("MDP oublié", function () {
             .elementByAccessibilityId("SEND")
             .should.eventually.exist
             .click()
+            .sleep(3000)
             .hasElementByAccessibilityId("bar_notif_confirm")
             .then(function(exist) {
-                if(!exist){
-                    return driver.waitForElementByAccessibilityId("bar_notif_error",5000);
-                }
-                return driver.waitForElementByAccessibilityId('bar_notif_confirm',5000);
+                if(exist)
+                    return driver.elementByAccessibilityId("bar_notif_confirm");
+                else
+                    return driver.elementByAccessibilityId('bar_notif_error');
             })
             .should.eventually.exist
             .nodeify(done);

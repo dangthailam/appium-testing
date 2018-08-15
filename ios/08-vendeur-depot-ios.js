@@ -39,29 +39,27 @@ describe("Dépôt un article", function () {
 
 
     it("Dépôt un article / Information", function (done) {
-        _shared.methods.verifyLoginState(driver)
-            .elementByAccessibilityId("Sell")
+        driver
+            .waitForElementByAccessibilityId("Sell", 3000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.', 2000)
-            .should.eventually.exist
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('1', 2000)
+            .waitForElementByAccessibilityId('Information', 5000)
             .should.eventually.exist
-            .elementByAccessibilityId('Information')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="Sub-category"])[1]')
+            .click()
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Sub-category"])[1]', 2000)
             .click()
             .waitForElementByAccessibilityId('Handbags', 2000)
             .should.eventually.exist
@@ -74,7 +72,11 @@ describe("Dépôt un article", function () {
             .click()
             .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="How do I know what the primary material of the item is?"])[2]', 2000)
             .should.eventually.exist
+            .elementByAccessibilityId('arrow-noire-up')
+            .should.eventually.exist
             .click()
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="We advise that you refer to the label detailing the composition of your item."])[1]', 2000)
+            .should.eventually.exist
             .waitForElementByAccessibilityId('arrow-noire-down', 2000)
             .click()
             .waitForElementByAccessibilityId('OK', 2000)
@@ -92,10 +94,7 @@ describe("Dépôt un article", function () {
             .waitForElementByAccessibilityId('Leopard', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('CONFIRM THIS STEP')
+            .waitForElementByAccessibilityId('CONFIRM THIS STEP', 2000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('back')
@@ -106,28 +105,25 @@ describe("Dépôt un article", function () {
             .nodeify(done);
     });
 
-    it.skip("Dépôt un article / Photos", function (done) {
-        driver.sleep(500)
-            .elementByAccessibilityId("Sell")
+    it("Dépôt un article / Photos", function (done) {
+        driver
+            .waitForElementByAccessibilityId("Sell", 3000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.', 2000)
-            .should.eventually.exist
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('2', 2000)
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
-            .elementByAccessibilityId('Photos')
+            .click()
+            .waitForElementByAccessibilityId('Photos', 2000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Main photo', 2000)
@@ -158,11 +154,11 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('33rd photo (optional)', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="3rd photo (optional)"]', 2000)
             .should.eventually.exist
-            .elementByAccessibilityId('4th photo (optional)')
+            .elementByXPath('//XCUIElementTypeStaticText[@name="4th photo (optional)"]')
             .should.eventually.exist
-            .elementByAccessibilityId('5th photo (optional)')
+            .elementByXPath('//XCUIElementTypeStaticText[@name="5th photo (optional)"]')
             .should.eventually.exist
             .swipe({
                 startX: 100,
@@ -188,40 +184,29 @@ describe("Dépôt un article", function () {
             .waitForElementByAccessibilityId('OK', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('3', 2000)
+            .waitForElementByAccessibilityId('Description', 2000)
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("Dépôt un article / Description", function (done) {
-        driver.sleep(500)
-            .elementByAccessibilityId("Sell")
+    it("Dépôt un article / Description", function (done) {
+        driver
+            .waitForElementByAccessibilityId("Sell", 3000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.', 2000)
-            .should.eventually.exist
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('3', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Description')
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Description"])[1]', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('(//XCUIElementTypeOther[@name="Description"])[1]', 2000)
-            .should.eventually.exist
-            .waitForElementByAccessibilityId('OK', 2000)
+            .waitForElementByAccessibilityId('Description', 2000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Measurements"])[1]', 2000)
@@ -244,38 +229,28 @@ describe("Dépôt un article", function () {
             .sendKeys('40')
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField')
             .should.eventually.exist
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('back', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('4', 2000)
-            .should.eventually.exist
+            .click()/// Khong the click duoc vao nut OK
             .nodeify(done);
     });
-    it.skip("Dépôt un article / Condition & price", function (done) {
-        driver.sleep(500)
-            .elementByAccessibilityId("Sell")
+    it("Dépôt un article / Condition & price", function (done) {
+        driver
+            .waitForElementByAccessibilityId("Sell", 3000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.', 2000)
-            .should.eventually.exist
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('4', 2000)
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
-            .elementByAccessibilityId('Condition & price')
+            .click()
+            .waitForElementByAccessibilityId('Condition & price', 2000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Condition"])[1]', 2000)
@@ -283,117 +258,88 @@ describe("Dépôt un article", function () {
             .click()
             .waitForElementByAccessibilityId('Very good condition', 2000)
             .should.eventually.exist
-            .elementByAccessibilityId('A second-hand bag in very good condition is one that has rarely been used and has been very well looked after.')
-            .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Damaged corners/material, oxidised or missing accessories (torch, mirror, tab, padlock, keys, strap), discolouration, stains (ink, ball-point pen, makeup), lingering odours (smoke, musty smell). An item that has been modified or repaired. Deep scratches, scrapes.', 2000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[1]')
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[1]', 2000)
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId('Good condition')
+            .waitForElementByAccessibilityId('Good condition', 2000)
             .should.eventually.exist
-            .elementByAccessibilityId('A second-hand bag is in good condition if it has been used and looked after, with light signs of use.')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[1]')
+            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Marked/damaged leather, worn out corners, lining that is torn or with holes, bad stains (ink, makeup, ball-pointpen), repairs that have not been indicated in the description, lingering odours (smoke/musty smell).', 2000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[2]')
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[2]', 2000)
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId('Fair condition')
+            .waitForElementByAccessibilityId('Fair condition')
             .should.eventually.exist
-            .elementByAccessibilityId('A second-hand bag is in acceptable condition if it has been used regularly, with signs of wear and tear.')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[1]')
+            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[3]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Dirty with a great deal of wear and tear, lining that has been torn or with holes, item requiring repair.', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[3]', 2000)
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[2]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('back', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Seller', 2000)
-            .should.eventually.exist
+            .click() /// Khong the click duoc vao nut OK
             .nodeify(done);
     });
-    it.skip("Dépôt un article / Seller", function (done) {
-        ddriver.sleep(500)
-            .elementByAccessibilityId("Sell")
+    it("Dépôt un article / Seller", function (done) {
+        driver
+            .waitForElementByAccessibilityId("Sell", 3000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.', 2000)
-            .should.eventually.exist
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
+            .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Seller', 2000)
             .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Seller"]', 2000)
-            .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Shipping Item From"])[1]', 2000)
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .elementByXPath('((//XCUIElementTypeStaticText[@name="United States"])[1]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Mobile number"])[2]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="+33 683618912"])[1]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('OK', 2000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Personal Contact Information"])[2]')
             .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="Saved"])[1]')
-            .should.eventually.exist
-            .click()
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Payments"])[1]')
             .should.eventually.exist
-            .click()
-            .elementByXPath('(//XCUIElementTypeStaticText[@name="Saved"])[3]')
+            .elementByAccessibilityId('CONFIRM THIS STEP')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('OK', 2000)
+            .waitForElementByAccessibilityId('Optional information',2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('CONFIRM THIS STEP', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Vintage"])[1]',2000)
+            .should.eventually.exist
+            .elementByXPath('(//XCUIElementTypeStaticText[@name="Origin"])[1]')
+            .should.eventually.exist
+            .elementByXPath('(//XCUIElementTypeStaticText[@name="Invoice"])[1]')
+            .should.eventually.exist
+            .elementByXPath('(//XCUIElementTypeStaticText[@name="Serial number"])[1]')
+            .should.eventually.exist
+            .elementByXPath('(//XCUIElementTypeStaticText[@name="Packaging"])[1]')
+            .should.eventually.exist
+            .elementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[1]')
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[3]',2000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeSwitch[@name="Test product"]')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('back',2000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('CONFIRM', 2000)
             .should.eventually.exist
-            .elementByAccessibilityId("Buy now")
             .isEnabled()
             .should.eventually.be.true
             .nodeify(done);

@@ -39,8 +39,8 @@ describe("My favourites", function () {
 
     it("Ajouter ou enlever un produit dans ma wish list", function (done) {
         //_shared.methods.shouldLogin(driver)
-        driver.sleep(500)
-            .elementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]")
+        driver
+            .waitForElementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]", 5000)
             .click()
             .waitForElementByAccessibilityId("bar_notif_confirm", 500)
             .should.eventually.exist

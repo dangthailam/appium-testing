@@ -37,8 +37,7 @@ describe("Paiement", function () {
         return driver.quit();
     });
     it("Paiment / Adresse de livraison", function (done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-            // driver.sleep(500)
+        driver.sleep(500)
             .waitForElementByAccessibilityId("btn-cart", 2000)
             .should.eventually.exist
             .click()
@@ -63,17 +62,17 @@ describe("Paiement", function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "BILLING ADDRESS", "AccessibilityId");
             })
             .should.eventually.exist
-            .elementByAccessibilityId('arrow-right')
+            .waitForElementByAccessibilityId('arrow-right', 2000)
             .should.eventually.exist
             .click()
-            .elementByAccessibilityId('Phone *')
+            .waitForElementByAccessibilityId('Phone *', 2000)
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[10]/XCUIElementTypeTextField')
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[10]/XCUIElementTypeTextField', 2000)
             .should.eventually.exist
             .clear()
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[10]/XCUIElementTypeTextField')
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[10]/XCUIElementTypeTextField', 2000)
             .sendKeys(Date.now() + "\n")
-            .elementByAccessibilityId('SAVE ADDRESS')
+            .waitForElementByAccessibilityId('SAVE ADDRESS', 2000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)

@@ -19,6 +19,8 @@ describe("MMAO - une contre offre", function () {
 
     before(function () {
         driver = wd.promiseChainRemote(opts);
+
+
         require("../logging").configure(driver);
     });
 
@@ -37,7 +39,7 @@ describe("MMAO - une contre offre", function () {
         return driver.quit();
     });
 
-    it("Envoyer et refuser/accepter un contre offre part1: proposer MMAO", function (done) {
+    it.skip("Envoyer et refuser/accepter un contre offre part1: proposer MMAO", function (done) {
         _shared.methods.searchTestProd(driver, '5734324')
             .elementByAccessibilityId("like product")
             .should.eventually.exist
@@ -112,7 +114,7 @@ describe("MMAO - une contre offre", function () {
             .nodeify(done);
     });
 
-    it("Envoyer et refuser/accepter un contre offre part2: contre offre", function (done) {
+    it.skip("Envoyer et refuser/accepter un contre offre part2: contre offre", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+3@vestiairecollective.com', '09051989')
         // driver
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 2000)
@@ -180,14 +182,12 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("Offers received")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell", 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId("Offer sent")
+            .waitForElementByAccessibilityId("Offer sent", 5000)
             .should.eventually.exist
             .nodeify(done);
     });
 
-    it("Envoyer et refuser/accepter un contre offre part3: Accepte", function (done) {
+    it.skip("Envoyer et refuser/accepter un contre offre part3: Accepte", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 2000)
             .should.eventually.exist
@@ -234,7 +234,7 @@ describe("MMAO - une contre offre", function () {
             .should.eventually.be.true
             .nodeify(done);
     });
-    it("Envoyer et refuser/accepter un contre offre part4: Confirmation", function (done) {
+    it.skip("Envoyer et refuser/accepter un contre offre part4: Confirmation", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+3@vestiairecollective.com', '09051989')
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 1000)
             .should.eventually.exist

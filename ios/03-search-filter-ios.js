@@ -38,18 +38,18 @@ describe("Filtre", function () {
     });
     it("Recherche", function (done) {
         // _shared.login.shouldLogin(driver)
-        driver.sleep(500)
+        driver
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 3000)
             .click()
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 500)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 2000)
             .should.eventually.exist
             .sendKeys('Dior')
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="dior so real "]', 500)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="dior canvas "]', 3000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[starts-with(@name, "Dior")]', 500)
-            .should.eventually.exist
-            .elementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeTabBar")
+            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[starts-with(@name, "Dior")]', 3000)
+            // .should.eventually.exist
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeTabBar",2000)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")
             .should.eventually.exist
@@ -77,7 +77,7 @@ describe("Filtre", function () {
             .elementByAccessibilityId("FILTER & SORT")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Woman categories", 500)
+            .waitForElementByAccessibilityId("Woman categories", 2000)
             .should.eventually.exist
             .click()
             .elementByAccessibilityId("Bags")
@@ -85,18 +85,20 @@ describe("Filtre", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Handbags', 500)
+            .waitForElementByAccessibilityId('Handbags', 1000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("CONFIRM", 1000)
             .click()
-            .waitForElementByXPath("//XCUIElementTypeSwitch[starts-with(@name, 'Ready to ship  Items shipped within 48 hours')]", 500)
+            .then(function () {
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "//XCUIElementTypeSwitch[starts-with(@name, 'Ready to ship  Items shipped within 48 hours')]", "XPath");
+            })
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[starts-with(@name, "SEE")]', 500)
+            .waitForElementByXPath('//XCUIElementTypeButton[starts-with(@name, "SEE")]', 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther", 500)
+            .waitForElementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther", 2000)
             .should.eventually.exist
             .elementByAccessibilityId("ALERT")
             .should.eventually.exist

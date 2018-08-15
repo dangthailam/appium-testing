@@ -37,11 +37,11 @@ describe("Paiement", function () {
         return driver.quit();
     });
     it("Paiment / Delivery adresse", function (done) {
-        driver.sleep(500)
-            .waitForElementByAccessibilityId("btn-cart", 2000)
+        driver
+            .waitForElementByAccessibilityId("btn-cart", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 500)
+            .waitForElementByAccessibilityId("Cancel", 5000)
             .should.eventually.exist
             .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]',2000)
             .should.eventually.exist
@@ -63,12 +63,12 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId('Option 1: home delivery 8,90 €',2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Delivery addresses"]',3000)
+            .waitForElementByAccessibilityId('Set up a new address',10000)
             .should.eventually.exist
-            .elementByAccessibilityId("Set up a new address")
+            .elementByAccessibilityId('arrow-right')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Enter address"]', 500)
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Enter address"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('Delivery addresses')
             .should.eventually.exist
@@ -80,10 +80,10 @@ describe("Paiement", function () {
             .elementByAccessibilityId('Title *')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Mr', 500)
+            .waitForElementByAccessibilityId('Mr', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('First name *', 500)
+            .waitForElementByAccessibilityId('First name *', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
             .should.eventually.exist
@@ -219,22 +219,20 @@ describe("Paiement", function () {
             .elementByAccessibilityId("SAVE ADDRESS")
             .should.eventually.exist
             .click()
-            .sleep(1000)
-            .waitForElementByAccessibilityId('bar_notif_confirm', 3000)
+            .waitForElementByAccessibilityId('bar_notif_confirm', 10000)
             .should.eventually.exist 
-            .sleep(2000)
             .waitForElementByAccessibilityId('Option 2: collection point delivery 8,90 € - Ensured by Colissimo',1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Choose a collection point', 500)
+            .waitForElementByAccessibilityId('Choose a collection point', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]',2000)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]',5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]',2000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('Payment', 500)
+            .waitForElementByAccessibilityId('Payment', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 1000) 
