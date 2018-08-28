@@ -16,6 +16,7 @@ describe("MMAO - une contre offre", function () {
     this.timeout(300000);
     let driver;
     let allPassed = false;
+    let randomEmail = 'ngoc.le+' + Date.now() + '@vestiairecollective.com';
 
     before(function () {
         driver = wd.promiseChainRemote(opts);
@@ -39,8 +40,11 @@ describe("MMAO - une contre offre", function () {
         return driver.quit();
     });
 
-    it.skip("Envoyer et refuser/accepter un contre offre part1: proposer MMAO", function (done) {
-        _shared.methods.searchTestProd(driver, '5734324')
+    it("Envoyer et refuser/accepter un contre offre part1: proposer MMAO", function (done) {
+        _shared.methods.shouldLogin(driver, randomEmail, '09051989', true)
+            .then(function() {
+                return _shared.methods.searchTestProd(driver, '5734324');
+            })
             .elementByAccessibilityId("like product")
             .should.eventually.exist
             .elementByAccessibilityId("share product")
@@ -87,7 +91,7 @@ describe("MMAO - une contre offre", function () {
             .waitForElementByAccessibilityId("CONFIRM", 1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_error", 1000)
+            .waitForElementByAccessibilityId("bar_notif_error", 5000)
             .should.eventually.exist
             .sleep(1000)
             .elementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "Starting price:")]')
@@ -188,7 +192,7 @@ describe("MMAO - une contre offre", function () {
     });
 
     it.skip("Envoyer et refuser/accepter un contre offre part3: Accepte", function (done) {
-        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
+        _shared.methods.shouldLogin(driver, randomEmail, '09051989', true)
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 2000)
             .should.eventually.exist
             .click()
@@ -208,7 +212,7 @@ describe("MMAO - une contre offre", function () {
             .waitForElementByAccessibilityId("My items", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Offers received (1)"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Offers received (1)"]', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeImage[1]", 2000)
@@ -218,7 +222,7 @@ describe("MMAO - une contre offre", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Offer sent', 1000)
+            .waitForElementByAccessibilityId('Offer sent', 5000)
             .should.eventually.exist
             .elementByAccessibilityId("DECLINE")
             .should.eventually.exist
@@ -227,13 +231,14 @@ describe("MMAO - une contre offre", function () {
             .elementByAccessibilityId("ACCEPT")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm", 2000)
+            .waitForElementByAccessibilityId("bar_notif_confirm", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("Buy now")
             .isEnabled()
             .should.eventually.be.true
             .nodeify(done);
     });
+
     it.skip("Envoyer et refuser/accepter un contre offre part4: Confirmation", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+3@vestiairecollective.com', '09051989')
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 1000)
@@ -251,10 +256,10 @@ describe("MMAO - une contre offre", function () {
             .waitForElementByAccessibilityId('Me', 1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items", 2000)
+            .waitForElementByAccessibilityId("My items", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Offers received (1)"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Offers received (1)"]', 5000)
             .should.eventually.exist
             .click()
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell")
@@ -265,4 +270,3 @@ describe("MMAO - une contre offre", function () {
             .nodeify(done);
     });
 });
-

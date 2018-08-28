@@ -2,7 +2,7 @@ const wd = require('wd');
 
 var swipeCounter = 0;
 
-function shouldLogin(driver, login, password) {
+function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
     return verifyLoginState(driver)
         .waitForElementByAccessibilityId('btn-login', 2000)
         .click()
@@ -10,16 +10,48 @@ function shouldLogin(driver, login, password) {
         .sendKeys(login)
         .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
         .sendKeys(password)
+        .elementByXPath('//XCUIElementTypeButton[@name="Next:"]')
+        .click()
         .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
         .should.eventually.exist
         .click()
-        .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
-        .click()
-        .elementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]')
-        .should.eventually.exist
-        .elementByAccessibilityId("Home")
-        .should.eventually.exist
-        .click();
+        .sleep(1000)
+        .hasElementByXPath('//XCUIElementTypeButton[@name="Me"]')
+        .then(function (exist) {
+            if (exist) {
+                return driver.waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
+                    .click()
+                    .elementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]')
+                    .should.eventually.exist
+                    .elementByAccessibilityId("Home")
+                    .should.eventually.exist
+                    .click();
+            } else if (registerWhenLoginFailed) {
+                return driver
+                    .elementByXPath('//XCUIElementTypeOther[XCUIElementTypeStaticText[@name="Not yet a member? Sign up"]]/XCUIElementTypeButton')
+                    .click()
+                    .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField', 3000)
+                    .sendKeys('Ngoc')
+                    .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[4]/XCUIElementTypeTextField')
+                    .clear()
+                    .sendKeys(login)
+                    .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[5]/XCUIElementTypeSecureTextField', 4000)
+                    .sendKeys(password)
+                    .elementByXPath('//XCUIElementTypeButton[@name="Next:"]')
+                    .click()
+                    .waitForElementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]', 4000)
+                    .click()
+                    .elementByXPath('//XCUIElementTypeButton[@name="SIGN UP"]')
+                    .click()
+                    .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
+                    .click()
+                    .elementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]')
+                    .should.eventually.exist
+                    .elementByAccessibilityId("Home")
+                    .should.eventually.exist
+                    .click();
+            }
+        });
 }
 
 function verifyLoginState(driver) {
@@ -88,7 +120,7 @@ function searchTestProd(driver, productId) {
         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 2000)
         .should.eventually.exist
         .sendKeys(productId + '\n')
-        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]',2000)
+        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 2000)
         .should.eventually.exist
         .elementByAccessibilityId("Vestiaire_Collective.VCProductDetailWrapperView")
         .should.eventually.exist;
