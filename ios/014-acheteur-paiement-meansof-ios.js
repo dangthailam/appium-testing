@@ -36,14 +36,13 @@ describe("Paiement", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Paiment / Moyen de payement -credit card", function (done) {
+    it("Paiment / Moyen de payement - credit card", function (done) {
         driver
-            .waitForElementByAccessibilityId("btn-cart", 5000)
+            .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 2000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .sleep(2000)
+            .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -56,27 +55,7 @@ describe("Paiement", function () {
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
-            .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="MEANS OF PAYMENT"]', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId('PayPal')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]')
-            .should.eventually.exist
-            .elementByAccessibilityId('Cofinoga Card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[2]')
-            .should.eventually.exist
-            .elementByAccessibilityId('3X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[3]')
-            .should.eventually.exist
-            .elementByAccessibilityId('4X Payment')
-            .should.eventually.exist
-            .elementByAccessibilityId('selected')
-            .should.eventually.exist
-            .elementByAccessibilityId('Credit card')
+            .waitForElementByAccessibilityId('Credit card',5000)
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -90,26 +69,24 @@ describe("Paiement", function () {
             .elementByAccessibilityId('COMPLETE MY ORDER')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Yes',5000)
+            .waitForElementByAccessibilityId('Yes', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Secured Checkout',50000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
-            .should.eventually.exist
+            // .waitForElementByAccessibilityId('Secured Checkout', 50000)
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
+            // .should.eventually.exist
             .nodeify(done);
     });
     it("Paiment / Moyen de payement - paypal", function (done) {
         driver
-            .waitForElementByAccessibilityId("btn-cart", 5000)
+            .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 2000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -124,27 +101,9 @@ describe("Paiement", function () {
             .click()
             .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
             .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="MEANS OF PAYMENT"]', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Credit card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]')
-            .should.eventually.exist
-            .elementByAccessibilityId('Cofinoga Card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[2]')
-            .should.eventually.exist
-            .elementByAccessibilityId('3X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[3]')
-            .should.eventually.exist
-            .elementByAccessibilityId('4X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[4]')
-            .should.eventually.exist
-            .elementByAccessibilityId('selected')
-            .should.eventually.exist
-            .elementByAccessibilityId('PayPal')
+            .then(function () {
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "PayPal", "AccessibilityId");
+            })
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -158,26 +117,24 @@ describe("Paiement", function () {
             .elementByAccessibilityId('COMPLETE MY ORDER')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Yes',5000)
+            .waitForElementByAccessibilityId('Yes', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Pay with PayPal"]',50000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
-            .should.eventually.exist
+            // .waitForElementByXPath('//XCUIElementTypeOther[@name="Pay with PayPal"]', 50000)
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
+            // .should.eventually.exist
             .nodeify(done);
     });
-    it("Paiment / Moyen de payement -confinoga card", function (done) {
+    it("Paiment / Moyen de payement - confinoga card", function (done) {
         driver
-            .waitForElementByAccessibilityId("btn-cart", 5000)
+            .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 5000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -190,29 +147,11 @@ describe("Paiement", function () {
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
             .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="MEANS OF PAYMENT"]', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Credit card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]')
-            .should.eventually.exist
-            .elementByAccessibilityId('PayPal')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[2]')
-            .should.eventually.exist
-            .elementByAccessibilityId('3X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[3]')
-            .should.eventually.exist
-            .elementByAccessibilityId('4X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[4]')
-            .should.eventually.exist
-            .elementByAccessibilityId('selected')
-            .should.eventually.exist
-            .elementByAccessibilityId('Cofinoga Card')
+            .then(function () {
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Cofinoga Card", "AccessibilityId");
+            })
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -226,26 +165,24 @@ describe("Paiement", function () {
             .elementByAccessibilityId('COMPLETE MY ORDER')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Yes',5000)
+            .waitForElementByAccessibilityId('Yes', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Payment confirmation"])[2]',50000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
-            .should.eventually.exist
+            // .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Payment confirmation"])[2]', 50000)
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
+            // .should.eventually.exist
             .nodeify(done);
     });
-    it("Paiment / Moyen de payement -3X payement", function (done) {
+    it("Paiment / Moyen de payement - 3X payement", function (done) {
         driver
-            .waitForElementByAccessibilityId("btn-cart", 5000)
+            .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 2000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -258,29 +195,16 @@ describe("Paiement", function () {
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
             .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="MEANS OF PAYMENT"]', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Credit card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]')
-            .should.eventually.exist
-            .elementByAccessibilityId('PayPal')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[2]')
-            .should.eventually.exist
-            .elementByAccessibilityId('Cofinoga Card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[3]')
-            .should.eventually.exist
-            .elementByAccessibilityId('4X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[4]')
-            .should.eventually.exist
-            .elementByAccessibilityId('selected')
-            .should.eventually.exist
-            .elementByAccessibilityId('3X Payment')
+            .swipe({
+                startX: 200,
+                startY: 400,
+                endX: 100,
+                endY: 100,
+                duration: 800
+            })
+            .elementByAccessibilityId('3X Payment free installments')
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -294,26 +218,24 @@ describe("Paiement", function () {
             .elementByAccessibilityId('COMPLETE MY ORDER')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Yes',5000)
+            .waitForElementByAccessibilityId('Yes', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Paiement de votre achat en X fois par CB',50000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
-            .should.eventually.exist
+            // .waitForElementByAccessibilityId('Paiement de votre achat en X fois par CB', 50000)
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
+            // .should.eventually.exist
             .nodeify(done);
     });
-    it("Paiment / Moyen de payement -4X payement", function (done) {
+    it("Paiment / Moyen de payement - 4X payement", function (done) {
         driver
-            .waitForElementByAccessibilityId("btn-cart", 2000)
+            .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 2000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -326,28 +248,15 @@ describe("Paiement", function () {
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
             .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="MEANS OF PAYMENT"]', 2000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Credit card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[1]')
-            .should.eventually.exist
-            .elementByAccessibilityId('PayPal')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[2]')
-            .should.eventually.exist
-            .elementByAccessibilityId('Cofinoga Card')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[3]')
-            .should.eventually.exist
-            .elementByAccessibilityId('3X Payment')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="unselected"])[4]')
-            .should.eventually.exist
-            .elementByAccessibilityId('selected')
-            .should.eventually.exist
+            .swipe({
+                startX: 200,
+                startY: 400,
+                endX: 100,
+                endY: 100,
+                duration: 800
+            })
             .elementByAccessibilityId('4X Payment')
             .should.eventually.exist
             .click()
@@ -362,16 +271,16 @@ describe("Paiement", function () {
             .elementByAccessibilityId('COMPLETE MY ORDER')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Yes',5000)
+            .waitForElementByAccessibilityId('Yes', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Paiement de votre achat en X fois par CB',50000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
-            .should.eventually.exist
+            // .waitForElementByAccessibilityId('Paiement de votre achat en X fois par CB', 50000)
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeButton[@name="Payment"]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 2000)
+            // .should.eventually.exist
             .nodeify(done);
     });
 });

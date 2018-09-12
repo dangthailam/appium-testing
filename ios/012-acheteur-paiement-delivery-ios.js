@@ -43,8 +43,6 @@ describe("Paiement", function () {
             .click()
             .waitForElementByAccessibilityId("Cancel", 5000)
             .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]',2000)
-            .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]')
@@ -58,12 +56,16 @@ describe("Paiement", function () {
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 1000)
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Payment"]', 5000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('Option 1: home delivery 8,90 €',2000)
+            .elementByXPath('//XCUIElementTypeStaticText[@name="Option 1: home delivery 8,90 €"]')
             .should.eventually.exist
+            // .elementByAccessibilityId('Option 1: home delivery 8,90 €')
+            // .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Set up a new address',10000)
+            // .waitForElementByAccessibilityId('Set up a new address',10000)
+            // .should.eventually.exist
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Set up a new address"]',5000)
             .should.eventually.exist
             .elementByAccessibilityId('arrow-right')
             .should.eventually.exist

@@ -13,7 +13,7 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Partie ME", function () {
+describe("Partie ME - Settings", function () {
     this.timeout(300000);
     let driver;
     let allPassed = true;
@@ -42,12 +42,11 @@ describe("Partie ME", function () {
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .sleep('1000')
+            .sleep(1000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Push notifications", "AccessibilityId");
             })
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[12]')
+            .elementByAccessibilityId('Push notifications')
             .should.eventually.exist
             .click()
             .hasElementByAccessibilityId('Allow')
@@ -60,25 +59,22 @@ describe("Partie ME", function () {
                         .should.eventually.exist
                         .click();
                 else
-                    return driver 
+                    return driver
             })
-            .waitForElementByAccessibilityId('Your push notifications are currently switched off',5000)
+            .sleep(2000)
+            .elementByAccessibilityId('Your push notifications are currently switched off')
             .should.eventually.exist
             .elementByAccessibilityId('OPT IN')
-            .isEnabled()
-            .should.eventually.be.true
-            .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Vestiaire"]',5000)
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeOther[@name="ALLOW VESTIAIRE TO ACCESS"])[1]')
+            .click()
+            .waitForElementByXPath('(//XCUIElementTypeOther[@name="ALLOW VESTIAIRE TO ACCESS"])[1]', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeCell[@name="Notifications"]')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeSwitch[@name="Allow Notifications"]')
-            .should.eventually.exist
             .elementByAccessibilityId('Return to Vestiaire')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
+            .click()
+            .waitForElementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]',5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
@@ -90,15 +86,14 @@ describe("Partie ME", function () {
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .sleep('1000')
+            .sleep(1000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Subscriptions", "AccessibilityId");
             })
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[13]')
+            .elementByAccessibilityId('Subscriptions')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Subscriptions"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Subscriptions"]', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[@name="Vestiaire Collective newsletter"]')
             .should.eventually.exist
@@ -128,15 +123,14 @@ describe("Partie ME", function () {
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .sleep('1000')
+            .sleep(1000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Privacy", "AccessibilityId");
             })
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[14]')
+            .elementByAccessibilityId('Privacy')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Privacy"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Privacy"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('Allow search')
             .should.eventually.exist
@@ -158,25 +152,24 @@ describe("Partie ME", function () {
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .sleep('1000')
+            .sleep(1000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Refer A Friend", "AccessibilityId");
             })
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[15]')
+            .elementByAccessibilityId('Refer A Friend')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Refer A Friend"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Refer A Friend"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('Refer a friend !')
             .should.eventually.exist
             .elementByAccessibilityId('INVITE FRIENDS')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Cancel',5000)
+            .waitForElementByAccessibilityId('Cancel', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="PAST ACTIONS"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="PAST ACTIONS"]', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist

@@ -149,10 +149,10 @@ describe("Catégorie", function () {
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('DESIGN',5000)
+            .waitForElementByAccessibilityId('LIFESTYLE',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('All design',5000)
+            .waitForElementByAccessibilityId('All lifestyle',5000)
             .should.eventually.exist
             .elementByAccessibilityId('Brands A-Z')
             .should.eventually.exist
@@ -179,8 +179,7 @@ describe("Catégorie", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[3]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]',5000)
-            .should.eventually.exist
+            .sleep(500)
             .nodeify(done);
     });
 });

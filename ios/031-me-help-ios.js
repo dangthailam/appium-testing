@@ -50,9 +50,7 @@ describe("Partie ME - Help", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[16]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Our commission"]', 5000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Our commission means we can provide exclusive services!')
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Our commission means we can provide exclusive services!"]',10000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -74,9 +72,9 @@ describe("Partie ME - Help", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[17]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Contact Us"]',5000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Sign in')
+            // .waitForElementByXPath('//XCUIElementTypeOther[@name="Contact Us"]',5000)
+            // .should.eventually.exist
+            .waitForElementByAccessibilityId('Sign in',5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -98,9 +96,9 @@ describe("Partie ME - Help", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[18]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="FAQ"]',5000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeImage[@name="Logo"]')
+            // .waitForElementByXPath('//XCUIElementTypeOther[@name="FAQ"]',5000)
+            // .should.eventually.exist
+            .waitForElementByXPath('//XCUIElementTypeImage[@name="Logo"]',10000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -135,8 +133,6 @@ describe("Partie ME - Help", function () {
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="Legal information"]',5000)
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="WEBSITE OWNER AND EDITOR"]')
-            .should.eventually.exist
             .swipe({
                 startX: 400,
                 startY: 800,
@@ -158,17 +154,6 @@ describe("Partie ME - Help", function () {
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="General conditions of use and sale"]',5000)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="General Terms & Conditons"]')
-            .should.eventually.exist
-            .swipe({
-                startX: 400,
-                startY: 800,
-                endX: 200,
-                endY: 200,
-                duration: 1000
-            })
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Charter against counterfeiting"]')
             .should.eventually.exist
             .nodeify(done);
     });

@@ -16,11 +16,12 @@ describe("MMAO - une contre offre", function () {
     this.timeout(300000);
     let driver;
     let allPassed = false;
-    let randomEmail = 'ngoc.le+' + Date.now() + '@vestiairecollective.com';
+    let randomEmail;
 
     before(function () {
         driver = wd.promiseChainRemote(opts);
 
+        randomEmail = 'ngoc.le+' + Date.now() + '@vestiairecollective.com';
 
         require("../logging").configure(driver);
     });
@@ -40,7 +41,8 @@ describe("MMAO - une contre offre", function () {
         return driver.quit();
     });
 
-    it("Envoyer et refuser/accepter un contre offre part1: proposer MMAO", function (done) {
+    it.skip("Envoyer et refuser/accepter un contre offre part1: proposer MMAO", function (done) {
+        console.log(randomEmail);
         _shared.methods.shouldLogin(driver, randomEmail, '09051989', true)
             .then(function() {
                 return _shared.methods.searchTestProd(driver, '5734324');
@@ -81,7 +83,7 @@ describe("MMAO - une contre offre", function () {
                 return element.getAttribute('value');
             })
             .then(function (value) {
-                var productPrice = parseFloat(value.substring('Starting price: '.length, value.length - 2));
+                var productPrice = parseFloat(value.substring('Starting price: $'.length, value.length));
                 console.log('PRICE ************ : ', productPrice, productPrice * 0.6);
                 return driver
                     .elementByXPath('//XCUIElementTypeTextField[@name="mmao-offer-textfield"]')
@@ -89,10 +91,8 @@ describe("MMAO - une contre offre", function () {
                     .sendKeys(productPrice * 0.6);
             })
             .waitForElementByAccessibilityId("CONFIRM", 1000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId("bar_notif_error", 5000)
-            .should.eventually.exist
+            .isEnabled()
+            .should.eventually.be.false
             .sleep(1000)
             .elementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "Starting price:")]')
             .should.eventually.exist
@@ -111,7 +111,7 @@ describe("MMAO - une contre offre", function () {
             .waitForElementByAccessibilityId("CONFIRM", 1000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Your offer has been sent. The seller has 2 days to respond.", 2000)
+            .waitForElementByAccessibilityId("Your offer has been sent. The seller has 2 days to respond.", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("Offer sent")
             .should.eventually.exist
@@ -120,7 +120,6 @@ describe("MMAO - une contre offre", function () {
 
     it.skip("Envoyer et refuser/accepter un contre offre part2: contre offre", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+3@vestiairecollective.com', '09051989')
-        // driver
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 2000)
             .should.eventually.exist
             .click()
@@ -178,10 +177,10 @@ describe("MMAO - une contre offre", function () {
                     .sendKeys(productPrice - 1);
             })
             .sleep(1500)
-            .waitForElementByAccessibilityId("CONFIRM", 1000)
+            .waitForElementByAccessibilityId("CONFIRM", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm", 1000)
+            .waitForElementByAccessibilityId("bar_notif_confirm", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("Offers received")
             .should.eventually.exist
@@ -192,7 +191,8 @@ describe("MMAO - une contre offre", function () {
     });
 
     it.skip("Envoyer et refuser/accepter un contre offre part3: Accepte", function (done) {
-        _shared.methods.shouldLogin(driver, randomEmail, '09051989', true)
+        console.log(randomEmail);
+        _shared.methods.shouldLogin(driver, randomEmail, '09051989', false)
             .waitForElementByXPath("//XCUIElementTypeButton[@name=\"Notifications\"]", 2000)
             .should.eventually.exist
             .click()
@@ -206,10 +206,10 @@ describe("MMAO - une contre offre", function () {
                     return driver;
             })
             .should.eventually.exist
-            .waitForElementByAccessibilityId('Me', 1000)
+            .waitForElementByAccessibilityId('Me', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items", 2000)
+            .waitForElementByAccessibilityId("My items", 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Offers received (1)"]', 5000)
@@ -253,7 +253,7 @@ describe("MMAO - une contre offre", function () {
                 else
                     return driver;
             })
-            .waitForElementByAccessibilityId('Me', 1000)
+            .waitForElementByAccessibilityId('Me', 2000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId("My items", 5000)

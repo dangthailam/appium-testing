@@ -118,9 +118,7 @@ describe("Produit page", function () {
                     return driver.elementByAccessibilityId('More Info')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('(//XCUIElementTypeImage[@name="Facily Pay"])[1]', 10000)
-                        .should.eventually.exist
-                        .elementByAccessibilityId('Cancel')
+                        .waitForElementByAccessibilityId('Cancel',5000)
                         .should.eventually.exist
                         .click();
                 else
@@ -135,12 +133,6 @@ describe("Produit page", function () {
                         .click()
                         .waitForElementByXPath('//XCUIElementTypeOther[@name="Size guide"]', 10000)
                         .should.eventually.exist
-                        .elementByAccessibilityId('EU')
-                        .should.eventually.exist
-                        .elementByAccessibilityId('UK')
-                        .should.eventually.exist
-                        .elementByAccessibilityId('US')
-                        .should.eventually.exist
                         .elementByAccessibilityId('Cancel')
                         .should.eventually.exist
                         .click()
@@ -151,20 +143,21 @@ describe("Produit page", function () {
                         .should.eventually.exist;
             })
             .sleep(500)
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeButton')
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('VDCUserProfileView', 5000)
-            .should.eventually.exist
-            .elementByAccessibilityId('picto share')
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]', 5000)
-            .should.eventually.exist
-            .elementByAccessibilityId('back white')
-            .should.eventually.exist
-            .click()
-            .waitForElementByAccessibilityId('Vestiaire_Collective.VCProductDetailWrapperView', 5000)
-            .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeButton[2]')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByAccessibilityId('cover-default',5000)
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeButton[@name="picto share"]')
+            // .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]', 5000)
+            // .should.eventually.exist
+            // .elementByAccessibilityId('back white')
+            // .should.eventually.exist
+            // .click()
+            // .waitForElementByAccessibilityId('Vestiaire_Collective.VCProductDetailWrapperView', 5000)
+            // .should.eventually.exist
+
             .nodeify(done);
     });
 });

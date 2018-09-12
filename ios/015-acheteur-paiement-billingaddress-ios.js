@@ -38,14 +38,11 @@ describe("Paiement", function () {
     });
     it("Paiment / Adresse de livraison", function (done) {
         driver.sleep(500)
-            .waitForElementByAccessibilityId("btn-cart", 2000)
+            .waitForElementByAccessibilityId("btn-cart", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 500)
+            .waitForElementByAccessibilityId("Cancel", 5000)
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
-            .should.eventually.exist
-            .elementByAccessibilityId('Edit')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]')
             .should.eventually.exist
@@ -61,8 +58,6 @@ describe("Paiement", function () {
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "BILLING ADDRESS", "AccessibilityId");
             })
-            .should.eventually.exist
-            .waitForElementByAccessibilityId('arrow-right', 2000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Phone *', 2000)

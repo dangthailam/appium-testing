@@ -13,7 +13,7 @@ const opts = {
 
 const desired = require('../desired').ios;
 
-describe("Produit page", function () {
+describe("Produit page - créer une alerte", function () {
     this.timeout(300000);
     let driver;
     let allPassed = true;
@@ -39,13 +39,13 @@ describe("Produit page", function () {
     });
     it("Produit page - Description", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 2000)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 5000)
             .should.eventually.exist
             .swipe({
-                startX: 100,
+                startX: 200,
                 startY: 400,
                 endX: 100,
                 endY: 100,
@@ -71,7 +71,7 @@ describe("Produit page", function () {
                         .should.eventually.exist;
             })
             .swipe({
-                startX: 100,
+                startX: 200,
                 startY: 400,
                 endX: 100,
                 endY: 100,
@@ -94,8 +94,8 @@ describe("Produit page", function () {
             .click()
             .sleep(500)
             .swipe({
-                startX: 100,
-                startY: 200,
+                startX: 200,
+                startY: 300,
                 endX: 100,
                 endY: 100,
                 duration: 800
@@ -140,17 +140,13 @@ describe("Produit page", function () {
             .then(function (exist) {
                 if (exist)
                     return driver.elementByAccessibilityId('You unsubscribed from price reductions alerts on this item')
-                        .should.eventually.exist;
                 return driver
                     .elementByAccessibilityId('You subscribed from price reductions alerts on this item')
-                    .should.eventually.exist;
             })
             .elementByAccessibilityId('Create an alert')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="Create an alert"]', 5000)
-            .should.eventually.exist
-            .elementByAccessibilityId('My selection')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeStaticText[@name="Color"]')
             .should.eventually.exist
@@ -159,12 +155,12 @@ describe("Produit page", function () {
             .elementByXPath('//XCUIElementTypeOther[@name="Model"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Cancel', 5000)
+            .waitForElementByAccessibilityId('Close', 5000)
             .should.eventually.exist
             .click()
             .swipe({
-                startX: 100,
-                startY: 200,
+                startX: 200,
+                startY: 400,
                 endX: 100,
                 endY: 100,
                 duration: 800
@@ -172,12 +168,12 @@ describe("Produit page", function () {
             .elementByAccessibilityId('Create an alert')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('SUBMIT', 5000)
+            .waitForElementByAccessibilityId('SAVE MY ALERT', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Immediately, by e-mail and mobile notification"]', 5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="I would like to receive my alert:"]',5000)
             .should.eventually.exist
-            .elementByAccessibilityId('SAVE')
+            .elementByAccessibilityId('SAVE MY ALERT')
             .should.eventually.exist
             .click()
             .sleep(1000)
@@ -191,10 +187,6 @@ describe("Produit page", function () {
 
                 else
                     return driver.elementByAccessibilityId('bar_notif_confirm')
-                        .should.eventually.exist
-                        .waitForElementByAccessibilityId('AlertPushNotificationOk',5000)
-                        .should.eventually.exist
-                        .elementByAccessibilityId('AlertPushNotificationCancel')
                         .should.eventually.exist;
             })
             .nodeify(done);

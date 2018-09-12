@@ -57,8 +57,6 @@ describe("Paiement", function () {
             .click()
             .waitForElementByAccessibilityId("Cancel", 500)
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
-            .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]')

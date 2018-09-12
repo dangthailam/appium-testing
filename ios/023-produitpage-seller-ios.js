@@ -45,7 +45,7 @@ describe("Produit page", function () {
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 5000)
             .should.eventually.exist
             .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Seller", "AccessibilityId");
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "See his/her Vestiaire", "AccessibilityId");
             })
             .elementByAccessibilityId('Seller')
             .should.eventually.exist
@@ -61,9 +61,9 @@ describe("Produit page", function () {
                 else
                     return driver.elementByAccessibilityId('SUBSCRIBER')
                         .should.eventually.exist
-                        // .click()
-                        // .waitForElementByAccessibilityId('FOLLOW',5000)
-                        // .should.eventually.exist; >> BUG 
+                        .click()
+                        .waitForElementByAccessibilityId('FOLLOW',5000)
+                        .should.eventually.exist; 
             })
             .elementByAccessibilityId('See his/her Vestiaire')
             .should.eventually.exist

@@ -38,13 +38,11 @@ describe("Panier", function () {
     });
     it("Supprimer un produit dans le panier", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-        //driver.sleep(500)
-            .waitForElementByAccessibilityId("btn-cart", 1000)
+            .sleep(2000)
+            .elementByAccessibilityId("btn-cart")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 500)
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Basket 2 items"]')
+            .waitForElementByAccessibilityId("Cancel", 5000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist

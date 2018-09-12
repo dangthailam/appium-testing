@@ -38,7 +38,7 @@ describe("Vendeur - Gérer son produit", function () {
         return driver.quit();
     });
 
-    it.skip("Ajouter une nouvelle photo", function (done) {
+    it("Ajouter une nouvelle photo", function (done) {
         driver
             .waitForElementByAccessibilityId('Me', 4000)
             .should.eventually.exist
@@ -148,7 +148,7 @@ describe("Vendeur - Gérer son produit", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("Retirer un prod en vente", function (done) {
+    it("Retirer un prod en vente", function (done) {
         driver
             .waitForElementByAccessibilityId('Me', 4000)
             .should.eventually.exist

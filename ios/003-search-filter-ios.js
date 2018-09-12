@@ -44,11 +44,9 @@ describe("Filtre", function () {
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 2000)
             .should.eventually.exist
             .sendKeys('Dior')
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="dior canvas "]', 3000)
+            .elementByXPath('//XCUIElementTypeStaticText[@name="dior "]')
             .should.eventually.exist
             .click()
-            // .waitForElementByXPath('//XCUIElementTypeNavigationBar[starts-with(@name, "Dior")]', 3000)
-            // .should.eventually.exist
             .waitForElementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeTabBar",2000)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther")

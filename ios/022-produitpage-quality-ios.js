@@ -37,64 +37,85 @@ describe("Produit page", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Produit page - Bloc Qualité", function (done) {
+    it("Produit page - Bloc Qualité / Information", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 2000)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 2000)
             .should.eventually.exist
-            .swipe({
-                startX: 100,
-                startY: 600,
-                endX: 100,
-                endY: 100,
-                duration: 800
+            .then(function () {
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Quality control", "AccessibilityId");
             })
-            .swipe({
-                startX: 100,
-                startY: 200,
-                endX: 100,
-                endY: 100,
-                duration: 800
-            })
-            // .then(function () {
-            //     return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Item location", "AccessibilityId");
-            // })
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[4]')
-            .isEnabled()
-            .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[3]')
-            .isEnabled()
-            .should.eventually.be.true
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[1]')
-            .isEnabled()
-            .should.eventually.be.true
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Product details"]',5000)
+            .waitForElementByAccessibilityId('INFORMATIONS',5000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeStaticText[@name="Quality Control"]')
+            .should.eventually.exist
+            .click()
+            .sleep(500)
+            .elementByXPath('//XCUIElementTypeStaticText[@name="Item location "]')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Close',5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Shipping and returns',5000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[3]')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Shipping',5000)
+            .should.eventually.exist
+            // .elementByXPath('//XCUIElementTypeSwitch[starts-with(@name, "The item is currently held by the seller")]')
+            // .should.eventually.exist ???????????????????????????????????????????
+            .elementByAccessibilityId('INFORMATIONS')
+            .should.eventually.exist
+            .elementByAccessibilityId('Close')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('100% secure payment',5000)
+            .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[4]')
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="100% secure"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('INFORMATIONS')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeStaticText[@name="Item location "]')
+            .elementByXPath('//XCUIElementTypeStaticText[@name="100% secure payment"]')
             .should.eventually.exist
-            .elementByAccessibilityId('Quality Control')
-            .should.eventually.exist
-            .elementByAccessibilityId('Shipping')
-            .should.eventually.exist
-            .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Returns", "AccessibilityId");
-            })
-            .should.eventually.exist
-            .elementByAccessibilityId('Help')
-            .should.eventually.exist
-            .elementByAccessibilityId('100% secure payment')
+            .waitForElementByAccessibilityId('Returns', 5000)
             .should.eventually.exist
             .click()
-            .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "100% secure", "AccessibilityId");
-            })
+            // .waitForElementByXPath('//XCUIElementTypeSwitch[starts-with(@name, "In accordance with our General Conditions of Sale ")]', 5000) > ????????
+            .waitForElementByXPath('(//XCUIElementTypeLink[@name="More information"])[1]',5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Sign in', 20000)
+            .should.eventually.exist
+            .elementByAccessibilityId('Cancel')
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('(//XCUIElementTypeLink[@name="More information"])[2]',5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Sign in', 20000)
+            .should.eventually.exist
+            .elementByAccessibilityId('Cancel')
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Returns', 5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="100% secure payment"]',5000)
+            .should.eventually.exist
+            .waitForElementByAccessibilityId('Help', 5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('Write to Us',2000)
             .should.eventually.exist
             .nodeify(done);
     });

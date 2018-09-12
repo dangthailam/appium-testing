@@ -62,9 +62,10 @@ describe("Partie ME - My saved items", function () {
                         .elementByAccessibilityId('My wishlist')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByAccessibilityId('FILTER & SORT', 5000)
-                        .isEnabled()
-                        .should.eventually.be.true;
+                        .waitForElementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"My Wishlist ")])', 2000)
+                        .should.eventually.exist
+                        .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
+                        .should.eventually.exist;
                 else
                     return driver
                         .elementByXPath('//XCUIElementTypeStaticText[@name="You currently have no items in your wishlist."]')
@@ -97,9 +98,10 @@ describe("Partie ME - My saved items", function () {
                         .elementByAccessibilityId('My favourites')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByAccessibilityId('FILTER & SORT', 5000)
-                        .isEnabled()
-                        .should.eventually.be.true;
+                        .waitForElementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"My Favourites ")])', 2000)
+                        .should.eventually.exist
+                        .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
+                        .should.eventually.exist;
                 else
                     return driver
                         .elementByXPath('//XCUIElementTypeStaticText[@name="You currently have no article among your favorites."]')
