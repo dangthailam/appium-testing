@@ -1,6 +1,6 @@
 exports.android = {
     "platformName": "Android",
-    "platformVersion": "8.0",
+    "platformVersion": "11.4",
     "deviceName": "Android Emulator",
     "app": "/Users/ngoc.le/Documents/ngoc.le/Appium/app-prod-debug.apk",
     "automationName": "UiAutomator2",

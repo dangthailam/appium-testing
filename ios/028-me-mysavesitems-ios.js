@@ -49,7 +49,7 @@ describe("Partie ME - My saved items", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[5]')
             .should.eventually.exist
             .click()
-            .sleep(2000)
+            .sleep(5000)
             .hasElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 5000)
             .then(function (exist) {
                 if (exist)
@@ -204,19 +204,19 @@ describe("Partie ME - My saved items", function () {
                     .should.eventually.exist
                     .elementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"Received :")])')
                     .should.eventually.exist
-                    .elementByXPath('(//XCUIElementTypeImage[@name="edit_icon"])[1]')
-                    .should.eventually.exist
-                    .click()
-                    .waitForElementByAccessibilityId('Immediately, by e-mail', 5000)
-                    .should.eventually.exist
-                    .elementByAccessibilityId('Immediately, by mobile notification')
-                    .should.eventually.exist
-                    .elementByAccessibilityId('Immediately, by e-mail and mobile notification')
-                    .should.eventually.exist
-                    .elementByAccessibilityId('Every day by e-mail')
-                    .should.eventually.exist
-                    .elementByAccessibilityId('Delete this alert')
-                    .should.eventually.exist
+            //         .elementByXPath('(//XCUIElementTypeImage[@name="edit_icon"])[1]')
+            //         .should.eventually.exist
+            //         .click()
+            //         .waitForElementByAccessibilityId('Immediately, by e-mail', 5000)
+            //         .should.eventually.exist
+            //         .elementByAccessibilityId('Immediately, by mobile notification')
+            //         .should.eventually.exist
+            //         .elementByAccessibilityId('Immediately, by e-mail and mobile notification')
+            //         .should.eventually.exist
+            //         .elementByAccessibilityId('Every day by e-mail')
+            //         .should.eventually.exist
+            //         .elementByAccessibilityId('Delete this alert')
+            //         .should.eventually.exist
             })
 
             .elementByAccessibilityId('My alerts')

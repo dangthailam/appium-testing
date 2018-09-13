@@ -43,7 +43,7 @@ describe("Connection/ Inscription Facebook", function () {
             .elementByAccessibilityId("btn-login")
             .click()
             // .click()
-            .waitForElementByAccessibilityId('Connect with Facebook', 2000)
+            .waitForElementByAccessibilityId('Connect with Facebook', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeAlert[@name="“Vestiaire Collective” Wants to Use “facebook.com” to Sign In"]', 3000)
@@ -128,7 +128,7 @@ describe("Connection/ Inscription Facebook", function () {
                         .should.eventually.exist
                         .elementByXPath('(//XCUIElementTypeButton[@name="Cancel"])[1]')
                         .should.eventually.exist
-                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Confirm Login"]', 3000)
+                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Confirm Login"]', 5000)
                         .should.eventually.exist
                         .elementByXPath('//XCUIElementTypeOther[@name="Facebook"]')
                         .should.eventually.exist

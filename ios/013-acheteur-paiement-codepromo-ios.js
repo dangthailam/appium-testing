@@ -41,7 +41,8 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId("btn-cart", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 500)
+            .sleep(2000)
+            .waitForElementByAccessibilityId("Cancel", 5000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist

@@ -43,7 +43,7 @@ describe("Contenus édito / Commentaire", function () {
             })
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Chat"]', 500)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Chat"]', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTextView')
             .should.eventually.exist
@@ -51,10 +51,10 @@ describe("Contenus édito / Commentaire", function () {
             .elementByAccessibilityId("Send")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Close",1000)
+            .waitForElementByAccessibilityId("Close",5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("WRITE A COMMENT", 1000)
+            .waitForElementByAccessibilityId("WRITE A COMMENT", 5000)
             .should.eventually.exist
             .nodeify(done);
     });

@@ -86,6 +86,7 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
+            .sleep(2000)
             .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
@@ -134,6 +135,7 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
+            .sleep('2000')
             .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
@@ -182,6 +184,7 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
+            .sleep(2000)
             .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
@@ -204,7 +207,7 @@ describe("Paiement", function () {
                 endY: 100,
                 duration: 800
             })
-            .elementByAccessibilityId('3X Payment free installments')
+            .elementByAccessibilityId('3X Payment')
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -235,6 +238,7 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
+            .sleep(2000)
             .waitForElementByAccessibilityId("Cancel", 9000)
             .should.eventually.exist
             .elementByAccessibilityId('Edit')

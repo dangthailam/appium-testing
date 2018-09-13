@@ -41,7 +41,8 @@ describe("Paiement", function () {
             .waitForElementByAccessibilityId("btn-cart", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 5000)
+            .sleep(2000)
+            .elementByAccessibilityId("Cancel")
             .should.eventually.exist
             .elementByAccessibilityId('Edit')
             .should.eventually.exist
@@ -65,7 +66,7 @@ describe("Paiement", function () {
             .click()
             // .waitForElementByAccessibilityId('Set up a new address',10000)
             // .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Set up a new address"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Set up a new address"]',10000)
             .should.eventually.exist
             .elementByAccessibilityId('arrow-right')
             .should.eventually.exist

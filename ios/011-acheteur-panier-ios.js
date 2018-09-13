@@ -42,9 +42,9 @@ describe("Panier", function () {
             .elementByAccessibilityId("btn-cart")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Cancel", 5000)
+            .waitForElementByAccessibilityId('Edit',5000)
             .should.eventually.exist
-            .elementByAccessibilityId('Edit')
+            .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]')
             .should.eventually.exist
