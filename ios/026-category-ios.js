@@ -182,4 +182,28 @@ describe("Catégorie", function () {
             .sleep(500)
             .nodeify(done);
     });
+    it("Catégorie - Top designers", function (done) {
+        driver
+        .waitForElementByAccessibilityId('Buy',5000)
+        .should.eventually.exist
+        .click()
+        .waitForElementByAccessibilityId('WOMEN',5000)
+        .should.eventually.exist
+        .elementByAccessibilityId('New items')
+        .should.eventually.exist
+        .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[1]')
+        .should.eventually.exist
+        .click()
+        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]',5000)
+        .should.eventually.exist
+        .elementByAccessibilityId('Brands A-Z')
+        .should.eventually.exist
+        .elementByAccessibilityId('Bags')
+        .should.eventually.exist
+        .click()
+        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]',5000)
+        .should.eventually.exist
+        .nodeify(done);
+    });
+
 });

@@ -37,7 +37,7 @@ describe("Produit page", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it('Vérification la direction à la produit page ', function (done) {
+    it('Vérification la direction à la page produit ', function (done) {
         var informationStr = [];
 
         driver.waitForElementByAccessibilityId("Me", 5000)
@@ -96,6 +96,7 @@ describe("Produit page", function () {
             .sleep(1000)
             .nodeify(done);
     });
+    
     it("Produit page - Bloc générale", function (done) {
         driver
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 5000)
