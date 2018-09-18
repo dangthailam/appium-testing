@@ -262,9 +262,9 @@ describe("Partie ME - My Vestiaire", function () {
             .click()
             .waitForElementByAccessibilityId('My Vestiaire', 5000)
             .should.eventually.exist
-            .elementByAccessibilityId('Price offers sent')
-            .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[4]')
+            .should.eventually.exist
+            .elementByAccessibilityId('Price offers sent')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="Price offers sent"]',5000)

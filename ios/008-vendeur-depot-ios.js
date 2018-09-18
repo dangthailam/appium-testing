@@ -40,10 +40,10 @@ describe("Dépôt un article", function () {
 
     it("Dépôt un article / Information", function (done) {
         driver
-            .waitForElementByAccessibilityId("Sell", 3000)
+            .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
@@ -59,58 +59,58 @@ describe("Dépôt un article", function () {
             .waitForElementByAccessibilityId('Information', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Sub-category"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Sub-category"])[1]', 5000)
             .click()
-            .waitForElementByAccessibilityId('Handbags', 2000)
+            .waitForElementByAccessibilityId('Handbags', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Material"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Material"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Cotton', 2000)
+            .waitForElementByAccessibilityId('Cotton', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="How do I know what the primary material of the item is?"])[2]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="How do I know what the primary material of the item is?"])[2]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('arrow-noire-up')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="We advise that you refer to the label detailing the composition of your item."])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="We advise that you refer to the label detailing the composition of your item."])[1]', 5000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('arrow-noire-down', 2000)
+            .waitForElementByAccessibilityId('arrow-noire-down', 5000)
             .click()
-            .waitForElementByAccessibilityId('OK', 2000)
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Colour"])[1]', 2000)
+            .waitForElementByAccessibilityId('OK', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Anthracite"]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Colour"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Printed"])[1]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Anthracite"]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Leopard', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Printed"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('CONFIRM THIS STEP', 2000)
+            .waitForElementByAccessibilityId('Leopard', 5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementByAccessibilityId('CONFIRM THIS STEP', 5000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('back')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('2', 2000)
+            .waitForElementByAccessibilityId('2', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
 
     it("Dépôt un article / Photos", function (done) {
         driver
-            .waitForElementByAccessibilityId("Sell", 3000)
+            .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
@@ -123,15 +123,15 @@ describe("Dépôt un article", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Photos', 2000)
+            .waitForElementByAccessibilityId('Photos', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Main photo', 2000)
+            .waitForElementByAccessibilityId('Main photo', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="add_more_photo"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Camera', 2000)
+            .waitForElementByAccessibilityId('Camera', 5000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('Library')
@@ -140,12 +140,12 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('2nd photo', 2000)
+            .waitForElementByAccessibilityId('2nd photo', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="add_more_photo"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Camera', 2000)
+            .waitForElementByAccessibilityId('Camera', 5000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('Library')
@@ -154,7 +154,7 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="3rd photo (optional)"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="3rd photo (optional)"]', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeStaticText[@name="4th photo (optional)"]')
             .should.eventually.exist
@@ -172,7 +172,7 @@ describe("Dépôt un article", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeCollectionView/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeButton')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Camera', 2000)
+            .waitForElementByAccessibilityId('Camera', 5000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('Library')
@@ -181,19 +181,19 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('OK', 2000)
+            .waitForElementByAccessibilityId('OK', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Description', 2000)
+            .waitForElementByAccessibilityId('Description', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
     it("Dépôt un article / Description", function (done) {
         driver
-            .waitForElementByAccessibilityId("Sell", 3000)
+            .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
@@ -206,15 +206,15 @@ describe("Dépôt un article", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Description', 2000)
+            .waitForElementByAccessibilityId('Description', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Measurements"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Measurements"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Unit', 2000)
+            .waitForElementByAccessibilityId('Unit', 5000)
             .should.eventually.exist
-            .elementByAccessibilityId('Height', 2000)
+            .elementByAccessibilityId('Height', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
             .should.eventually.exist
@@ -234,10 +234,10 @@ describe("Dépôt un article", function () {
     });
     it("Dépôt un article / Condition & price", function (done) {
         driver
-            .waitForElementByAccessibilityId("Sell", 3000)
+            .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
@@ -250,26 +250,26 @@ describe("Dépôt un article", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Condition & price', 2000)
+            .waitForElementByAccessibilityId('Condition & price', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Condition"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Condition"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Very good condition', 2000)
+            .waitForElementByAccessibilityId('Very good condition', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Good condition', 2000)
+            .waitForElementByAccessibilityId('Good condition', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[2]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[2]', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Fair condition')
@@ -277,17 +277,17 @@ describe("Dépôt un article", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-black-down"])[3]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[3]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Reasons for refusal"])[3]', 5000)
             .should.eventually.exist
             .click() /// Khong the click duoc vao nut OK
             .nodeify(done);
     });
     it("Dépôt un article / Seller", function (done) {
         driver
-            .waitForElementByAccessibilityId("Sell", 3000)
+            .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name=\"Sell\"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId("btn-sell")
             .should.eventually.exist
@@ -300,10 +300,10 @@ describe("Dépôt un article", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Seller', 2000)
+            .waitForElementByAccessibilityId('Seller', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Shipping Item From"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Shipping Item From"])[1]', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Mobile number"])[2]')
             .should.eventually.exist
@@ -314,10 +314,10 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('CONFIRM THIS STEP')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Optional information',2000)
+            .waitForElementByAccessibilityId('Optional information',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Vintage"])[1]',2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Vintage"])[1]',5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Origin"])[1]')
             .should.eventually.exist
@@ -330,15 +330,15 @@ describe("Dépôt un article", function () {
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[3]',2000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[3]',5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[@name="Test product"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('back',2000)
+            .waitForElementByAccessibilityId('back',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .waitForElementByAccessibilityId('CONFIRM', 5000)
             .should.eventually.exist
             .isEnabled()
             .should.eventually.be.true

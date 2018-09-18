@@ -39,29 +39,25 @@ describe("Partie ME - My account", function () {
     });
     it("ME - My account/My details", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "My details", "AccessibilityId");
             })
-            .sleep('1000')
+            .sleep(1000)
             .should.eventually.exist
             .elementByAccessibilityId('My details')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[8]')
-            .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="My details"]', 5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="My details"]', 10000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeStaticText[@name="PROFILE DETAILS"]')
             .should.eventually.exist
             .elementByAccessibilityId('Picture')
             .should.eventually.exist
-            .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage')
-            .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Edit your profile picture"]', 5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Edit your profile picture"]', 10000)
             .should.eventually.exist
             .elementByAccessibilityId('Choose existing')
             .should.eventually.exist
@@ -85,16 +81,14 @@ describe("Partie ME - My account", function () {
             .click()
             .waitForElementByAccessibilityId('Firstname', 5000)
             .should.eventually.exist
+            .elementByXPath('//XCUIElementTypeStaticText[@name="Firstname"]')
+            .should.eventually.exist
             .elementByXPath('//XCUIElementTypeCell[@name="cell-user-firstname"]/XCUIElementTypeTextField')
             .should.eventually.exist
-            .clear()
-            .elementByXPath('//XCUIElementTypeCell[@name="cell-user-firstname"]/XCUIElementTypeTextField')
-            .sendKeys('Ngoc')
             .elementByAccessibilityId('Surname*')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeCell[@name="cell-user-lastname"]/XCUIElementTypeTextField')
             .should.eventually.exist
-            .clear()
             .elementByXPath('//XCUIElementTypeCell[@name="cell-user-lastname"]/XCUIElementTypeTextField')
             .sendKeys('Bich')
             .elementByAccessibilityId('Done')
@@ -108,8 +102,6 @@ describe("Partie ME - My account", function () {
             .elementByXPath('//XCUIElementTypeStaticText[@name="INTERNATIONAL PREFERENCES"]')
             .should.eventually.exist
             .elementByAccessibilityId('Language')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[2]')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeOther[@name="LANGUAGE"])[2]', 5000)
@@ -129,8 +121,6 @@ describe("Partie ME - My account", function () {
             .click()
             .waitForElementByAccessibilityId('Currency',5000)
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[3]')
-            .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('USD', 5000)
             .should.eventually.exist
@@ -140,8 +130,6 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Site', 5000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[4]')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeOther[@name="SITE"])[2]', 5000)
@@ -169,25 +157,23 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("ME - My account/My addresses & phone number", function (done) {
+    it.skip("ME - My account/My addresses & phone number", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
-            .sleep('1000')
+            .sleep(1000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "My account", "AccessibilityId");
             })
             .sleep(1000)
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[9]')
-            .should.eventually.exist
             // .elementByAccessibilityId('My addresses & phone number')
             .elementByXPath('//XCUIElementTypeStaticText[@name="My addresses & phone number "]')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="My addresses & phone number"]',5000)
             .should.eventually.exist
-             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
+            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
             .elementByAccessibilityId('Delivery addresses')
             .should.eventually.exist
@@ -208,7 +194,7 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("ME - My account/My bank details", function (done) {
+    it.skip("ME - My account/My bank details", function (done) {
         driver
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
@@ -219,10 +205,8 @@ describe("Partie ME - My account", function () {
             })
             .elementByAccessibilityId('My bank details')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[10]')
-            .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="My bank details"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="My bank details"]',10000)
             .should.eventually.exist
             .elementByAccessibilityId('I would like transfers to be made to :')
             .should.eventually.exist
@@ -264,7 +248,7 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("ME - My account/My payment methods", function (done) {
+    it.skip("ME - My account/My payment methods", function (done) {
         driver
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
@@ -277,10 +261,8 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .elementByAccessibilityId('My payment methods')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[11]')
-            .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="My payment methods"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="My payment methods"]',10000)
             .should.eventually.exist
             .hasElementByAccessibilityId('You do not have any registered credit cards.')
             .then(function (exist) {

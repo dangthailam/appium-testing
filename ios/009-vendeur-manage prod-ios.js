@@ -40,19 +40,19 @@ describe("Vendeur - Gérer son produit", function () {
 
     it("Ajouter une nouvelle photo", function (done) {
         driver
-            .waitForElementByAccessibilityId('Me', 4000)
+            .waitForElementByAccessibilityId('Me', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items", 1000)
+            .waitForElementByAccessibilityId("My items", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]", 2000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("like product", 2000)
+            .waitForElementByAccessibilityId("like product", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("share product")
             .should.eventually.exist
@@ -61,13 +61,13 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("My items for sale")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath("(//XCUIElementTypeImage[@name=\"arrow-noire-down\"])[1]", 2000)
+            .waitForElementByXPath("(//XCUIElementTypeImage[@name=\"arrow-noire-down\"])[1]", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Add picture", 2000)
+            .waitForElementByAccessibilityId("Add picture", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("My items for sale", 2000)
+            .waitForElementByAccessibilityId("My items for sale", 5000)
             .should.eventually.exist
             .elementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeImage")
             .should.eventually.exist
@@ -76,14 +76,14 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByAccessibilityId("add photo sales")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Camera", 2000)
+            .waitForElementByAccessibilityId("Camera", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("Library")
             .should.eventually.exist
             .elementByAccessibilityId("Cancel")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("CONFIRM", 3000)
+            .waitForElementByAccessibilityId("CONFIRM", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("add photo sales")
             .should.eventually.exist
@@ -91,18 +91,18 @@ describe("Vendeur - Gérer son produit", function () {
     });
     it("Baisse de prix", function (done) {
         driver
-            .waitForElementByAccessibilityId('Me', 4000)
+            .waitForElementByAccessibilityId('Me', 5000)
             .click()
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]', 2000)
+            .waitForElementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Price reduction", 2000)
+            .waitForElementByAccessibilityId("Price reduction", 5000)
             .should.eventually.exist
             .click()
             .elementByXPath('//XCUIElementTypeStaticText[contains(@name, "On the site:")]')
@@ -113,7 +113,7 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByXPath('//XCUIElementTypeButton[@name="OK"]')
             .click()
             // Check button id "CONFIRM" can not click
-            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .waitForElementByAccessibilityId('CONFIRM', 5000)
             .isEnabled()
             .should.eventually.be.false
             .elementByXPath("///XCUIElementTypeStaticText[contains(@name, 'On the site:')]")
@@ -127,7 +127,7 @@ describe("Vendeur - Gérer son produit", function () {
                         .click();
                 });
             })
-            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .waitForElementByAccessibilityId('CONFIRM', 5000)
             .click()
             .waitForElementByAccessibilityId('bar_notif_error',5000)
             .should.eventually.exist
@@ -142,21 +142,21 @@ describe("Vendeur - Gérer son produit", function () {
                         .click();
                 });
             })
-            .waitForElementByAccessibilityId('CONFIRM', 2000)
+            .waitForElementByAccessibilityId('CONFIRM', 5000)
             .click()
-            .waitForElementByAccessibilityId('bar_notif_confirm', 2000)
+            .waitForElementByAccessibilityId('bar_notif_confirm', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
     it("Retirer un prod en vente", function (done) {
         driver
-            .waitForElementByAccessibilityId('Me', 4000)
+            .waitForElementByAccessibilityId('Me', 5000)
             .should.eventually.exist
             .click()
             .elementByAccessibilityId("My items")
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 2000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[starts-with(@name, "My items for sale")]', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage[1]', 5000)
@@ -164,10 +164,10 @@ describe("Vendeur - Gérer son produit", function () {
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-noire-down"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Remove from sale", 2000)
+            .waitForElementByAccessibilityId("Remove from sale", 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("I no longer wish to sell it", 2000)
+            .waitForElementByAccessibilityId("I no longer wish to sell it", 5000)
             .should.eventually.exist
             .elementByAccessibilityId("I sold the item elsewhere")
             .should.eventually.exist
@@ -175,7 +175,7 @@ describe("Vendeur - Gérer son produit", function () {
             .should.eventually.exist
             .click()
             // Check bouton id "REMOVE THIS ITEM FROM SALE" active
-            .waitForElementByAccessibilityId('REMOVE THIS ITEM FROM SALE', 2000)
+            .waitForElementByAccessibilityId('REMOVE THIS ITEM FROM SALE', 5000)
             .isEnabled()
             .should.eventually.be.true
             .sleep(1500)

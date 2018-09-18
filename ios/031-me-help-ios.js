@@ -39,15 +39,13 @@ describe("Partie ME - Help", function () {
     });
     it("ME - Help/Our commission", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
-            .sleep('1000')
+            .sleep('2000')
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Our commission", "AccessibilityId");
             })
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[16]')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Our commission means we can provide exclusive services!"]',10000)
@@ -55,13 +53,13 @@ describe("Partie ME - Help", function () {
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
     it("ME - Help/Contact us", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
             .sleep('1000')
@@ -69,17 +67,15 @@ describe("Partie ME - Help", function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Contact Us", "AccessibilityId");
             })
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[17]')
-            .should.eventually.exist
             .click()
             // .waitForElementByXPath('//XCUIElementTypeOther[@name="Contact Us"]',5000)
             // .should.eventually.exist
-            .waitForElementByAccessibilityId('Sign in',5000)
+            .waitForElementByAccessibilityId('Sign in',10000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
@@ -92,8 +88,6 @@ describe("Partie ME - Help", function () {
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "FAQ", "AccessibilityId");
             })
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[18]')
             .should.eventually.exist
             .click()
             // .waitForElementByXPath('//XCUIElementTypeOther[@name="FAQ"]',5000)
@@ -117,10 +111,8 @@ describe("Partie ME - Help", function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "Rate our app", "AccessibilityId");
             })
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[19]')
-            .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Return to Vestiaire',5000)
+            .waitForElementByAccessibilityId('Return to Vestiaire',10000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
@@ -131,7 +123,7 @@ describe("Partie ME - Help", function () {
             .elementByAccessibilityId('Legal information')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Legal information"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Legal information"]',10000)
             .should.eventually.exist
             .swipe({
                 startX: 400,
@@ -145,7 +137,7 @@ describe("Partie ME - Help", function () {
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "General conditions of use and sale", "AccessibilityId");
@@ -153,7 +145,7 @@ describe("Partie ME - Help", function () {
             .elementByAccessibilityId('General conditions of use and sale')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="General conditions of use and sale"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="General conditions of use and sale"]',10000)
             .should.eventually.exist
             .nodeify(done);
     });

@@ -39,12 +39,10 @@ describe("Profile - Manage my availability", function () {
     });
     it("Profile - Manage my availability", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Manage my availability',5000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
+            .waitForElementByAccessibilityId('Manage my availability',10000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="Manage my availability"]',5000)

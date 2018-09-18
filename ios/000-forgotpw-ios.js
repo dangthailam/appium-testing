@@ -44,7 +44,7 @@ describe("MDP oublié", function () {
             .elementByAccessibilityId('Forgotten password?')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Enter your email and we will send your password', 2000)
+            .waitForElementByAccessibilityId('Enter your email and we will send your password', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
             .should.eventually.exist
@@ -65,7 +65,7 @@ describe("MDP oublié", function () {
             .elementByAccessibilityId('Forgotten password?')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Enter your email and we will send your password', 2000)
+            .waitForElementByAccessibilityId('Enter your email and we will send your password', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField')
             .should.eventually.exist

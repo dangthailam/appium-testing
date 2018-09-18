@@ -71,7 +71,7 @@ describe("Paiement", function () {
             .elementByAccessibilityId('arrow-right')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Enter address"]', 5000)
+            .waitForElementByXPath('//XCUIElementTypeNavigationBar[@name="Enter address"]', 10000)
             .should.eventually.exist
             .elementByAccessibilityId('Delivery addresses')
             .should.eventually.exist

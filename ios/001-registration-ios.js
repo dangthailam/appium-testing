@@ -38,10 +38,10 @@ describe("Inscription", function () {
     });
     it("Inscrire avec l'email incorrect", function (done) {
         _shared.methods.verifyLoginState(driver) // login and register page
-            .waitForElementByAccessibilityId('btn-register', 2000)
+            .waitForElementByAccessibilityId('btn-register', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Male', 2000)
+            .waitForElementByAccessibilityId('Male', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
             .should.eventually.exist
@@ -53,12 +53,12 @@ describe("Inscription", function () {
             .sendKeys("1234")
             .elementByAccessibilityId('Next:')
             .click()
-            .waitForElementByAccessibilityId('eye show',2000)
+            .waitForElementByAccessibilityId('eye show',5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('SIGN UP', 2000)
+            .waitForElementByAccessibilityId('SIGN UP', 5000)
             .should.eventually.exist
             .click()
             .sleep(3000)
@@ -69,10 +69,10 @@ describe("Inscription", function () {
 
     it("Inscrire avec l'email déjà existé", function (done) {
         _shared.methods.verifyLoginState(driver) // login and register page
-            .waitForElementByAccessibilityId('btn-register', 2000)
+            .waitForElementByAccessibilityId('btn-register', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Male', 2000)
+            .waitForElementByAccessibilityId('Male', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
             .should.eventually.exist
@@ -84,12 +84,12 @@ describe("Inscription", function () {
             .sendKeys("002299")
             .elementByAccessibilityId('Next:')
             .click()
-            .waitForElementByAccessibilityId('eye show',2000)
+            .waitForElementByAccessibilityId('eye show',5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('SIGN UP', 2000)
+            .waitForElementByAccessibilityId('SIGN UP', 5000)
             .should.eventually.exist
             .click()
             .sleep(3000)
@@ -100,23 +100,23 @@ describe("Inscription", function () {
 
     it("Inscrire avec l'email correct", function (done) {
         _shared.methods.verifyLoginState(driver) // login and register page
-            .waitForElementByAccessibilityId('btn-register', 2000)
+            .waitForElementByAccessibilityId('btn-register', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Already a member? Log in',2000)
+            .waitForElementByAccessibilityId('Already a member? Log in',5000)
             .should.eventually.exist
             .elementByAccessibilityId('arrow-right')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('LOG IN',2000)
+            .waitForElementByAccessibilityId('LOG IN',5000)
             .should.eventually.exist
             .elementByAccessibilityId('Back')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('btn-register', 2000)
+            .waitForElementByAccessibilityId('btn-register', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Male', 2000)
+            .waitForElementByAccessibilityId('Male', 5000)
             .should.eventually.exist
             .click()
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeTextField')
@@ -130,16 +130,16 @@ describe("Inscription", function () {
             .sendKeys("09051989")
             .elementByAccessibilityId('Next:')
             .click()
-            .waitForElementByAccessibilityId('eye show',2000)
+            .waitForElementByAccessibilityId('eye show',5000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('Receive the vestiaire collective newsletter',2000)
+            .waitForElementByAccessibilityId('Receive the vestiaire collective newsletter',5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeStaticText[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('SIGN UP', 2000)
+            .waitForElementByAccessibilityId('SIGN UP', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Me', 3000)

@@ -37,7 +37,7 @@ describe("Catégorie", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Catégorie - Women", function (done) {
+    it.skip("Catégorie - Women", function (done) {
         driver
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist
@@ -90,7 +90,7 @@ describe("Catégorie", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("Catégorie - Men", function (done) {
+    it.skip("Catégorie - Men", function (done) {
         driver
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist
@@ -144,7 +144,7 @@ describe("Catégorie", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it("Catégorie - Design", function (done) {
+    it.skip("Catégorie - Design", function (done) {
         driver
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist
@@ -191,8 +191,6 @@ describe("Catégorie", function () {
         .should.eventually.exist
         .elementByAccessibilityId('New items')
         .should.eventually.exist
-        .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[1]')
-        .should.eventually.exist
         .click()
         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]',5000)
         .should.eventually.exist
@@ -201,7 +199,13 @@ describe("Catégorie", function () {
         .elementByAccessibilityId('Bags')
         .should.eventually.exist
         .click()
-        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[3]',5000)
+        .waitForElementByAccessibilityId('Top brands',5000)
+        .should.eventually.exist
+        .click()
+        .waitForElementByXPath('//XCUIElementTypeStaticText[@name="ALEXANDER MCQUEEN"]',5000)
+        .should.eventually.exist
+        .click()
+        .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="ALEXANDER MCQUEEN"])[1]',5000)
         .should.eventually.exist
         .nodeify(done);
     });

@@ -40,22 +40,22 @@ describe("Connection/ Inscription Facebook", function () {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId('btn-register')
             .click()
-            .waitForElementByAccessibilityId('Sign up with Facebook', 2000)
+            .waitForElementByAccessibilityId('Sign up with Facebook', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeAlert[@name="“Vestiaire Collective” Wants to Use “facebook.com” to Sign In"]', 3000)
+            .waitForElementByXPath('//XCUIElementTypeAlert[@name="“Vestiaire Collective” Wants to Use “facebook.com” to Sign In"]', 5000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('This allows the app and website to share information about you.', 3000)
+            .waitForElementByAccessibilityId('This allows the app and website to share information about you.', 5000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('Cancel', 2000)
+            .waitForElementByAccessibilityId('Cancel', 5000)
             .should.eventually.exist
-            .waitForElementByAccessibilityId('Continue', 2000)
+            .waitForElementByAccessibilityId('Continue', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Cancel',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Sign up with Facebook', 2000)
+            .waitForElementByAccessibilityId('Sign up with Facebook', 5000)
             .should.eventually.exist
             .nodeify(done);
     });

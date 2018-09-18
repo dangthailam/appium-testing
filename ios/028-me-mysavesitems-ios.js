@@ -46,18 +46,16 @@ describe("Partie ME - My saved items", function () {
             .should.eventually.exist
             .elementByAccessibilityId('My wishlist')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[5]')
-            .should.eventually.exist
             .click()
             .sleep(5000)
-            .hasElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 5000)
+            .hasElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage')
             .then(function (exist) {
                 if (exist)
                     return driver
                         .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 5000)
+                        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 5000)
                         .should.eventually.exist
                         .elementByAccessibilityId('My wishlist')
                         .should.eventually.exist
@@ -82,15 +80,13 @@ describe("Partie ME - My saved items", function () {
             .should.eventually.exist
             .elementByAccessibilityId('My favourites')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[6]')
-            .should.eventually.exist
             .click()
             .sleep(1000)
-            .hasElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage', 5000)
+            .hasElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
             .then(function (exist) {
                 if (exist)
                     return driver
-                        .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage')
+                        .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
                         .should.eventually.exist
                         .click()
                         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 5000)
@@ -110,7 +106,7 @@ describe("Partie ME - My saved items", function () {
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
@@ -123,12 +119,8 @@ describe("Partie ME - My saved items", function () {
             .should.eventually.exist
             .elementByAccessibilityId('My alerts')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[7]')
-            .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Price reductions I\'\m following', 5000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
             .click()
             .sleep(2000)
@@ -170,12 +162,8 @@ describe("Partie ME - My saved items", function () {
             .should.eventually.exist
             .elementByAccessibilityId('My alerts')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[7]')
-            .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Items I\'\m looking for', 5000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[2]')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="Items I\'\m looking for"]', 5000)
@@ -200,23 +188,23 @@ describe("Partie ME - My saved items", function () {
                         .should.eventually.exist;
                 else
                     return driver
-                    .waitForElementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"Alert created on")])',5000)
-                    .should.eventually.exist
-                    .elementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"Received :")])')
-                    .should.eventually.exist
-            //         .elementByXPath('(//XCUIElementTypeImage[@name="edit_icon"])[1]')
-            //         .should.eventually.exist
-            //         .click()
-            //         .waitForElementByAccessibilityId('Immediately, by e-mail', 5000)
-            //         .should.eventually.exist
-            //         .elementByAccessibilityId('Immediately, by mobile notification')
-            //         .should.eventually.exist
-            //         .elementByAccessibilityId('Immediately, by e-mail and mobile notification')
-            //         .should.eventually.exist
-            //         .elementByAccessibilityId('Every day by e-mail')
-            //         .should.eventually.exist
-            //         .elementByAccessibilityId('Delete this alert')
-            //         .should.eventually.exist
+                        .waitForElementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"Alert created on")])', 5000)
+                        .should.eventually.exist
+                        .elementByXPath('(//XCUIElementTypeStaticText[starts-with(@name,"Received :")])')
+                        .should.eventually.exist
+                //         .elementByXPath('(//XCUIElementTypeImage[@name="edit_icon"])[1]')
+                //         .should.eventually.exist
+                //         .click()
+                //         .waitForElementByAccessibilityId('Immediately, by e-mail', 5000)
+                //         .should.eventually.exist
+                //         .elementByAccessibilityId('Immediately, by mobile notification')
+                //         .should.eventually.exist
+                //         .elementByAccessibilityId('Immediately, by e-mail and mobile notification')
+                //         .should.eventually.exist
+                //         .elementByAccessibilityId('Every day by e-mail')
+                //         .should.eventually.exist
+                //         .elementByAccessibilityId('Delete this alert')
+                //         .should.eventually.exist
             })
 
             .elementByAccessibilityId('My alerts')
@@ -235,12 +223,8 @@ describe("Partie ME - My saved items", function () {
             .should.eventually.exist
             .elementByAccessibilityId('My alerts')
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[7]')
-            .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('People I\'\m following', 5000)
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[3]')
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeOther[@name="People I\'\m following"]', 5000)

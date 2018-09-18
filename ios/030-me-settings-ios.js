@@ -39,7 +39,7 @@ describe("Partie ME - Settings", function () {
     });
     it("ME - Settings/Push notifications", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
             .sleep(1000)
@@ -83,7 +83,7 @@ describe("Partie ME - Settings", function () {
     });
     it("ME - Settings/Subscription", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
             .sleep(1000)
@@ -120,7 +120,7 @@ describe("Partie ME - Settings", function () {
     });
     it("ME - Settings/Privacy", function (done) {
         driver
-            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
             .sleep(1000)
