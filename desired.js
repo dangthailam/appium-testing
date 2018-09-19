@@ -12,6 +12,6 @@ exports.ios = {
     "platformVersion": "12.0",
     "deviceName": "iPhone Simulator",
     "app": "/Users/ngoc.le/Documents/ngoc.le/Appium/app09.14/Vestiaire Collective.app",
-    "connectHardwareKeyboard":false,
+    "connectHardwareKeyboard":true,
     "noReset": true
 };
