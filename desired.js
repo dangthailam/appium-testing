@@ -9,9 +9,9 @@ exports.android = {
 
 exports.ios = {
     "platformName": "iOS",
-    "platformVersion": "11.4",
+    "platformVersion": "12.0",
     "deviceName": "iPhone Simulator",
     "app": "/Users/ngoc.le/Documents/ngoc.le/Appium/app09.14/Vestiaire Collective.app",
-    "connectHrdwareKeyboard": false,
+    "connectHardwareKeyboard":false,
     "noReset": true
 };
