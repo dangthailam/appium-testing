@@ -36,40 +36,83 @@ describe("MDP oublié", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it("Inscrire avec l'email incorrect", function (done) {
-        driver.elementById("fr.vestiairecollective:id/btn_connect_vestiaire")
+    it.skip("Inscrire avec l'email incorrect", function (done) {
+        driver.elementById("fr.vestiairecollective:id/btn_create_account")
             .should.eventually.exist
             .click()
-            .waitForElementById("fr.vestiairecollective:id/btn_forgotten_password", 5000)
+            .waitForElementById("fr.vestiairecollective:id/text_title_create_account", 5000)
+            .should.eventually.exist
+            .elementById('fr.vestiairecollective:id/edit_create_account_firstname')
+            .sendKeys("Ngoc")
+            .elementById('fr.vestiairecollective:id/edit_create_account_email')
+            .sendKeys("ngoc@ksdkdsksdjk")
+            .elementById("fr.vestiairecollective:id/edit_create_account_password")
+            .sendKeys("09051989")
+            .elementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Spinner/android.widget.TextView')
+            .click()
+            .waitForElementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[2]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementById('fr.vestiairecollective:id/text_title_forgotten_password', 5000)
-            .should.eventually.exist
-            .elementById('fr.vestiairecollective:id/edit_forgotten_password_email')
-            .should.eventually.exist
-            .sendKeys("ngoc.le+12@vestiairecollective.com")
-            .sleep(1000)
-            .elementById("fr.vestiairecollective:id/btn_request_forgotten_password")
+            .waitForElementById('fr.vestiairecollective:id/btn_launch_create_account', 5000)
             .should.eventually.exist
             .click()
-            .sleep(1000)
-            .hasElementById("android:id/alertTitle")
-            .then(function (exist) {
-                if (exist)
-                    return driver.elementById("android:id/alertTitle")
-                        .should.eventually.exist
-                        .elementById('android:id/button1')
-                        .click()
-                        .waitForElementById('fr.vestiairecollective:id/btn_forgotten_password', 5000)
-                        .should.eventually.exist;
-                else
-                    return driver.elementById('android:id/message')
-                        .should.eventually.exist
-                        .elementById('android:id/button1')
-                        .click()
-                        .waitForElementById('fr.vestiairecollective:id/btn_forgotten_password', 5000)
-                        .should.eventually.exist;
-            })
+            .waitForElementById('fr.vestiairecollective:id/btn_launch_create_account', 5000)
+            .should.eventually.exist
+            .nodeify(done);
+    });
+
+    it.skip("Inscrire avec l'email déjà existé", function (done) {
+        driver.elementById("fr.vestiairecollective:id/btn_create_account")
+            .should.eventually.exist
+            .click()
+            .waitForElementById("fr.vestiairecollective:id/text_title_create_account", 5000)
+            .should.eventually.exist
+            .elementById('fr.vestiairecollective:id/edit_create_account_firstname')
+            .sendKeys("Ngoc")
+            .elementById('fr.vestiairecollective:id/edit_create_account_email')
+            .sendKeys("ngoc+7@vestiairecollective.com")
+            .elementById("fr.vestiairecollective:id/edit_create_account_password")
+            .sendKeys("09051989")
+            .elementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Spinner/android.widget.TextView')
+            .click()
+            .waitForElementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[2]', 5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementById('fr.vestiairecollective:id/btn_launch_create_account', 5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementById('android:id/message', 5000)
+            .should.eventually.exist
+            .elementById('android:id/button1')
+            .click()
+            .waitForElementById('fr.vestiairecollective:id/btn_launch_create_account', 5000)
+            .should.eventually.exist
+            .nodeify(done);
+    });
+
+    it("Inscrire avec l'email correct", function (done) {
+        driver.elementById("fr.vestiairecollective:id/btn_create_account")
+            .should.eventually.exist
+            .click()
+            .waitForElementById("fr.vestiairecollective:id/text_title_create_account", 5000)
+            .should.eventually.exist
+            .elementById('fr.vestiairecollective:id/edit_create_account_firstname')
+            .sendKeys("Ngoc")
+            .elementById('fr.vestiairecollective:id/edit_create_account_email')
+            .sendKeys('ngoc.le+' + Date.now() + '@vestiairecollective.com')
+            .elementById("fr.vestiairecollective:id/edit_create_account_password")
+            .sendKeys("09051989")
+            .elementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.FrameLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.Spinner/android.widget.TextView')
+            .click()
+            .waitForElementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.ListView/android.widget.TextView[2]', 5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementById('fr.vestiairecollective:id/btn_launch_create_account', 5000)
+            .should.eventually.exist
+            .click()
+
+
+            
 
             .nodeify(done);
     });

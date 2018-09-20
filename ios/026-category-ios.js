@@ -37,7 +37,7 @@ describe("Catégorie", function () {
         allPassed = allPassed && this.currentTest.state === 'passed';
         return driver.quit();
     });
-    it.skip("Catégorie - Women", function (done) {
+    it("Catégorie - Women", function (done) {
         driver
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist
@@ -90,7 +90,7 @@ describe("Catégorie", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("Catégorie - Men", function (done) {
+    it("Catégorie - Men", function (done) {
         driver
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist
@@ -144,7 +144,7 @@ describe("Catégorie", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("Catégorie - Design", function (done) {
+    it("Catégorie - Design", function (done) {
         driver
             .waitForElementByAccessibilityId('Buy',5000)
             .should.eventually.exist

@@ -157,7 +157,7 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("ME - My account/My addresses & phone number", function (done) {
+    it("ME - My account/My addresses & phone number", function (done) {
         driver
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
@@ -194,7 +194,7 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("ME - My account/My bank details", function (done) {
+    it("ME - My account/My bank details", function (done) {
         driver
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
@@ -248,7 +248,7 @@ describe("Partie ME - My account", function () {
             .should.eventually.exist
             .nodeify(done);
     });
-    it.skip("ME - My account/My payment methods", function (done) {
+    it("ME - My account/My payment methods", function (done) {
         driver
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist

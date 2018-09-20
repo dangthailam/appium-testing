@@ -105,8 +105,6 @@ describe("Inscription", function () {
             .click()
             .waitForElementByAccessibilityId('Already a member? Log in',5000)
             .should.eventually.exist
-            .elementByAccessibilityId('arrow-right')
-            .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('LOG IN',5000)
             .should.eventually.exist

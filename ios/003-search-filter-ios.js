@@ -39,7 +39,7 @@ describe("Produit page", function () {
     });
 
 
-    it.skip("Recherche un produit", function (done) {
+    it("Recherche un produit", function (done) {
         // _shared.login.shouldLogin(driver)
         driver
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 3000)
