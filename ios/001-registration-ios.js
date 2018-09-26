@@ -106,9 +106,7 @@ describe("Inscription", function () {
             .waitForElementByAccessibilityId('Already a member? Log in',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('LOG IN',5000)
-            .should.eventually.exist
-            .elementByAccessibilityId('Back')
+            .waitForElementByAccessibilityId('Back',5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('btn-register', 5000)

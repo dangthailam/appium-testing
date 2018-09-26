@@ -38,12 +38,37 @@ describe("Contenus édito / Commentaire", function () {
     });
     it.skip("Vérifier que l'on peut cliquer sur les contenus édito", function (done) { // Attendre les id des contenus édito
         // _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-            driver.sleep(500)
+        driver.sleep(500)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .then(function () {
                 ////XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]
 
                 ////XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]
-                
+
                 ////XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]
                 ////XCUIElementTypeApplication[@name='Vestiaire']/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]
                 ///XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeOther[3]/XCUIElementTypeButton
@@ -51,18 +76,18 @@ describe("Contenus édito / Commentaire", function () {
             })
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Back",500)
+            .waitForElementByAccessibilityId("Back", 500)
             .should.eventually.exist
             .click()
             .sleep(500)
             // .waitForElementByXPath("//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]",500)
             // .should.eventually.exist
             .then(function () {
-                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]","XPath");
+                return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "//XCUIElementTypeApplication[@name=\"Vestiaire\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]/XCUIElementTypeOther/XCUIElementTypeImage[1]", "XPath");
             })
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Back",500)
+            .waitForElementByAccessibilityId("Back", 500)
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -73,7 +98,7 @@ describe("Contenus édito / Commentaire", function () {
             })
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId("Back",500)
+            .waitForElementByAccessibilityId("Back", 500)
             .should.eventually.exist
             .click()
             .sleep(500)

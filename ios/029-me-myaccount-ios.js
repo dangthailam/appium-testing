@@ -38,7 +38,32 @@ describe("Partie ME - My account", function () {
         return driver.quit();
     });
     it("ME - My account/My details", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
@@ -119,7 +144,7 @@ describe("Partie ME - My account", function () {
             .elementByAccessibilityId('My details')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Currency',5000)
+            .waitForElementByAccessibilityId('Currency', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('USD', 5000)
@@ -138,7 +163,7 @@ describe("Partie ME - My account", function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "France", "AccessibilityId");
             })
             .click()
-            .waitForElementByAccessibilityId('France',5000)
+            .waitForElementByAccessibilityId('France', 5000)
             .should.eventually.exist
             .swipe({
                 startX: 200,
@@ -158,7 +183,32 @@ describe("Partie ME - My account", function () {
             .nodeify(done);
     });
     it("ME - My account/My addresses & phone number", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
@@ -171,21 +221,21 @@ describe("Partie ME - My account", function () {
             .elementByXPath('//XCUIElementTypeStaticText[@name="My addresses & phone number "]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="My addresses & phone number"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="My addresses & phone number"]', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
             .elementByAccessibilityId('Delivery addresses')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Set up a new address',5000)
+            .waitForElementByAccessibilityId('Set up a new address', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('arrow-right')
             .should.eventually.exist
             .elementByAccessibilityId('Delivery addresses')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('My addresses & phone number',5000)
+            .waitForElementByAccessibilityId('My addresses & phone number', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -195,7 +245,32 @@ describe("Partie ME - My account", function () {
             .nodeify(done);
     });
     it("ME - My account/My bank details", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
@@ -206,7 +281,7 @@ describe("Partie ME - My account", function () {
             .elementByAccessibilityId('My bank details')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="My bank details"]',10000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="My bank details"]', 10000)
             .should.eventually.exist
             .elementByAccessibilityId('I would like transfers to be made to :')
             .should.eventually.exist
@@ -249,7 +324,32 @@ describe("Partie ME - My account", function () {
             .nodeify(done);
     });
     it("ME - My account/My payment methods", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
@@ -262,7 +362,7 @@ describe("Partie ME - My account", function () {
             .elementByAccessibilityId('My payment methods')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="My payment methods"]',10000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="My payment methods"]', 10000)
             .should.eventually.exist
             .hasElementByAccessibilityId('You do not have any registered credit cards.')
             .then(function (exist) {

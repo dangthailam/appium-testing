@@ -40,6 +40,31 @@ describe("My favourites", function () {
     it("Ajouter ou enlever un produit dans ma wish list", function (done) {
         //_shared.methods.shouldLogin(driver)
         driver
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]", 5000)
             .click()
             .waitForElementByAccessibilityId("bar_notif_confirm", 500)

@@ -37,7 +37,32 @@ describe("Paiement", function () {
         return driver.quit();
     });
     it("Paiment / Moyen de payement - credit card", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
@@ -55,7 +80,7 @@ describe("Paiement", function () {
             .elementByAccessibilityId("COMPLETE MY ORDER")
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Credit card',5000)
+            .waitForElementByAccessibilityId('Credit card', 5000)
             .should.eventually.exist
             .click()
             .sleep(500)
@@ -82,7 +107,32 @@ describe("Paiement", function () {
             .nodeify(done);
     });
     it("Paiment / Moyen de payement - paypal", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
@@ -131,7 +181,32 @@ describe("Paiement", function () {
             .nodeify(done);
     });
     it("Paiment / Moyen de payement - confinoga card", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
@@ -180,7 +255,32 @@ describe("Paiement", function () {
             .nodeify(done);
     });
     it("Paiment / Moyen de payement - 3X payement", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()
@@ -234,7 +334,32 @@ describe("Paiement", function () {
             .nodeify(done);
     });
     it("Paiment / Moyen de payement - 4X payement", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("btn-cart", 9000)
             .should.eventually.exist
             .click()

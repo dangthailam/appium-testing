@@ -40,7 +40,33 @@ describe("Produit page", function () {
     it('Vérification la direction à la page produit ', function (done) {
         var informationStr = [];
 
-        driver.waitForElementByAccessibilityId("Me", 5000)
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
+            .waitForElementByAccessibilityId("Me", 5000)
             .elementsByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText')
             .then(function (elements) {
                 var count = elements.length;
@@ -60,7 +86,7 @@ describe("Produit page", function () {
             })
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
             .click()
-            .waitForElementsByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText', 4000)
+            .waitForElementsByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText', 10000)
             .then(function (elements) {
                 var count = elements.length;
                 var counter = 0;
@@ -96,9 +122,34 @@ describe("Produit page", function () {
             .sleep(1000)
             .nodeify(done);
     });
-    
+
     it("Produit page - Bloc générale", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 5000)
             .should.eventually.exist
             .click()
@@ -119,7 +170,7 @@ describe("Produit page", function () {
                     return driver.elementByAccessibilityId('More Info')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByAccessibilityId('Cancel',5000)
+                        .waitForElementByAccessibilityId('Cancel', 5000)
                         .should.eventually.exist
                         .click();
                 else
@@ -137,7 +188,7 @@ describe("Produit page", function () {
                         .elementByAccessibilityId('Cancel')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]',5000)
+                        .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]', 5000)
                         .should.eventually.exist;
                 else
                     return driver.elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]')

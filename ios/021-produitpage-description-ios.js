@@ -38,7 +38,32 @@ describe("Produit page - créer une alerte", function () {
         return driver.quit();
     });
     it("Produit page - Description", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 5000)
             .should.eventually.exist
             .click()
@@ -95,8 +120,8 @@ describe("Produit page - créer une alerte", function () {
             .sleep(500)
             .swipe({
                 startX: 200,
-                startY: 300,
-                endX: 100,
+                startY: 400,
+                endX: 200,
                 endY: 100,
                 duration: 800
             })
@@ -168,10 +193,11 @@ describe("Produit page - créer une alerte", function () {
             .elementByAccessibilityId('Create an alert')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('SAVE MY ALERT', 5000)
+            // .waitForElementByAccessibilityId('SAVE MY ALERT', 5000)
+            .waitForElementByXPath('//XCUIElementTypeButton[@name="SAVE MY ALERT"]',5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="I would like to receive my alert:"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="I would like to receive my alert:"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('SAVE MY ALERT')
             .should.eventually.exist

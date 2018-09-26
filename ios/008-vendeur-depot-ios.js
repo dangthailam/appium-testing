@@ -39,7 +39,32 @@ describe("Dépôt un article", function () {
 
 
     it("Dépôt un article / Information", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
@@ -72,14 +97,7 @@ describe("Dépôt un article", function () {
             .click()
             .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="How do I know what the primary material of the item is?"])[2]', 5000)
             .should.eventually.exist
-            .elementByAccessibilityId('arrow-noire-up')
-            .should.eventually.exist
-            .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="We advise that you refer to the label detailing the composition of your item."])[1]', 5000)
-            .should.eventually.exist
-            .waitForElementByAccessibilityId('arrow-noire-down', 5000)
-            .click()
-            .waitForElementByAccessibilityId('OK', 5000)
+            .elementByAccessibilityId('OK', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Colour"])[1]', 5000)
@@ -106,7 +124,32 @@ describe("Dépôt un article", function () {
     });
 
     it("Dépôt un article / Photos", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
@@ -128,8 +171,9 @@ describe("Dépôt un article", function () {
             .click()
             .waitForElementByAccessibilityId('Main photo', 5000)
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="add_more_photo"])[1]')
-            .should.eventually.exist
+            // .elementByXPath('(//XCUIElementTypeImage[@name="add_more_photo"])[1]')
+            // .should.eventually.exist
+            .elementByAccessibilityId('Main photo')
             .click()
             .waitForElementByAccessibilityId('Camera', 5000)
             .isEnabled()
@@ -142,8 +186,8 @@ describe("Dépôt un article", function () {
             .click()
             .waitForElementByAccessibilityId('2nd photo', 5000)
             .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="add_more_photo"])[1]')
-            .should.eventually.exist
+            // .elementByXPath('(//XCUIElementTypeImage[@name="add_more_photo"])[1]')
+            // .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Camera', 5000)
             .isEnabled()
@@ -189,7 +233,32 @@ describe("Dépôt un article", function () {
             .nodeify(done);
     });
     it("Dépôt un article / Description", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
@@ -200,8 +269,6 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
             .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
@@ -233,7 +300,32 @@ describe("Dépôt un article", function () {
             .nodeify(done);
     });
     it("Dépôt un article / Condition & price", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
@@ -244,8 +336,6 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
             .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
@@ -283,7 +373,32 @@ describe("Dépôt un article", function () {
             .nodeify(done);
     });
     it("Dépôt un article / Seller", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("Sell", 5000)
             .should.eventually.exist
             .click()
@@ -294,8 +409,6 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('Resale Calculator')
             .should.eventually.exist
             .elementByAccessibilityId('Calculate the potential resale value of your pre-loved items with our easy to use Resale Calculator.')
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow-right"])[1]')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]')
             .should.eventually.exist
@@ -314,10 +427,10 @@ describe("Dépôt un article", function () {
             .elementByAccessibilityId('CONFIRM THIS STEP')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Optional information',5000)
+            .waitForElementByAccessibilityId('Optional information', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Vintage"])[1]',5000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Vintage"])[1]', 5000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Origin"])[1]')
             .should.eventually.exist
@@ -330,12 +443,12 @@ describe("Dépôt un article", function () {
             .elementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[3]',5000)
+            .waitForElementByXPath('(//XCUIElementTypeStaticText[@name="Test product"])[3]', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[@name="Test product"]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('back',5000)
+            .waitForElementByAccessibilityId('back', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('CONFIRM', 5000)

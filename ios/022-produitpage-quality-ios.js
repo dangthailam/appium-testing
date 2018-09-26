@@ -38,7 +38,32 @@ describe("Produit page", function () {
         return driver.quit();
     });
     it("Produit page - Bloc Qualité / Information", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther', 5000)
             .should.eventually.exist
             .click()
@@ -50,7 +75,7 @@ describe("Produit page", function () {
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('INFORMATIONS',5000)
+            .waitForElementByAccessibilityId('INFORMATIONS', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeStaticText[@name="Quality Control"]')
             .should.eventually.exist
@@ -59,15 +84,15 @@ describe("Produit page", function () {
             .elementByXPath('//XCUIElementTypeStaticText[@name="Item location "]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Close',5000)
+            .waitForElementByAccessibilityId('Close', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Shipping and returns',5000)
+            .waitForElementByAccessibilityId('Shipping and returns', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[3]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Shipping',5000)
+            .waitForElementByAccessibilityId('Shipping', 5000)
             .should.eventually.exist
             // .elementByXPath('//XCUIElementTypeSwitch[starts-with(@name, "The item is currently held by the seller")]')
             // .should.eventually.exist ???????????????????????????????????????????
@@ -76,7 +101,7 @@ describe("Produit page", function () {
             .elementByAccessibilityId('Close')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('100% secure payment',5000)
+            .waitForElementByAccessibilityId('100% secure payment', 5000)
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[6]/XCUIElementTypeButton[4]')
             .should.eventually.exist
@@ -91,7 +116,7 @@ describe("Produit page", function () {
             .should.eventually.exist
             .click()
             // .waitForElementByXPath('//XCUIElementTypeSwitch[starts-with(@name, "In accordance with our General Conditions of Sale ")]', 5000) > ????????
-            .waitForElementByXPath('(//XCUIElementTypeLink[@name="More information"])[1]',5000)
+            .waitForElementByXPath('(//XCUIElementTypeLink[@name="More information"])[1]', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Sign in', 20000)
@@ -99,7 +124,7 @@ describe("Produit page", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeLink[@name="More information"])[2]',5000)
+            .waitForElementByXPath('(//XCUIElementTypeLink[@name="More information"])[2]', 5000)
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Sign in', 20000)
@@ -110,12 +135,12 @@ describe("Produit page", function () {
             .waitForElementByAccessibilityId('Returns', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="100% secure payment"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="100% secure payment"]', 5000)
             .should.eventually.exist
             .waitForElementByAccessibilityId('Help', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Write to Us',2000)
+            .waitForElementByAccessibilityId('Write to Us', 2000)
             .should.eventually.exist
             .nodeify(done);
     });

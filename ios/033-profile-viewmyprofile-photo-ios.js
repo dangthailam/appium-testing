@@ -38,17 +38,42 @@ describe("Profile - View my profile/Photo", function () {
         return driver.quit();
     });
     it("Profile - Image profile  ", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('VIEW MY PROFILE',5000)
+            .waitForElementByAccessibilityId('VIEW MY PROFILE', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('placeholder_profil-big',5000)
+            .waitForElementByAccessibilityId('placeholder_profil-big', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Take a picture',5000)
+            .waitForElementByAccessibilityId('Take a picture', 5000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('Choose existing')
@@ -57,22 +82,47 @@ describe("Profile - View my profile/Photo", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('placeholder_profil-big',5000)
+            .waitForElementByAccessibilityId('placeholder_profil-big', 5000)
             .should.eventually.exist
             .nodeify(done);
     });
     it("Profile - Image cover  ", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('VIEW MY PROFILE',5000)
+            .waitForElementByAccessibilityId('VIEW MY PROFILE', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('cover-default',5000)
+            .waitForElementByAccessibilityId('cover-default', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Take a picture',5000)
+            .waitForElementByAccessibilityId('Take a picture', 5000)
             .isEnabled()
             .should.eventually.be.true
             .elementByAccessibilityId('Choose existing')
@@ -81,7 +131,7 @@ describe("Profile - View my profile/Photo", function () {
             .elementByAccessibilityId('Cancel')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('placeholder_profil-big',5000)
+            .waitForElementByAccessibilityId('placeholder_profil-big', 5000)
             .nodeify(done);
     });
 });

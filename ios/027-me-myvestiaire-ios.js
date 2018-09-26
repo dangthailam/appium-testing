@@ -38,7 +38,32 @@ describe("Partie ME - My Vestiaire", function () {
         return driver.quit();
     });
     it("ME - My Vestiaire/My items", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
@@ -199,7 +224,7 @@ describe("Partie ME - My Vestiaire", function () {
                         .waitForElementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]', 5000)
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]',5000)
+                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]', 5000)
                         .should.eventually.exist;
 
                 else
@@ -208,7 +233,32 @@ describe("Partie ME - My Vestiaire", function () {
             .nodeify(done);
     });
     it("ME - My Vestiaire/My orders", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
@@ -248,7 +298,7 @@ describe("Partie ME - My Vestiaire", function () {
                         .waitForElementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]', 5000)
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]',5000)
+                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]', 5000)
                         .should.eventually.exist;
                 else
                     return driver;
@@ -256,7 +306,32 @@ describe("Partie ME - My Vestiaire", function () {
             .nodeify(done);
     });
     it("ME - My Vestiaire/Price offers sent", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
@@ -267,7 +342,7 @@ describe("Partie ME - My Vestiaire", function () {
             .elementByAccessibilityId('Price offers sent')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Price offers sent"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Price offers sent"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('me alerts params')
             .isEnabled()
@@ -280,7 +355,7 @@ describe("Partie ME - My Vestiaire", function () {
                         .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeImage[1]')
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Negotiating area"]',5000)
+                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Negotiating area"]', 5000)
                         .should.eventually.exist
                         .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeImage')
                         .should.eventually.exist
@@ -290,12 +365,12 @@ describe("Partie ME - My Vestiaire", function () {
                         .waitForElementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]', 5000)
                         .should.eventually.exist
                         .click()
-                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]',5000)
+                        .waitForElementByXPath('//XCUIElementTypeOther[@name="Me"]', 5000)
                         .should.eventually.exist;
                 else
                     return driver
-                    .elementByXPath('//XCUIElementTypeStaticText[@name="You have no current negotiations."]')
-                    .should.eventually.exist;
+                        .elementByXPath('//XCUIElementTypeStaticText[@name="You have no current negotiations."]')
+                        .should.eventually.exist;
             })
             .nodeify(done);
     });

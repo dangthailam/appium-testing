@@ -40,8 +40,7 @@ describe("Produit page", function () {
 
 
     it("Recherche un produit", function (done) {
-        // _shared.login.shouldLogin(driver)
-        driver
+        _shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 3000)
             .click()
             .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 2000)
@@ -62,8 +61,33 @@ describe("Produit page", function () {
     });
 
     it("Filtre", function (done) {
-        // _shared.login.shouldLogin(driver)
-        driver
+        // _shared.methods.shouldLogin(driver)
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .then(function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "SEE ALL NEW ITEMS", "AccessibilityId");
@@ -82,8 +106,6 @@ describe("Produit page", function () {
             .should.eventually.exist
             .click()
             .elementByAccessibilityId("Bags")
-            .should.eventually.exist
-            .elementByXPath('(//XCUIElementTypeImage[@name="arrow_down_categories"])[2]')
             .should.eventually.exist
             .click()
             .waitForElementByAccessibilityId('Handbags', 5000)
@@ -115,7 +137,7 @@ describe("Produit page", function () {
             })
             .elementByXPath(`//XCUIElementTypeCollectionView/XCUIElementTypeCell[@y > 0][1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeStaticText`)
             .getValue()
-            .then(function(productName) {
+            .then(function (productName) {
                 return driver.elementByXPath(`//XCUIElementTypeStaticText[@name="` + productName + `"]`)
                     .click()
                     .waitForElementByXPath(`//XCUIElementTypeButton[@name="New items"]`, 5000)

@@ -40,9 +40,9 @@ function swipeBottomUpAndCheckIfElementExist(driver, query, queryType) {
 
 function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
     return verifyLoginState(driver)
-        .waitForElementByAccessibilityId('btn-login', 2000)
+        .waitForElementByAccessibilityId('btn-login', 5000)
         .click()
-        .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 1000)
+        .waitForElementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField', 5000)
         .sendKeys(login)
         .elementByXPath('//XCUIElementTypeTable/XCUIElementTypeCell[3]/XCUIElementTypeSecureTextField')
         .sendKeys(password)
@@ -51,7 +51,19 @@ function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
         .elementByXPath('//XCUIElementTypeButton[@name="LOG IN"]')
         .should.eventually.exist
         .click()
-        .sleep(1000)
+        .sleep(5000)
+        .hasElementByAccessibilityId('I UNDERSTOOD')
+        .then(function (exist) {
+            if (exist) {
+                return driver.elementByAccessibilityId('I UNDERSTOOD')
+                    .should.eventually.exist
+                    .elementByAccessibilityId('Later')
+                    .should.eventually.exist
+                    .click()
+            }
+            else
+                return driver;
+        })
         .hasElementByXPath('//XCUIElementTypeButton[@name="Me"]')
         .then(function (exist) {
             if (exist) {
@@ -77,11 +89,11 @@ function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
                     .click()
                     .waitForElementByXPath('//XCUIElementTypeSwitch[@name="By signing up, I agree to the terms and conditions of Vestiaire Collective"]', 4000)
                     .click()
-                    .waitForElementByXPath('//XCUIElementTypeButton[@name="SIGN UP"]',5000)
+                    .waitForElementByXPath('//XCUIElementTypeButton[@name="SIGN UP"]', 5000)
                     .click()
                     .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
                     .click()
-                    .waitForElementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]',5000)
+                    .waitForElementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]', 5000)
                     .should.eventually.exist
                     .swipe({
                         startX: 200,
@@ -93,16 +105,16 @@ function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
                     .elementByAccessibilityId('My details')
                     .should.eventually.exist
                     .click()
-                    .waitForElementByAccessibilityId('Currency',5000)
+                    .waitForElementByAccessibilityId('Currency', 5000)
                     .should.eventually.exist
                     .click()
-                    .waitForElementByAccessibilityId('EUR',5000)
+                    .waitForElementByAccessibilityId('EUR', 5000)
                     .should.eventually.exist
                     .click()
                     .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
                     .should.eventually.exist
                     .click()
-                    .waitForElementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]',5000)
+                    .waitForElementByXPath('//XCUIElementTypeStaticText[@name="VIEW MY PROFILE"]', 5000)
                     .should.eventually.exist
                     .swipe({
                         startX: 200,
@@ -114,7 +126,7 @@ function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
                     .elementByAccessibilityId('My details')
                     .should.eventually.exist
                     .click()
-                    .waitForElementByAccessibilityId('Site',5000)
+                    .waitForElementByAccessibilityId('Site', 5000)
                     .should.eventually.exist
                     .click()
                     .sleep(2000)
@@ -127,13 +139,39 @@ function shouldLogin(driver, login, password, registerWhenLoginFailed = false) {
                     .elementByAccessibilityId("Home")
                     .should.eventually.exist
                     .click()
-                    .waitForElementByAccessibilityId('Home',5000);
+                    .waitForElementByAccessibilityId('Home', 5000);
             }
         });
 }
 
 function verifyLoginState(driver) {
-    return driver
+    return driver.sleep(5000)
+        .hasElementByAccessibilityId('I UNDERSTOOD')
+        .then(function (exist) {
+            if (exist) {
+                return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                    .should.eventually.exist
+                    .elementByAccessibilityId('Later')
+                    .should.eventually.exist
+                    .click()
+            }
+            else
+                return driver;
+        })
+
+        .hasElementByAccessibilityId('Allow')
+        .then(function (exist) {
+            if (exist) {
+                return driver.waitForElementByAccessibilityId('Allow', 5000)
+                    .should.eventually.exist
+                    .elementByAccessibilityId('Don’t Allow')
+                    .should.eventually.exist
+                    .click();
+            }
+            else
+                return driver;
+        })
+
         .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 7000)
         .should.eventually.exist
         .click()
@@ -159,7 +197,33 @@ function verifyLoginState(driver) {
 
 
 function searchTestProd(driver, productId) {
-    return driver.sleep(500)
+    return driver.sleep(5000)
+        .hasElementByAccessibilityId('I UNDERSTOOD')
+        .then(function (exist) {
+            if (exist) {
+                return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                    .should.eventually.exist
+                    .elementByAccessibilityId('Later')
+                    .should.eventually.exist
+                    .click()
+            }
+            else
+                return driver;
+        })
+
+        .hasElementByAccessibilityId('Allow')
+        .then(function (exist) {
+            if (exist) {
+                return driver.waitForElementByAccessibilityId('Allow', 5000)
+                    .should.eventually.exist
+                    .elementByAccessibilityId('Don’t Allow')
+                    .should.eventually.exist
+                    .click();
+            }
+            else
+                return driver;
+        })
+
         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeTextField', 2000)
         .click()
         .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField', 2000)

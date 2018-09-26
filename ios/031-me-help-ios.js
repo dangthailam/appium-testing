@@ -38,7 +38,32 @@ describe("Partie ME - Help", function () {
         return driver.quit();
     });
     it("ME - Help/Our commission", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
@@ -48,7 +73,7 @@ describe("Partie ME - Help", function () {
             })
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Our commission means we can provide exclusive services!"]',10000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Our commission means we can provide exclusive services!"]', 10000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -58,7 +83,32 @@ describe("Partie ME - Help", function () {
             .nodeify(done);
     });
     it("ME - Help/Contact us", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
@@ -70,7 +120,7 @@ describe("Partie ME - Help", function () {
             .click()
             // .waitForElementByXPath('//XCUIElementTypeOther[@name="Contact Us"]',5000)
             // .should.eventually.exist
-            .waitForElementByAccessibilityId('Sign in',10000)
+            .waitForElementByAccessibilityId('Sign in', 10000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -80,7 +130,32 @@ describe("Partie ME - Help", function () {
             .nodeify(done);
     });
     it("ME - Help/FAQ", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
@@ -92,7 +167,7 @@ describe("Partie ME - Help", function () {
             .click()
             // .waitForElementByXPath('//XCUIElementTypeOther[@name="FAQ"]',5000)
             // .should.eventually.exist
-            .waitForElementByXPath('//XCUIElementTypeImage[@name="Logo"]',10000)
+            .waitForElementByXPath('//XCUIElementTypeImage[@name="Logo"]', 10000)
             .should.eventually.exist
             .elementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]')
             .should.eventually.exist
@@ -102,7 +177,32 @@ describe("Partie ME - Help", function () {
             .nodeify(done);
     });
     it("ME - Help/Rate our app/Legal information/General", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
@@ -112,7 +212,7 @@ describe("Partie ME - Help", function () {
             })
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Return to Vestiaire',10000)
+            .waitForElementByAccessibilityId('Return to Vestiaire', 10000)
             .should.eventually.exist
             .click()
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
@@ -123,7 +223,7 @@ describe("Partie ME - Help", function () {
             .elementByAccessibilityId('Legal information')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Legal information"]',10000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Legal information"]', 10000)
             .should.eventually.exist
             .swipe({
                 startX: 400,
@@ -145,7 +245,7 @@ describe("Partie ME - Help", function () {
             .elementByAccessibilityId('General conditions of use and sale')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="General conditions of use and sale"]',10000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="General conditions of use and sale"]', 10000)
             .should.eventually.exist
             .nodeify(done);
     });

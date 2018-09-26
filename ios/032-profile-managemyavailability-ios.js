@@ -38,41 +38,66 @@ describe("Profile - Manage my availability", function () {
         return driver.quit();
     });
     it("Profile - Manage my availability", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Manage my availability',10000)
+            .waitForElementByAccessibilityId('Manage my availability', 10000)
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeOther[@name="Manage my availability"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeOther[@name="Manage my availability"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('Temporarily unavailable')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeSwitch[starts-with(@name, "Temporarily unable to ship your sold items?")]')
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Start date',5000)
+            .waitForElementByAccessibilityId('Start date', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('End date')
             .should.eventually.exist
             .elementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField[1]')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Start date Select"]',5000)
+            .waitForElementByXPath('//XCUIElementTypeStaticText[@name="Start date Select"]', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('OK')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField[2]',5000)
+            .waitForElementByXPath('//XCUIElementTypeApplication[@name="Vestiaire"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeTextField[2]', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Start date',5000)
+            .waitForElementByAccessibilityId('Start date', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('OK')
             .should.eventually.exist
             .click()
-            .waitForElementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]',5000)
+            .waitForElementByXPath('(//XCUIElementTypeButton[@name="Me"])[1]', 5000)
             .should.eventually.exist
             .nodeify(done);
     });

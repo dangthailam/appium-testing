@@ -39,7 +39,7 @@ describe("Paiement", function () {
     });
 
     function parsePriceToNumber(val) {
-        return parseFloat(val.substring(0, val.length - 2).replace(',','.'));
+        return parseFloat(val.substring(0, val.length - 2).replace(',', '.'));
     }
 
     it("Paiment / Valider le paiement", function (done) {
@@ -51,7 +51,32 @@ describe("Paiement", function () {
         var secondTotalIncludeTaxe = 0;
 
         //_shared.methods.shouldLogin(driver, 'ngoc.le+4@vestiairecollective.com', '002299')
-            driver.sleep(500)
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByAccessibilityId("btn-cart", 2000)
             .should.eventually.exist
             .click()
@@ -68,17 +93,17 @@ describe("Paiement", function () {
             .should.eventually.exist
             // extract all items and accumulate their prices
             .elementsByXPath('//XCUIElementTypeWindow[1]//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeStaticText[4]')
-            .then(function(elements){
+            .then(function (elements) {
                 var items = elements.length;
                 var deferred = Q.defer();
                 var counter = 0;
 
-                elements.forEach(function(e) {
-                    e.getValue().then(function(val) {
+                elements.forEach(function (e) {
+                    e.getValue().then(function (val) {
                         counter++;
                         totalByCalculated += parsePriceToNumber(val);
 
-                        if(counter == items) {
+                        if (counter == items) {
                             deferred.resolve(true);
                         }
                     });
@@ -86,11 +111,11 @@ describe("Paiement", function () {
                 return deferred.promise;
             })
             .elementByXPath('//XCUIElementTypeOther[XCUIElementTypeStaticText[contains(@value, "item")]]/XCUIElementTypeStaticText[2]')
-            .then(function(e) {
+            .then(function (e) {
                 var deferred = Q.defer();
 
                 e.getValue()
-                    .then(function(val) {
+                    .then(function (val) {
                         totalReal = parsePriceToNumber(val);
                         deferred.resolve(true);
                     });
@@ -98,10 +123,10 @@ describe("Paiement", function () {
                 return deferred.promise;
             })
             .elementByXPath('//XCUIElementTypeOther[XCUIElementTypeStaticText[starts-with(@value, "Contribution to postage and insurance fees:")]]/XCUIElementTypeStaticText[2]')
-            .then(function(e) {
+            .then(function (e) {
                 var deferred = Q.defer();
 
-                e.getValue().then(function(val) {
+                e.getValue().then(function (val) {
                     firstInsuranceFee = parsePriceToNumber(val);
                     deferred.resolve(true);
                 });
@@ -109,10 +134,10 @@ describe("Paiement", function () {
                 return deferred.promise;
             })
             .elementByXPath('//XCUIElementTypeOther[XCUIElementTypeStaticText[starts-with(@value, "Total including taxes:")]]/XCUIElementTypeStaticText[2]')
-            .then(function(e) {
+            .then(function (e) {
                 var deferred = Q.defer();
 
-                e.getValue().then(function(val) {
+                e.getValue().then(function (val) {
                     firstTotalIncludeTaxe = parsePriceToNumber(val);
                     deferred.resolve(true);
                 });
@@ -126,10 +151,10 @@ describe("Paiement", function () {
                 return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "COMPLETE MY ORDER", "AccessibilityId");
             })
             .elementByXPath('//XCUIElementTypeCell[XCUIElementTypeStaticText[starts-with(@value, "Total including taxes:")]]/XCUIElementTypeStaticText[2]')
-            .then(function(e) {
+            .then(function (e) {
                 var deferred = Q.defer();
 
-                e.getValue().then(function(val) {
+                e.getValue().then(function (val) {
                     secondTotalIncludeTaxe = parsePriceToNumber(val);
                     deferred.resolve(true);
                 });
@@ -137,17 +162,17 @@ describe("Paiement", function () {
                 return deferred.promise;
             })
             .elementByXPath('//XCUIElementTypeCell[XCUIElementTypeStaticText[contains(@value, "item")]]/XCUIElementTypeStaticText[2]')
-            .then(function(e) {
+            .then(function (e) {
                 var deferred = Q.defer();
 
-                e.getValue().then(function(val) {
+                e.getValue().then(function (val) {
                     secondTotalReal = parsePriceToNumber(val);
                     deferred.resolve(true);
                 });
 
                 return deferred.promise;
             })
-            .then(function() {
+            .then(function () {
                 console.log('totalByCalculated', totalByCalculated);
                 console.log('totalReal', totalReal);
                 console.log('firstInsuranceFee', firstInsuranceFee);

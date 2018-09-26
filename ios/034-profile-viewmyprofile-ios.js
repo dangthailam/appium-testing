@@ -38,14 +38,39 @@ describe("Profile - View my profile", function () {
         return driver.quit();
     });
     it("Profile - Scroll bar", function (done) {
-        driver
+        driver.sleep(5000)
+            .hasElementByAccessibilityId('I UNDERSTOOD')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('I UNDERSTOOD', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Later')
+                        .should.eventually.exist
+                        .click()
+                }
+                else
+                    return driver;
+            })
+
+            .hasElementByAccessibilityId('Allow')
+            .then(function (exist) {
+                if (exist) {
+                    return driver.waitForElementByAccessibilityId('Allow', 5000)
+                        .should.eventually.exist
+                        .elementByAccessibilityId('Don’t Allow')
+                        .should.eventually.exist
+                        .click();
+                }
+                else
+                    return driver;
+            })
             .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 4000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('VIEW MY PROFILE',5000)
+            .waitForElementByAccessibilityId('VIEW MY PROFILE', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('map-pin',5000)
+            .waitForElementByAccessibilityId('map-pin', 5000)
             .should.eventually.exist
             .elementByAccessibilityId('followed by')
             .should.eventually.exist
