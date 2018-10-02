@@ -60,13 +60,13 @@ describe("Identification user", function () {
             .nodeify(done);
 
     });
-    it("Filtre", function (done) {
+    it.skip("Filtre", function (done) {
         _shared.methods.shouldLogin(driver, 'ngoc.le+7@vestiairecollective.com', '09051989')
             // .then(function () {
             //     return _shared.methods.swipeBottomUpAndCheckIfElementExist(driver, "fr.vestiairecollective:id/product_discussion_comment_button", "Id");
             // })
             .sleep(5000)
-            .swipe(200,500,200,700,2000)
+            .swipe(728,1850,728,550,2000)
             .click()
             // .waitForElementByXPath('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.LinearLayout/android.view.ViewGroup/android.widget.TextView',5000)
             .waitForElementByXPath('//*[@resource-id="fr.vestiairecollective:id/product_list_item"]',5000)
