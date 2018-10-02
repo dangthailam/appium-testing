@@ -3,7 +3,7 @@ require('../setup');
 const wd = require("wd");
 // const addContext = require('mochawesome/addContext');
 actions = require('../actions'),
-    _shared = require('../shared/login-ios');
+    _shared = require('../shared/login-and');
 
 const opts = {
     port: 4723
@@ -38,32 +38,58 @@ describe("Identification user", function () {
         return driver.quit();
     });
 
-        it("Login with email and password", function (done) {
-            driver.elementById("fr.vestiairecollective:id/btn_connect_vestiaire")
-                .should.eventually.exist
-                .click()
-                .sleep(1000)
-                .elementById("fr.vestiairecollective:id/edit_login_username")
-                .should.eventually.exist
-                .sendKeys("lebichngoc090589@gmail.com")
-                .elementById("fr.vestiairecollective:id/edit_login_password")
-                .should.eventually.exist
-                .sendKeys("09051989")
-                .elementById("fr.vestiairecollective:id/btn_connect_from_vestiaire")
-                .should.eventually.exist
-                .click()
-                .sleep(4000)
-                .elementById("fr.vestiairecollective:id/img_home")
-                .should.eventually.exist
-                .elementById("fr.vestiairecollective:id/badge_icon_button")
-                .should.eventually.exist
-                .elementById("fr.vestiairecollective:id/animated_search")
-                .should.eventually.exist
-                .elementById("fr.vestiairecollective:id/homeList")
-                .should.eventually.exist
-                .elementById("fr.vestiairecollective:id/navigation")
-                .should.eventually.exist
-                .nodeify(done);
-
-        });
+    it("Connecter avec l'email et mdp vide", function (done) {
+        driver
+            .waitForElementById("fr.vestiairecollective:id/btn_connect_vestiaire",5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementById("fr.vestiairecollective:id/text_title_vestiaire_connect",5000)
+            .should.eventually.exist
+            .elementById('fr.vestiairecollective:id/edit_login_username')
+            .should.eventually.exist
+            .elementById('fr.vestiairecollective:id/edit_login_password')
+            .elementById('fr.vestiairecollective:id/btn_connect_from_vestiaire')
+            .click()
+            .waitForElementById('fr.vestiairecollective:id/btn_connect_from_vestiaire',5000)
+            .should.eventually.exist
+            .nodeify(done);
     });
+    it("Connecter avec l'email incorrect", function (done) {
+        driver
+        .waitForElementById("fr.vestiairecollective:id/btn_connect_vestiaire",5000)
+        .should.eventually.exist
+        .click()
+        .waitForElementById("fr.vestiairecollective:id/text_title_vestiaire_connect",5000)
+        .should.eventually.exist
+        .elementById('fr.vestiairecollective:id/edit_login_username')
+        .should.eventually.exist
+        .sendKeys('ngigi@jjj')
+        .elementById('fr.vestiairecollective:id/btn_connect_from_vestiaire')
+        .click()
+        .waitForElementById('fr.vestiairecollective:id/btn_connect_from_vestiaire',5000)
+        .should.eventually.exist
+        .nodeify(done);
+    });
+    it("Connecter avec mdp incorrect", function (done) {
+        driver
+            .waitForElementById("fr.vestiairecollective:id/btn_connect_vestiaire",5000)
+            .should.eventually.exist
+            .click()
+            .waitForElementById("fr.vestiairecollective:id/text_title_vestiaire_connect",5000)
+            .should.eventually.exist
+            .elementById('fr.vestiairecollective:id/edit_login_username')
+            .should.eventually.exist
+            .sendKeys('ngoc.le+7@vestiairecollective.com')
+            .elementById('fr.vestiairecollective:id/edit_login_password')
+            .sendKeys('0988034')
+            .elementById('fr.vestiairecollective:id/btn_connect_from_vestiaire')
+            .click()
+            .waitForElementById('fr.vestiairecollective:id/btn_connect_from_vestiaire',5000)
+            .should.eventually.exist
+            .nodeify(done);
+    });
+    it("Connecter avec email et mdp correct", function (done) {
+        _shared.methods.shouldLogin(driver, 'ngoc.le+7@vestiairecollective.com', '09051989')
+            .nodeify(done);
+    });
+});

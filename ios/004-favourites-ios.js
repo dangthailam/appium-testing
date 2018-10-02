@@ -65,9 +65,10 @@ describe("My favourites", function () {
                 else
                     return driver;
             })
-            .waitForElementByXPath("(//XCUIElementTypeButton[@name=\"like product\"])[1]", 5000)
+            .sleep(2000)
+            .elementByXPath('(//XCUIElementTypeButton[@name="like product"])[1]')
             .click()
-            .waitForElementByAccessibilityId("bar_notif_confirm", 500)
+            .waitForElementByXPath('//XCUIElementTypeImage[@name="bar_notif_confirm"]',5000)
             .should.eventually.exist
             .hasElementByAccessibilityId("This item has been added to your favourites")
             .then(function (exist) {

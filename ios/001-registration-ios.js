@@ -138,7 +138,7 @@ describe("Inscription", function () {
             .waitForElementByAccessibilityId('SIGN UP', 5000)
             .should.eventually.exist
             .click()
-            .waitForElementByAccessibilityId('Me', 3000)
+            .waitForElementByAccessibilityId('Me', 5000)
             .should.eventually.exist
             .nodeify(done);
     });

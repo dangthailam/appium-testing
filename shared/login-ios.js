@@ -187,7 +187,7 @@ function verifyLoginState(driver) {
             if (exist)
                 return driver.elementByXPath('//XCUIElementTypeCell[@name="cell-user-logout"]')
                     .click()
-                    .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 1000)
+                    .waitForElementByXPath('//XCUIElementTypeButton[@name="Me"]', 5000)
                     .click().sleep(500);
             else
                 return driver.sleep(500);

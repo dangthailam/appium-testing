@@ -56,7 +56,7 @@ describe("Connection", function () {
             .nodeify(done);
     });
 
-    it.skip("Connecter avec l'email incorrect", function (done) {
+    it("Connecter avec l'email incorrect", function (done) {
         _shared.methods.verifyLoginState(driver)
             .elementByAccessibilityId("btn-login")
             .should.eventually.exist
